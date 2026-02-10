@@ -1,0 +1,9 @@
+Note: This directory should contain the following images for the website:
+- logo.png - Club logo
+- team-celebration.jpg - Team celebration photo for hero section
+- player-placeholder.png - Placeholder for player photos
+- stadium.jpg - Stadium photo
+- team-party.jpg - Team party photo
+- snowman.jpg - Snowman in club jersey
+
+For now, you can use placeholder images or add real photos later.

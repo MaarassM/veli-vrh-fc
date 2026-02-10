@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create:*)",
+      "WebFetch(domain:semafor.hns.family)",
+      "Bash(/Users/mihaelmaras/VeliVrhWorkspace/veli-vrh-fc/src/types/index.ts << 'TYPES_EOF'\nexport type { PlayerPosition, Player } from './player';\nexport type { StaffRole, StaffMember } from './staff';\nexport type { TrophyCategory, Trophy } from './trophy';\nexport type { TimelineEvent } from './timeline';\nexport type { MediaType, GalleryItem } from './gallery';\nexport type { SocialLink, ContactInfo } from './contact';\nexport type { NavItem } from './navigation';\nexport type { Match, StandingsEntry } from './match';\nTYPES_EOF)",
+      "Bash(npm run build:*)"
+    ]
+  }
+}

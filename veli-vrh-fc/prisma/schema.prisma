@@ -1,0 +1,77 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Player {
+  id              String   @id @default(uuid())
+  hnsId           String   @unique
+  firstName       String
+  lastName        String
+  fullName        String
+  number          Int
+  position        String
+  nationality     String   @default("Croatian")
+  dateOfBirth     String?
+  placeOfBirth    String?
+  height          Int?
+  weight          Int?
+  preferredFoot   String?
+  isCaptain       Boolean  @default(false)
+  
+  goals           Int      @default(0)
+  assists         Int      @default(0)
+  appearances     Int      @default(0)
+  minutesPlayed   Int      @default(0)
+  yellowCards     Int      @default(0)
+  redCards        Int      @default(0)
+  
+  imageUrl        String?
+  imageLocal      String?
+  
+  profileUrl      String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  @@map("players")
+}
+
+model Match {
+  id              String   @id @default(uuid())
+  date            DateTime
+  opponent        String
+  homeTeam        String
+  awayTeam        String
+  homeScore       Int?
+  awayScore       Int?
+  competition     String
+  round           Int?
+  venue           String
+  status          String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  @@map("matches")
+}
+
+model Standing {
+  id              String   @id @default(uuid())
+  position        Int
+  team            String   @unique
+  played          Int
+  wins            Int
+  draws           Int
+  losses          Int
+  goalsFor        Int
+  goalsAgainst    Int
+  goalDifference  Int
+  points          Int
+  competition     String
+  season          String
+  updatedAt       DateTime @updatedAt
+  
+  @@map("standings")
+}

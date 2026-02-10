@@ -1,0 +1,72 @@
+import type { StandingsEntry } from '../types/match';
+
+// Real league standings from HNS Semafor (2025/26 season - ELITNA LIGA NSŽI)
+export const leagueStandings: StandingsEntry[] = [
+  {
+    position: 1,
+    team: 'NK Štinjan',
+    played: 12,
+    wins: 9,
+    draws: 1,
+    losses: 2,
+    goalsFor: 33,
+    goalsAgainst: 15,
+    goalDifference: 18,
+    points: 28,
+  },
+  {
+    position: 2,
+    team: 'NK Dajla',
+    played: 13,
+    wins: 8,
+    draws: 1,
+    losses: 4,
+    goalsFor: 34,
+    goalsAgainst: 20,
+    goalDifference: 14,
+    points: 25,
+  },
+  {
+    position: 3,
+    team: 'NK Vrsar',
+    played: 13,
+    wins: 8,
+    draws: 1,
+    losses: 4,
+    goalsFor: 30,
+    goalsAgainst: 28,
+    goalDifference: 2,
+    points: 25,
+  },
+  {
+    position: 4,
+    team: 'NK Veli Vrh',
+    played: 13,
+    wins: 7,
+    draws: 1,
+    losses: 5,
+    goalsFor: 25,
+    goalsAgainst: 33,
+    goalDifference: -8,
+    points: 22,
+  },
+  {
+    position: 5,
+    team: 'NK Novigrad 1947',
+    played: 12,
+    wins: 6,
+    draws: 1,
+    losses: 5,
+    goalsFor: 23,
+    goalsAgainst: 19,
+    goalDifference: 4,
+    points: 19,
+  },
+];
+
+export const currentCompetition = {
+  name: 'ELITNA LIGA NSŽI 25/26',
+  fullName: 'Elitna Liga Nogometnog Saveza Županije Istarske 2025/26',
+  season: '2025/26',
+  part: 'Prvi dio',
+};

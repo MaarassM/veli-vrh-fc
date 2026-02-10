@@ -1,0 +1,68 @@
+import type { GalleryItem } from '../types';
+
+export const galleryItems: GalleryItem[] = [
+  {
+    id: 'gallery-1',
+    type: 'image',
+    src: '/images/team-celebration.jpg',
+    caption: 'Slavlje u svlačionici nakon pobjede u finalu kupa',
+    date: '2024-06-15',
+    tags: ['momčad', 'slavlje', 'kup'],
+  },
+  {
+    id: 'gallery-2',
+    type: 'image',
+    src: '/images/stadium.jpg',
+    caption: 'Pogled na igralište NK Veli Vrh',
+    date: '2024-03-10',
+    tags: ['igralište', 'infrastruktura'],
+  },
+  {
+    id: 'gallery-3',
+    type: 'image',
+    src: '/images/team-party.jpg',
+    caption: 'Klupska zabava na kraju sezone',
+    date: '2024-07-20',
+    tags: ['momčad', 'druženje', 'zabava'],
+  },
+  {
+    id: 'gallery-4',
+    type: 'image',
+    src: '/images/snowman.jpg',
+    caption: 'Snježni čovjek u dresu Veli Vrha',
+    date: '2024-01-12',
+    tags: ['zima', 'zabava', 'dres'],
+  },
+  {
+    id: 'gallery-5',
+    type: 'image',
+    src: '/images/placeholder.jpg',
+    caption: 'Trening momčadi na domaćem terenu',
+    date: '2024-09-05',
+    tags: ['trening', 'momčad'],
+  },
+  {
+    id: 'gallery-6',
+    type: 'image',
+    src: '/images/placeholder.jpg',
+    caption: 'Utakmica jesenske sezone protiv NK Štinjan',
+    date: '2024-10-18',
+    tags: ['utakmica', 'liga'],
+  },
+  {
+    id: 'gallery-7',
+    type: 'image',
+    src: '/images/placeholder.jpg',
+    caption: 'Dodjela nagrada najboljim igračima sezone',
+    date: '2024-06-30',
+    tags: ['nagrade', 'momčad', 'sezona'],
+  },
+  {
+    id: 'gallery-8',
+    type: 'image',
+    src: '/images/placeholder.jpg',
+    caption: 'Omladinska škola nogometa — trening najmlađih',
+    date: '2024-04-22',
+    tags: ['mladež', 'škola', 'trening'],
+  },
+];

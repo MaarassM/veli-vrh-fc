@@ -1,0 +1,155 @@
+{
+  "klub": "NK Veli Vrh",
+  "igraci": [
+    {
+      "ime": "Marko",
+      "prezime": "Grgić",
+      "broj_dresa": 1,
+      "pozicija": "Vratar"
+    },
+    {
+      "ime": "Lean",
+      "prezime": "Smailbašić",
+      "broj_dresa": 12,
+      "pozicija": "Vratar"
+    },
+    {
+      "ime": "Zaim",
+      "prezime": "Alibašić",
+      "broj_dresa": 4,
+      "pozicija": "Igrač"
+    },
+    {
+      "ime": "Irian",
+      "prezime": "Beviakva",
+      "broj_dresa": 6,
+      "pozicija": "Igrač"
+    },
+    {
+      "ime": "Luka",
+      "prezime": "Drandić",
+      "broj_dresa": 18,
+      "pozicija": "Igrač"
+    },
+    {
+      "ime": "Petar",
+      "prezime": "Grgić",
+      "broj_dresa": 8,
+      "pozicija": "Igrač"
+    },
+    {
+      "ime": "Lovre",
+      "prezime": "Grgorinić",
+      "broj_dresa": 4,
+      "pozicija": "Igrač"
+    },
+    {
+      "ime": "Ian",
+      "prezime": "Halilović",
+      "broj_dresa": 9,
+      "pozicija": "Igrač"
+    },
+    {
+      "ime": "Noel",
+      "prezime": "Hasanović",
+      "broj_dresa": 18,
+      "pozicija": "Igrač"
+    },
+    {
+      "ime": "Matteo",
+      "prezime": "Hrelja",
+      "broj_dresa": 13,
+      "pozicija": "Igrač"
+    },
+    {
+      "ime": "Leonardo Mario",
+      "prezime": "Kodnik",
+      "broj_dresa": 4,
+      "pozicija": "Igrač"
+    },
+    {
+      "ime": "Dino",
+      "prezime": "Kovač",
+      "broj_dresa": 23,
+      "pozicija": "Igrač"
+    },
+    {
+      "ime": "Enver",
+      "prezime": "Kunić",
+      "broj_dresa": 14,
+      "pozicija": "Igrač"
+    },
+    {
+      "ime": "Mateo",
+      "prezime": "Lovrić",
+      "broj_dresa": 20,
+      "pozicija": "Igrač"
+    },
+    {
+      "ime": "Mihael",
+      "prezime": "Maras",
+      "broj_dresa": 10,
+      "pozicija": "Igrač"
+    },
+    {
+      "ime": "Manuel",
+      "prezime": "Marčeta",
+      "broj_dresa": 3,
+      "pozicija": "Igrač"
+    },
+    {
+      "ime": "Martin Vincent",
+      "prezime": "Marić",
+      "broj_dresa": 21,
+      "pozicija": "Igrač"
+    },
+    {
+      "ime": "Kristian",
+      "prezime": "Opassich",
+      "broj_dresa": 14,
+      "pozicija": "Igrač"
+    },
+    {
+      "ime": "Noa",
+      "prezime": "Paris",
+      "broj_dresa": 13,
+      "pozicija": "Igrač"
+    },
+    {
+      "ime": "Mateo",
+      "prezime": "Petričević",
+      "broj_dresa": 5,
+      "pozicija": "Igrač"
+    },
+    {
+      "ime": "Riccardo",
+      "prezime": "Poldrugovac",
+      "broj_dresa": 7,
+      "pozicija": "Igrač"
+    },
+    {
+      "ime": "Antonio",
+      "prezime": "Ruba",
+      "broj_dresa": 5,
+      "pozicija": "Igrač"
+    },
+    {
+      "ime": "Matko",
+      "prezime": "Šunjić",
+      "broj_dresa": 16,
+      "pozicija": "Igrač"
+    },
+    {
+      "ime": "Đuro",
+      "prezime": "Takač",
+      "broj_dresa": 3,
+      "pozicija": "Igrač"
+    },
+    {
+      "ime": "Adrian",
+      "prezime": "Žagrić",
+      "broj_dresa": 11,
+      "pozicija": "Igrač"
+    }
+  ]
+}
