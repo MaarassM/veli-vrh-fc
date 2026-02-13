@@ -1,5 +1,5 @@
-import { motion } from 'motion/react'
-import Button from '@/components/ui/Button'
+import { motion } from "motion/react";
+import Button from "@/components/ui/Button";
 
 export default function HeroSection() {
   return (
@@ -33,7 +33,8 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          Više od kluba. Tradicija, zajednica i strast prema nogometu iz srca Istre.
+          Više od kluba. Tradicija, zajednica i strast prema nogometu iz srca
+          Istre.
         </motion.p>
         <motion.div
           className="flex flex-col sm:flex-row gap-4 justify-center"
@@ -41,14 +42,16 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
         >
-          <Button href="/team" variant="primary" size="lg">
-            Upoznaj momčad
-          </Button>
-          <Button href="/about" variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-gray-900">
+          <Button
+            href="/about"
+            variant="outline"
+            size="lg"
+            className="border-white text-white hover:bg-white hover:text-gray-900"
+          >
             O klubu
           </Button>
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

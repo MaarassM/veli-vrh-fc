@@ -1,4 +1,5 @@
-import { motion } from 'motion/react'
+import { motion } from "motion/react";
+import Button from "../ui/Button";
 
 export default function IntroSection() {
   return (
@@ -11,17 +12,17 @@ export default function IntroSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
-            Dobrodošli u NK Veli Vrh
-          </h2>
           <p className="text-lg text-gray-600 leading-relaxed">
-            NK Veli Vrh je nogometni klub iz istoimenog pulskog naselja, osnovan s ciljem
-            okupljanja lokalne zajednice kroz ljubav prema najljepšoj igri. Kroz desetljeća
-            postojanja, klub je izrastao u simbol upornosti, zajedništva i istarske
-            nogometne tradicije.
+            NK Veli Vrh je nogometni klub iz istoimenog pulskog naselja, osnovan
+            s ciljem okupljanja lokalne zajednice kroz ljubav prema najljepšoj
+            igri. Kroz desetljeća postojanja, klub je izrastao u simbol
+            upornosti, zajedništva i istarske nogometne tradicije.
           </p>
+          <Button href="/team" variant="primary" size="lg" className="mt-8">
+            Upoznaj ekipu
+          </Button>
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

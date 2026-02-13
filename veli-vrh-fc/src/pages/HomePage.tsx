@@ -1,8 +1,7 @@
-import HeroSection from '@/components/home/HeroSection'
-import IntroSection from '@/components/home/IntroSection'
-import LeagueTable from '@/components/home/LeagueTable'
-import TopScorers from '@/components/home/TopScorers'
-import HighlightsGrid from '@/components/home/HighlightsGrid'
+import HeroSection from "@/components/home/HeroSection";
+import IntroSection from "@/components/home/IntroSection";
+import LeagueTable from "@/components/home/LeagueTable";
+import TopScorers from "@/components/home/TopScorers";
 
 export default function HomePage() {
   return (
@@ -11,7 +10,6 @@ export default function HomePage() {
       <IntroSection />
       <LeagueTable />
       <TopScorers />
-      <HighlightsGrid />
     </>
-  )
+  );
 }
