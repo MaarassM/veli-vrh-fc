@@ -1,20 +1,18 @@
 import { useState } from 'react'
 import { motion } from 'motion/react'
-import { ArrowLeft, Image as ImageIcon } from 'lucide-react'
+import { ArrowLeft, Image as ImageIcon, Loader2 } from 'lucide-react'
 import GalleryItem from './GalleryItem'
 import SectionHeader from '@/components/ui/SectionHeader'
-import { galleryItems, albums } from '@/data/gallery'
+import { useAlbums, useGalleryItems } from '@/hooks/useGallery'
 import type { Album } from '@/types'
 
 export default function GalleryGrid() {
   const [selectedAlbum, setSelectedAlbum] = useState<Album | null>(null)
 
-  const filteredItems = selectedAlbum
-    ? galleryItems.filter((item) => item.albumId === selectedAlbum.id)
-    : []
+  const { albums, loading: albumsLoading } = useAlbums()
+  const { items, loading: itemsLoading } = useGalleryItems(selectedAlbum?.id ?? null)
 
-  // Sort by date descending
-  const sortedItems = [...filteredItems].sort(
+  const sortedItems = [...items].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   )
 
@@ -38,18 +36,27 @@ export default function GalleryGrid() {
               <p className="text-lg text-gray-600">{selectedAlbum.description}</p>
             </div>
 
+            {/* Loading state */}
+            {itemsLoading && (
+              <div className="flex justify-center py-12">
+                <Loader2 className="w-8 h-8 text-orange-500 animate-spin" />
+              </div>
+            )}
+
             {/* Photos grid */}
-            <motion.div
-              layout
-              className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
-            >
-              {sortedItems.map((item, index) => (
-                <GalleryItem key={item.id} item={item} index={index} />
-              ))}
-            </motion.div>
+            {!itemsLoading && (
+              <motion.div
+                layout
+                className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
+              >
+                {sortedItems.map((item, index) => (
+                  <GalleryItem key={item.id} item={item} index={index} />
+                ))}
+              </motion.div>
+            )}
 
             {/* Empty state */}
-            {sortedItems.length === 0 && (
+            {!itemsLoading && sortedItems.length === 0 && (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -67,7 +74,15 @@ export default function GalleryGrid() {
               subtitle="Fotografije i video zapisi najvažnijih trenutaka naše klupske priče"
             />
 
+            {/* Albums loading */}
+            {albumsLoading && (
+              <div className="flex justify-center mt-12">
+                <Loader2 className="w-8 h-8 text-orange-500 animate-spin" />
+              </div>
+            )}
+
             {/* Albums grid */}
+            {!albumsLoading && (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -116,6 +131,7 @@ export default function GalleryGrid() {
                 </motion.div>
               ))}
             </motion.div>
+            )}
           </>
         )}
       </div>
