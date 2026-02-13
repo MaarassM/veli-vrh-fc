@@ -62,15 +62,6 @@ export default function Footer() {
                   {contactInfo.email}
                 </a>
               </li>
-              <li>
-                <a
-                  href={`tel:${contactInfo.phone}`}
-                  className="hover:text-orange-400 transition-colors"
-                >
-                  {contactInfo.phone}
-                </a>
-              </li>
-              <li>{contactInfo.officeHours}</li>
             </ul>
           </div>
         </div>

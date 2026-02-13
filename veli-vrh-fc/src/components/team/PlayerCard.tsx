@@ -26,7 +26,7 @@ export default function PlayerCard({ player, index }: PlayerCardProps) {
       className="group relative bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all"
     >
       {/* Image container */}
-      <div className="relative aspect-[3/4] bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
+      <div className="relative aspect-square bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
         <img
           src={player.image}
           alt={`${player.firstName} ${player.lastName}`}
@@ -59,14 +59,9 @@ export default function PlayerCard({ player, index }: PlayerCardProps) {
         <h3 className="font-display font-bold text-lg text-gray-900 mb-1">
           {player.firstName} {player.lastName}
         </h3>
-        <div className="flex items-center justify-between">
-          <Badge variant="default">
-            {positionLabels[player.position]}
-          </Badge>
-          <span className="text-sm text-gray-500">
-            {player.nationality}
-          </span>
-        </div>
+        <Badge variant="default">
+          {positionLabels[player.position]}
+        </Badge>
       </div>
     </motion.div>
   )

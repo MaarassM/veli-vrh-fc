@@ -17,7 +17,7 @@ export default function TopScorers() {
               Top 5 strijelaca sezone 25/26
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
             {[1, 2, 3, 4, 5].map((i) => (
               <div key={i} className="animate-pulse">
                 <div className="bg-gray-200 rounded-xl h-80"></div>
@@ -59,7 +59,7 @@ export default function TopScorers() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
           {topScorers.map((player, index) => (
             <motion.div
               key={`${player.firstName}-${player.lastName}-${player.number}`}

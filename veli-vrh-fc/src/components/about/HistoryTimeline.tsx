@@ -1,7 +1,7 @@
-import { motion } from 'motion/react'
-import SectionHeader from '@/components/ui/SectionHeader'
-import TimelineItem from './TimelineItem'
-import { timelineEvents } from '@/data/timeline'
+import { motion } from "motion/react";
+import SectionHeader from "@/components/ui/SectionHeader";
+import TimelineItem from "./TimelineItem";
+import { timelineEvents } from "@/data/timeline";
 
 export default function HistoryTimeline() {
   return (
@@ -33,10 +33,10 @@ export default function HistoryTimeline() {
           className="mt-12 text-center"
         >
           <div className="inline-block bg-orange-500 text-white font-display font-semibold px-6 py-3 rounded-full shadow-lg">
-            57+ godina tradicije
+            50+ godina tradicije
           </div>
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

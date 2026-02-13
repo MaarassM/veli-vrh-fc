@@ -8,12 +8,9 @@ interface StaffCardProps {
 }
 
 const roleLabels: Record<string, string> = {
+  'President': 'Predsjednik',
   'Head Coach': 'Glavni trener',
-  'Assistant Coach': 'Pomoćni trener',
-  'Goalkeeping Coach': 'Trener vratara',
-  'Fitness Coach': 'Kondicijski trener',
-  'Physiotherapist': 'Fizioterapeut',
-  'Team Manager': 'Voditelj momčadi',
+  'Uprava kluba': 'Uprava kluba',
 }
 
 export default function StaffCard({ member, index }: StaffCardProps) {

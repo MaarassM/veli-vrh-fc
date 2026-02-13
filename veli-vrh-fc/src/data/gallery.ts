@@ -1,4 +1,42 @@
-import type { GalleryItem } from '../types';
+import type { GalleryItem, Album } from '../types';
+
+export const albums: Album[] = [
+  {
+    id: 'events',
+    title: 'Događaji i slavlja',
+    description: 'Posebni događaji, proslave i klupska druženja',
+    coverImage: '/images/team-celebration.jpg',
+    itemCount: 3,
+  },
+  {
+    id: 'matches',
+    title: 'Utakmice',
+    description: 'Fotografije s utakmica i službenih susreta',
+    coverImage: '/images/placeholder.jpg',
+    itemCount: 1,
+  },
+  {
+    id: 'training',
+    title: 'Treninzi',
+    description: 'Treninzi seniorske i omladinske momčadi',
+    coverImage: '/images/placeholder.jpg',
+    itemCount: 2,
+  },
+  {
+    id: 'infrastructure',
+    title: 'Infrastruktura',
+    description: 'Igralište, svlačionice i klupski sadržaji',
+    coverImage: '/images/stadium.jpg',
+    itemCount: 1,
+  },
+  {
+    id: 'awards',
+    title: 'Nagrade i priznanja',
+    description: 'Dodjele nagrada i posebna priznanja',
+    coverImage: '/images/placeholder.jpg',
+    itemCount: 1,
+  },
+];
 
 export const galleryItems: GalleryItem[] = [
   {
@@ -8,6 +46,7 @@ export const galleryItems: GalleryItem[] = [
     caption: 'Slavlje u svlačionici nakon pobjede u finalu kupa',
     date: '2024-06-15',
     tags: ['momčad', 'slavlje', 'kup'],
+    albumId: 'events',
   },
   {
     id: 'gallery-2',
@@ -16,6 +55,7 @@ export const galleryItems: GalleryItem[] = [
     caption: 'Pogled na igralište NK Veli Vrh',
     date: '2024-03-10',
     tags: ['igralište', 'infrastruktura'],
+    albumId: 'infrastructure',
   },
   {
     id: 'gallery-3',
@@ -24,6 +64,7 @@ export const galleryItems: GalleryItem[] = [
     caption: 'Klupska zabava na kraju sezone',
     date: '2024-07-20',
     tags: ['momčad', 'druženje', 'zabava'],
+    albumId: 'events',
   },
   {
     id: 'gallery-4',
@@ -32,6 +73,7 @@ export const galleryItems: GalleryItem[] = [
     caption: 'Snježni čovjek u dresu Veli Vrha',
     date: '2024-01-12',
     tags: ['zima', 'zabava', 'dres'],
+    albumId: 'events',
   },
   {
     id: 'gallery-5',
@@ -40,6 +82,7 @@ export const galleryItems: GalleryItem[] = [
     caption: 'Trening momčadi na domaćem terenu',
     date: '2024-09-05',
     tags: ['trening', 'momčad'],
+    albumId: 'training',
   },
   {
     id: 'gallery-6',
@@ -48,6 +91,7 @@ export const galleryItems: GalleryItem[] = [
     caption: 'Utakmica jesenske sezone protiv NK Štinjan',
     date: '2024-10-18',
     tags: ['utakmica', 'liga'],
+    albumId: 'matches',
   },
   {
     id: 'gallery-7',
@@ -56,6 +100,7 @@ export const galleryItems: GalleryItem[] = [
     caption: 'Dodjela nagrada najboljim igračima sezone',
     date: '2024-06-30',
     tags: ['nagrade', 'momčad', 'sezona'],
+    albumId: 'awards',
   },
   {
     id: 'gallery-8',
@@ -64,5 +109,6 @@ export const galleryItems: GalleryItem[] = [
     caption: 'Omladinska škola nogometa — trening najmlađih',
     date: '2024-04-22',
     tags: ['mladež', 'škola', 'trening'],
+    albumId: 'training',
   },
 ];

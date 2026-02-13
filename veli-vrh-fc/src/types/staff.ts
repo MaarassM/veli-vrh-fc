@@ -1,10 +1,7 @@
 export type StaffRole =
-  | 'Head Coach'
-  | 'Assistant Coach'
-  | 'Goalkeeping Coach'
-  | 'Fitness Coach'
-  | 'Physiotherapist'
-  | 'Team Manager';
+  | "President"
+  | "Head Coach"
+  | "Uprava kluba";
 
 export interface StaffMember {
   id: string;

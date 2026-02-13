@@ -1,5 +1,5 @@
 export interface SocialLink {
-  platform: 'facebook' | 'instagram' | 'twitter' | 'youtube';
+  platform: "facebook" | "instagram" | "twitter" | "youtube";
   url: string;
   label: string;
 }
@@ -13,7 +13,5 @@ export interface ContactInfo {
     country: string;
   };
   email: string;
-  phone: string;
   socialLinks: SocialLink[];
-  officeHours: string;
 }

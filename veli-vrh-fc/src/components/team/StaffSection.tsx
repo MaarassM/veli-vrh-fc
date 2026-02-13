@@ -11,7 +11,7 @@ export default function StaffSection() {
           subtitle="Tim profesionalaca koji vode naš klub prema uspjehu"
         />
 
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {staffMembers.map((member, index) => (
             <StaffCard key={member.id} member={member} index={index} />
           ))}

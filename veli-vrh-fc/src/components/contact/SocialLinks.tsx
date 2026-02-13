@@ -1,21 +1,22 @@
-import { motion } from 'motion/react'
-import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react'
-import SectionHeader from '@/components/ui/SectionHeader'
-import { contactInfo } from '@/data/contact'
+import { motion } from "motion/react";
+import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
+import SectionHeader from "@/components/ui/SectionHeader";
+import { contactInfo } from "@/data/contact";
 
 const socialIcons = {
   facebook: Facebook,
   instagram: Instagram,
   twitter: Twitter,
   youtube: Youtube,
-}
+};
 
 const socialColors = {
-  facebook: 'bg-[#1877F2] hover:bg-[#0C63D4]',
-  instagram: 'bg-gradient-to-br from-[#F58529] via-[#DD2A7B] to-[#8134AF] hover:opacity-90',
-  twitter: 'bg-[#1DA1F2] hover:bg-[#0C8BD9]',
-  youtube: 'bg-[#FF0000] hover:bg-[#CC0000]',
-}
+  facebook: "bg-[#1877F2] hover:bg-[#0C63D4]",
+  instagram:
+    "bg-gradient-to-br from-[#F58529] via-[#DD2A7B] to-[#8134AF] hover:opacity-90",
+  twitter: "bg-[#1DA1F2] hover:bg-[#0C8BD9]",
+  youtube: "bg-[#FF0000] hover:bg-[#CC0000]",
+};
 
 export default function SocialLinks() {
   return (
@@ -28,8 +29,8 @@ export default function SocialLinks() {
 
         <div className="mt-12 flex flex-wrap justify-center gap-6">
           {contactInfo.socialLinks.map((link, index) => {
-            const Icon = socialIcons[link.platform]
-            const colorClass = socialColors[link.platform]
+            const Icon = socialIcons[link.platform];
+            const colorClass = socialColors[link.platform];
 
             return (
               <motion.a
@@ -53,7 +54,7 @@ export default function SocialLinks() {
                   Pratite nas
                 </span>
               </motion.a>
-            )
+            );
           })}
         </div>
 
@@ -64,13 +65,8 @@ export default function SocialLinks() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-12 text-center"
-        >
-          <p className="text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Budite dio naše online zajednice! Dijelite našu ljubav prema nogometu,
-            bodrite momčad i uživajte u ekskluzivnim sadržajima iz svakodnevnice kluba.
-          </p>
-        </motion.div>
+        ></motion.div>
       </div>
     </section>
-  )
+  );
 }

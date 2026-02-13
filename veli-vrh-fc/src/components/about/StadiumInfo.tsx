@@ -1,51 +1,41 @@
-import { motion } from 'motion/react'
-import { MapPin, Users, Calendar, Maximize } from 'lucide-react'
-import SectionHeader from '@/components/ui/SectionHeader'
+import { motion } from "motion/react";
+import { MapPin, Users, Maximize } from "lucide-react";
+import SectionHeader from "@/components/ui/SectionHeader";
 
 const stadiumFeatures = [
   {
     icon: MapPin,
-    label: 'Lokacija',
-    value: 'Veli Vrh, Pula',
-    description: 'U središtu naselja',
+    label: "Lokacija",
+    value: "Veli Vrh, Pula",
+    description: "Tivoli 1",
   },
   {
     icon: Maximize,
-    label: 'Dimenzije',
-    value: '100m × 64m',
-    description: 'Standardno igralište',
+    label: "Dimenzije",
+    value: "100m × 64m",
+    description: "Standardno igralište",
   },
   {
     icon: Users,
-    label: 'Kapacitet',
-    value: '500 gledatelja',
-    description: 'Tribine i praćenje',
+    label: "Kapacitet",
+    value: "200 gledatelja",
+    description: "Tribine",
   },
-  {
-    icon: Calendar,
-    label: 'Obnova',
-    value: '2022. godina',
-    description: 'Potpuna renovacija',
-  },
-]
+];
 
 const facilities = [
-  'Prirodni travnjak s modernim odvodnjom',
-  'LED reflektori za noćne utakmice',
-  'Renovirane svlačionice za domaće i goste',
-  'Suvremene tribine s natkriveним sjedalima',
-  'Prostor za medicinsko osoblje',
-  'Tehnička prostorija i skladište opreme',
-]
+  "Prirodni travnjak sa sustavom navodnjavanja",
+  "LED reflektori za noćne utakmice",
+  "Svlačionice za domaće i gostujuće ekipe",
+  "Prostor za suce i delegata",
+  "Skladište opreme",
+];
 
 export default function StadiumInfo() {
   return (
     <section className="py-16 md:py-24 bg-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHeader
-          title="Naše igralište"
-          subtitle="Dom NK Veli Vrh — mjesto gdje se događa nogometna čarolija"
-        />
+        <SectionHeader title="Naše igralište" />
 
         <div className="mt-12 md:mt-16 space-y-12">
           {/* Stadium features grid */}
@@ -101,7 +91,9 @@ export default function StadiumInfo() {
                   <div className="flex-shrink-0 w-6 h-6 rounded-full bg-white/20 flex items-center justify-center mt-0.5">
                     <div className="w-2 h-2 rounded-full bg-white" />
                   </div>
-                  <span className="text-white/95 leading-relaxed">{facility}</span>
+                  <span className="text-white/95 leading-relaxed">
+                    {facility}
+                  </span>
                 </motion.div>
               ))}
             </div>
@@ -114,16 +106,9 @@ export default function StadiumInfo() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.6 }}
             className="text-center max-w-3xl mx-auto"
-          >
-            <p className="text-gray-600 leading-relaxed">
-              Naše igralište na Velom Vrhu prošlo je kroz temeljitu renovaciju 2022. godine.
-              Danas ponositmo sa modernom infrastrukturom koja osigurava sigurnost igrača
-              i vrhunske uvjete za sve uzrasne kategorije. Igralište nije samo sportski
-              objekt — to je srce naše zajednice i dom našeg kluba.
-            </p>
-          </motion.div>
+          ></motion.div>
         </div>
       </div>
     </section>
-  )
+  );
 }

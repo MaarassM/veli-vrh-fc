@@ -6,7 +6,6 @@ export interface Player {
   lastName: string;
   number: number;
   position: PlayerPosition;
-  nationality: string;
   image: string;
   isCaptain: boolean;
   goals?: number;

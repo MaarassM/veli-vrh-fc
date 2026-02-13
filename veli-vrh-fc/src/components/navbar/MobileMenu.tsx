@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from 'motion/react';
 import { X } from 'lucide-react';
 import { Link } from 'react-router';
+import { createPortal } from 'react-dom';
 import { navigationItems } from '@/data/navigation';
 
 interface MobileMenuProps {
@@ -9,7 +10,7 @@ interface MobileMenuProps {
 }
 
 export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
-  return (
+  const menuContent = (
     <AnimatePresence>
       {isOpen && (
         <>
@@ -18,7 +19,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black/50"
+            className="fixed inset-0 z-[9998] bg-black/50 backdrop-blur-sm"
             onClick={onClose}
           />
 
@@ -28,7 +29,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'tween', ease: 'easeInOut', duration: 0.3 }}
-            className="fixed top-0 right-0 z-50 h-full w-72 bg-white shadow-xl"
+            className="fixed top-0 right-0 z-[9999] h-full w-72 bg-white shadow-2xl"
           >
             {/* Close button */}
             <div className="flex items-center justify-end p-4">
@@ -59,4 +60,6 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
       )}
     </AnimatePresence>
   );
+
+  return createPortal(menuContent, document.body);
 }

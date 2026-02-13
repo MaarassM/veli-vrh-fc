@@ -1,36 +1,24 @@
-import { motion } from 'motion/react'
-import { MapPin, Mail, Phone, Clock } from 'lucide-react'
-import SectionHeader from '@/components/ui/SectionHeader'
-import { contactInfo } from '@/data/contact'
+import { motion } from "motion/react";
+import { MapPin, Mail } from "lucide-react";
+import SectionHeader from "@/components/ui/SectionHeader";
+import { contactInfo } from "@/data/contact";
 
 const contactItems = [
   {
     icon: MapPin,
-    label: 'Adresa',
+    label: "Adresa",
     value: `${contactInfo.address.street}, ${contactInfo.address.postalCode} ${contactInfo.address.city}`,
     href: `https://maps.google.com/?q=${encodeURIComponent(
-      `${contactInfo.address.street}, ${contactInfo.address.city}`
+      `${contactInfo.address.street}, ${contactInfo.address.city}`,
     )}`,
   },
   {
     icon: Mail,
-    label: 'Email',
+    label: "Email",
     value: contactInfo.email,
     href: `mailto:${contactInfo.email}`,
   },
-  {
-    icon: Phone,
-    label: 'Telefon',
-    value: contactInfo.phone,
-    href: `tel:${contactInfo.phone.replace(/\s/g, '')}`,
-  },
-  {
-    icon: Clock,
-    label: 'Radno vrijeme',
-    value: contactInfo.officeHours,
-    href: null,
-  },
-]
+];
 
 export default function ContactDetails() {
   return (
@@ -57,8 +45,10 @@ export default function ContactDetails() {
                 {item.href ? (
                   <a
                     href={item.href}
-                    target={item.icon === MapPin ? '_blank' : undefined}
-                    rel={item.icon === MapPin ? 'noopener noreferrer' : undefined}
+                    target={item.icon === MapPin ? "_blank" : undefined}
+                    rel={
+                      item.icon === MapPin ? "noopener noreferrer" : undefined
+                    }
                     className="flex items-start gap-4 p-6 bg-gray-50 border border-gray-200 rounded-xl hover:border-orange-500 hover:shadow-md transition-all"
                   >
                     <div className="flex-shrink-0 w-12 h-12 bg-orange-500 text-white rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -92,7 +82,7 @@ export default function ContactDetails() {
             ))}
           </div>
 
-          {/* Info text */}
+          {/* Donation section */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -102,30 +92,38 @@ export default function ContactDetails() {
           >
             <div>
               <h3 className="font-display text-2xl font-bold text-gray-900 mb-4">
-                Pridružite se NK Veli Vrh
+                Podržite NK Veli Vrh
               </h3>
               <p className="text-gray-600 leading-relaxed mb-4">
-                Zainteresirani ste za članstvo, sponzorstvo ili volontiranje u našem klubu?
-                Obratite nam se putem e-maila ili telefona.
+                Vaša donacija pomaže razvoju mladih nogometaša, održavanju
+                klupske infrastrukture i omogućava kontinuirani rad našeg kluba.
               </p>
-              <p className="text-gray-600 leading-relaxed">
-                Naša omladinska škola nogometa prima nove polaznike tijekom cijele godine.
-                Za više informacija o upisu, kontaktirajte našeg voditelja omladinske sekcije.
+              <p className="text-gray-600 leading-relaxed mb-6">
+                Svaka donacija, bez obzira na iznos, značajno doprinosi našoj
+                zajednici i budućnosti nogometa u Velom Vrhu.
               </p>
             </div>
 
+            {/* Barcode section */}
             <div className="bg-gradient-to-br from-orange-500 to-orange-600 text-white p-6 rounded-xl">
-              <h4 className="font-display font-semibold text-lg mb-2">
-                Podrška klubu
+              <h4 className="font-display font-semibold text-lg mb-4">
+                Donirajte skeniranjem barkoda
               </h4>
-              <p className="text-white/90 leading-relaxed">
-                Vaša podrška pomaže razvoju mladih nogometaša i održavanju klupske
-                infrastrukture. Svaka donacija je dobrodošla!
+              <div className="bg-white p-4 rounded-lg max-w-sm mx-auto">
+                <img
+                  src="/images/barkod.jpg"
+                  alt="Barkod za donaciju NK Veli Vrh"
+                  className="w-full h-auto"
+                />
+              </div>
+              <p className="text-white/90 text-sm mt-4 leading-relaxed">
+                Skenirajte barkod mobilnom bankarskom aplikacijom za brzu i
+                sigurnu donaciju klubu.
               </p>
             </div>
           </motion.div>
         </div>
       </div>
     </section>
-  )
+  );
 }

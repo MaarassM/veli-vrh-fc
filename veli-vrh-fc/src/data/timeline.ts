@@ -1,84 +1,44 @@
-import type { TimelineEvent } from '../types';
+import type { TimelineEvent } from "../types";
 
 export const timelineEvents: TimelineEvent[] = [
   {
-    id: 'event-1',
-    year: 1967,
-    title: 'Osnivanje kluba',
-    description:
-      'NK Veli Vrh osnovan je kao lokalni nogometni klub u istoimenom pulskom naselju. Skupina entuzijasta odlučila je formalizirati nogometnu tradiciju kvarta.',
-    category: 'founding',
-  },
-  {
-    id: 'event-2',
+    id: "event-1",
     year: 1975,
-    title: 'Izgradnja igrališta',
+    title: "Osnivanje kluba",
     description:
-      'Uređeno je glavno igralište na Velom Vrhu koje je postalo dom kluba i središte okupljanja lokalne zajednice.',
-    category: 'infrastructure',
+      "NK Veli Vrh osnovan je kao lokalni nogometni klub u istoimenom pulskom naselju.",
+    category: "founding",
   },
   {
-    id: 'event-3',
-    year: 1988,
-    title: 'Prva titula u općinskoj ligi',
+    id: "event-2",
+    year: 2002,
+    title: "Ulazak u 1. Županijsku ligu",
     description:
-      'Klub je osvojio svoju prvu titulu prvaka u općinskoj nogometnoj ligi, postavivši temelje za buduće uspjehe.',
-    category: 'achievement',
+      "Klub je ušao u 1. Županijsku nogometnu ligu Istarske županije, ostvarivši plasman u najviši rang županijskog nogometa.",
+    category: "achievement",
   },
   {
-    id: 'event-4',
-    year: 1995,
-    title: 'Obnova nakon rata',
+    id: "event-3",
+    year: 2016,
+    title: "Utakmica protiv Dinama",
     description:
-      'Nakon Domovinskog rata, klub se reorganizirao i nastavio natjecanje u novoustrojenom hrvatskom nogometnom sustavu.',
-    category: 'milestone',
+      "Povijesna klub utakmica protiv GNK Dinamo Zagreb, nezaboravan trenutak za klub i navijače.",
+    category: "achievement",
   },
   {
-    id: 'event-5',
-    year: 2005,
-    title: 'Osnivanje omladinske škole',
+    id: "event-4",
+    year: 2017,
+    title: "Slavlje 50 godina kluba",
     description:
-      'Pokrenuta je službena omladinska škola nogometa s ciljem razvoja mladih talenata iz Pule i okolice.',
-    category: 'milestone',
+      "Veliki jubilej — 50 godina postojanja i djelovanja NK Veli Vrh. Proslava uz prisutnost bivših i sadašnjih igrača.",
+    category: "achievement",
   },
   {
-    id: 'event-6',
-    year: 2012,
-    title: 'Prvak 2. ŽNL',
+    id: "event-5",
+    year: 2021,
+    title: "Ulazak u 4. HNL",
     description:
-      'Osvojen naslov prvaka 2. Županijske nogometne lige Istarske županije i ostvaren plasman u viši rang.',
-    category: 'achievement',
-  },
-  {
-    id: 'event-7',
-    year: 2018,
-    title: 'Prvak 1. ŽNL',
-    description:
-      'Najveći ligaški uspjeh u povijesti kluba — naslov prvaka 1. Županijske nogometne lige Istarske županije.',
-    category: 'achievement',
-  },
-  {
-    id: 'event-8',
-    year: 2020,
-    title: 'Osvajanje Kupa Istarske županije',
-    description:
-      'Povijesna pobjeda u finalu Kupa Istarske županije protiv NK Barbariga, prvi županijski kup za Veli Vrh.',
-    category: 'achievement',
-  },
-  {
-    id: 'event-9',
-    year: 2022,
-    title: 'Renovacija svlačionica i tribina',
-    description:
-      'Završena temeljita obnova klupske infrastrukture uključujući nove svlačionice, tribine i rasvjetu.',
-    category: 'infrastructure',
-  },
-  {
-    id: 'event-10',
-    year: 2024,
-    title: 'Treći Kup grada Pule',
-    description:
-      'Klub po treći put u svojoj povijesti osvaja Kup grada Pule, potvrđujući status jednog od vodećih klubova u gradu.',
-    category: 'achievement',
+      "Povijesni uspjeh — plasman u 4. Hrvatsku nogometnu ligu (Jug), najviši rang u kojemu je klub ikad igrao.",
+    category: "achievement",
   },
 ];

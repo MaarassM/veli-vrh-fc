@@ -7,4 +7,13 @@ export interface GalleryItem {
   caption: string;
   date: string;
   tags: string[];
+  albumId?: string;
+}
+
+export interface Album {
+  id: string;
+  title: string;
+  description: string;
+  coverImage: string;
+  itemCount: number;
 }
