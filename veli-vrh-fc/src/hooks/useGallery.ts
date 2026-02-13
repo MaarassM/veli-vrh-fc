@@ -2,14 +2,6 @@ import { useState, useEffect } from 'react'
 import { supabase } from '@/lib/supabase'
 import type { Album, GalleryItem } from '@/types'
 
-interface AlbumRow {
-  id: string
-  title: string
-  description: string
-  cover_image_url: string | null
-  sort_order: number
-}
-
 interface GalleryItemRow {
   id: string
   album_id: string
