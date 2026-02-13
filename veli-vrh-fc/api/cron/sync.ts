@@ -7,8 +7,9 @@ import * as cheerio from 'cheerio'
 import { supabaseAdmin } from '../../lib/supabase'
 
 const HNS_URL = 'https://semafor.hns.family/klubovi/1546/nk-veli-vrh/'
+const VELI_VRH_ID = '1546'
 
-interface PlayerStats {
+interface PlayerRow {
   first_name: string
   last_name: string
   number: number
@@ -21,7 +22,7 @@ interface PlayerStats {
   image_url: string
 }
 
-interface Standing {
+interface StandingRow {
   position: number
   team: string
   played: number
@@ -34,7 +35,7 @@ interface Standing {
   points: number
 }
 
-interface Match {
+interface MatchRow {
   id: string
   date: string
   opponent: string
@@ -48,38 +49,48 @@ interface Match {
 }
 
 async function scrapeAll(): Promise<{
-  players: PlayerStats[]
-  standings: Standing[]
-  matches: Match[]
+  players: PlayerRow[]
+  standings: StandingRow[]
+  matches: MatchRow[]
 }> {
   const response = await fetch(HNS_URL, {
     headers: { 'User-Agent': 'Mozilla/5.0 (compatible; NK-Veli-Vrh-Bot/1.0)' }
   })
 
-  if (!response.ok) {
-    throw new Error(`HNS returned ${response.status}`)
-  }
+  if (!response.ok) throw new Error(`HNS returned ${response.status}`)
 
   const html = await response.text()
   const $ = cheerio.load(html)
 
   // --- Players ---
-  const players: PlayerStats[] = []
-  $('table.table tbody tr').each((i, row) => {
+  const players: PlayerRow[] = []
+  $('div.playerslist.withStats li.row').each((_, row) => {
     const $row = $(row)
-    const numberText = $row.find('td').eq(0).text().trim()
-    const number = parseInt(numberText) || 0
-    const fullName = $row.find('td').eq(1).text().trim()
+    const number = parseInt($row.find('.shirtNumber').text().trim()) || 0
+    const fullName = $row.find('.playerName h3 a').text().trim()
     const nameParts = fullName.split(' ')
     const first_name = nameParts[0] || ''
     const last_name = nameParts.slice(1).join(' ') || ''
-    const position = $row.find('td').eq(2).text().trim()
-    const goals = parseInt($row.find('td').eq(3).text().trim()) || 0
-    const appearances = parseInt($row.find('td').eq(4).text().trim()) || 0
-    const yellow_cards = parseInt($row.find('td').eq(5).text().trim()) || 0
-    const red_cards = parseInt($row.find('td').eq(6).text().trim()) || 0
-    const imgSrc = $row.find('img').attr('src') || ''
-    const image_url = imgSrc.startsWith('http') ? imgSrc : imgSrc ? `https://hns.family${imgSrc}` : ''
+
+    // Pozicija je tekst direktno u .playerName, van h3
+    const playerNameEl = $row.find('.playerName')
+    playerNameEl.find('h3').remove()
+    const position = playerNameEl.text().trim()
+
+    const appearances = parseInt($row.find('.apps').text().trim()) || 0
+
+    // Golovi — ako span ima klasu 'conceded' to su primljeni golovi (vratar), ne daju se
+    const $goalsSpan = $row.find('.goals span')
+    const goals = $goalsSpan.hasClass('conceded') ? 0 : parseInt($goalsSpan.text().trim()) || 0
+
+    // Kartoni format: "2 / 0"
+    const cardsText = $row.find('.cards').text().trim()
+    const cardsParts = cardsText.split('/')
+    const yellow_cards = parseInt(cardsParts[0]?.trim()) || 0
+    const red_cards = parseInt(cardsParts[1]?.trim()) || 0
+
+    // Slika — lazy loaded, src je u data-url
+    const image_url = $row.find('.playerPhoto img').attr('data-url') || ''
 
     if (fullName && number > 0) {
       players.push({ first_name, last_name, number, position, goals, assists: 0, appearances, yellow_cards, red_cards, image_url })
@@ -87,95 +98,77 @@ async function scrapeAll(): Promise<{
   })
 
   // --- Standings ---
-  const standings: Standing[] = []
-  $('table.table').each((i, table) => {
-    const $table = $(table)
-    const firstHeader = $table.find('thead th').first().text().toLowerCase()
-    if (firstHeader.includes('poz') || firstHeader === '#') {
-      $table.find('tbody tr').each((j, row) => {
-        const $row = $(row)
-        const cells = $row.find('td')
-        if (cells.length >= 10) {
-          const position = parseInt(cells.eq(0).text().trim()) || 0
-          const team = cells.eq(1).text().trim()
-          const played = parseInt(cells.eq(2).text().trim()) || 0
-          const wins = parseInt(cells.eq(3).text().trim()) || 0
-          const draws = parseInt(cells.eq(4).text().trim()) || 0
-          const losses = parseInt(cells.eq(5).text().trim()) || 0
-          const goals_for = parseInt(cells.eq(6).text().trim()) || 0
-          const goals_against = parseInt(cells.eq(7).text().trim()) || 0
-          const goal_difference = parseInt(cells.eq(8).text().trim()) || (goals_for - goals_against)
-          const points = parseInt(cells.eq(9).text().trim()) || 0
-          if (team && position > 0) {
-            standings.push({ position, team, played, wins, draws, losses, goals_for, goals_against, goal_difference, points })
-          }
-        }
-      })
+  const standings: StandingRow[] = []
+  $('div.competition_table.type1 li.row[data-clubid]').each((_, row) => {
+    const $row = $(row)
+    const position = parseInt($row.find('.position').text().trim()) || 0
+
+    // Tim naziv — ukloni logo div da dobijemo cisti tekst
+    const $clubEl = $row.find('.club a').clone()
+    $clubEl.find('div').remove()
+    const team = $clubEl.text().trim()
+
+    const played = parseInt($row.find('.played').text().trim()) || 0
+    const wins = parseInt($row.find('.wins').text().trim()) || 0
+    const draws = parseInt($row.find('.draws').text().trim()) || 0
+    const losses = parseInt($row.find('.losses').text().trim()) || 0
+    const goals_for = parseInt($row.find('.gplus').text().trim()) || 0
+    const goals_against = parseInt($row.find('.gminus').text().trim()) || 0
+    const goal_difference = parseInt($row.find('.gdiff').text().trim()) || (goals_for - goals_against)
+    const points = parseInt($row.find('.points').text().trim()) || 0
+
+    if (team && position > 0) {
+      standings.push({ position, team, played, wins, draws, losses, goals_for, goals_against, goal_difference, points })
     }
   })
 
   // --- Matches ---
-  const matches: Match[] = []
-  let matchIndex = 0
-  $('table.table').each((i, table) => {
-    const $table = $(table)
-    const headers = $table.find('thead th').map((_, th) => $(th).text().toLowerCase()).get()
-    if (headers.some(h => h.includes('datum') || h.includes('date'))) {
-      $table.find('tbody tr').each((j, row) => {
-        const $row = $(row)
-        const cells = $row.find('td')
-        if (cells.length >= 3) {
-          matchIndex++
-          const dateText = cells.eq(0).text().trim()
-          const teamsText = cells.eq(1).text().trim()
-          const scoreText = cells.eq(2).text().trim()
+  const matches: MatchRow[] = []
+  $('div.matchlist li.row[data-match]').each((_, row) => {
+    const $row = $(row)
+    const matchId = $row.attr('data-match') || ''
 
-          const teamsSplit = teamsText.split(/\s*[-:]\s*|\s+vs\s+/i)
-          const home_team = teamsSplit[0]?.trim() || ''
-          const away_team = teamsSplit[1]?.trim() || ''
-          const isHome = home_team.toLowerCase().includes('veli vrh')
-          const opponent = isHome ? away_team : home_team
-          const venue: 'home' | 'away' = isHome ? 'home' : 'away'
+    const dateText = $row.find('.date').text().trim()
+    // Format: "07.09.2025. 10:30" → "2025-09-07"
+    let date = dateText
+    try {
+      const datePart = dateText.split(' ')[0].replace('.', '')
+      const parts = datePart.split('.')
+      if (parts.length === 3) {
+        date = `${parts[2]}-${parts[1].padStart(2, '0')}-${parts[0].padStart(2, '0')}`
+      }
+    } catch (_) {}
 
-          let home_score: number | null = null
-          let away_score: number | null = null
-          let status: 'played' | 'upcoming' | 'postponed' = 'upcoming'
+    const club1Id = $row.find('.club1').attr('data-id') || ''
+    const club2Id = $row.find('.club2').attr('data-id') || ''
 
-          const scoreParts = scoreText.split(/[-:]/).map(s => s.trim())
-          if (scoreParts.length === 2) {
-            const h = parseInt(scoreParts[0])
-            const a = parseInt(scoreParts[1])
-            if (!isNaN(h) && !isNaN(a)) {
-              home_score = h
-              away_score = a
-              status = 'played'
-            }
-          }
+    // Izvuci ime kluba bez logo diva
+    const $club1 = $row.find('.club1 a').clone()
+    $club1.find('div').remove()
+    const club1Name = $club1.text().trim()
 
-          let date = dateText
-          try {
-            const dateParts = dateText.split('.')
-            if (dateParts.length === 3) {
-              date = `${dateParts[2]}-${dateParts[1].padStart(2, '0')}-${dateParts[0].padStart(2, '0')}`
-            }
-          } catch (_) {}
+    const $club2 = $row.find('.club2 a').clone()
+    $club2.find('div').remove()
+    const club2Name = $club2.text().trim()
 
-          if (home_team && away_team) {
-            matches.push({
-              id: `match-${matchIndex}`,
-              date,
-              opponent,
-              home_team,
-              away_team,
-              home_score,
-              away_score,
-              competition: 'ELITNA LIGA NSŽI 25/26',
-              status,
-              venue
-            })
-          }
-        }
-      })
+    const isVeliVrhHome = club1Id === VELI_VRH_ID
+    const home_team = club1Name
+    const away_team = club2Name
+    const opponent = isVeliVrhHome ? away_team : home_team
+    const venue: 'home' | 'away' = isVeliVrhHome ? 'home' : 'away'
+
+    const res1Text = $row.find('.res1').text().trim()
+    const res2Text = $row.find('.res2').text().trim()
+    const isPlayed = res1Text !== '-' && res2Text !== '-'
+
+    const home_score = isPlayed ? (parseInt(res1Text) || 0) : null
+    const away_score = isPlayed ? (parseInt(res2Text) || 0) : null
+    const status: 'played' | 'upcoming' = isPlayed ? 'played' : 'upcoming'
+
+    const competition = $row.find('.competitionround').text().split(',')[0].trim() || 'ELITNA LIGA NSŽI'
+
+    if (matchId && (club1Name || club2Name)) {
+      matches.push({ id: matchId, date, opponent, home_team, away_team, home_score, away_score, competition, status, venue })
     }
   })
 
@@ -183,7 +176,6 @@ async function scrapeAll(): Promise<{
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  // Provjeri Vercel cron autorizaciju
   const authHeader = req.headers.authorization
   if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
     return res.status(401).json({ error: 'Unauthorized' })
@@ -196,7 +188,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const { players, standings, matches } = await scrapeAll()
     console.log(`[sync] Scraped: ${players.length} players, ${standings.length} standings, ${matches.length} matches`)
 
-    // Brisi stare podatke i umetni nove (upsert tablice)
     const [playersResult, standingsResult, matchesResult] = await Promise.all([
       supabaseAdmin.from('players').delete().neq('id', 0).then(() =>
         supabaseAdmin.from('players').insert(players)
@@ -213,11 +204,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       .map(r => r.error?.message)
       .filter(Boolean)
 
-    if (errors.length > 0) {
-      throw new Error(`DB errors: ${errors.join(', ')}`)
-    }
+    if (errors.length > 0) throw new Error(`DB errors: ${errors.join(', ')}`)
 
-    // Zabilježi uspjesnu sinkronizaciju
     await supabaseAdmin.from('sync_log').insert({
       players_count: players.length,
       standings_count: standings.length,
@@ -240,7 +228,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     await supabaseAdmin.from('sync_log').insert({
       success: false,
       error_message: message
-    }).catch(() => {}) // ne fail-aj ako ni log ne radi
+    }).catch(() => {})
 
     return res.status(500).json({ success: false, error: message })
   }
