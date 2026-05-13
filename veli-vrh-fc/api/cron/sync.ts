@@ -214,7 +214,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     })
 
     const duration = Date.now() - startTime
-    console.log(`[sync] Done in ${duration}ms`)
+    console.log(`[sync] Done in ${duration}ms — players: ${players.length}, standings: ${standings.length}, matches: ${matches.length}`)
 
     return res.status(200).json({
       success: true,
