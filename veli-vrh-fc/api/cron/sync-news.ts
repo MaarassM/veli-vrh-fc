@@ -44,8 +44,8 @@ async function fetchFacebookPosts(): Promise<FacebookPost[]> {
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  const authHeader = req.headers.authorization
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+  const secret = process.env.CRON_SECRET
+  if (secret && req.headers.authorization !== `Bearer ${secret}`) {
     return res.status(401).json({ error: 'Unauthorized' })
   }
 

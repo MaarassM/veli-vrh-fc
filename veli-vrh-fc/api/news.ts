@@ -9,7 +9,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
-  const limit = Math.min(Number(req.query.limit) || 6, 20)
+  const limit = Math.min(Math.max(Number(req.query.limit) || 6, 1), 20)
 
   const { data, error } = await supabase
     .from('news_posts')
