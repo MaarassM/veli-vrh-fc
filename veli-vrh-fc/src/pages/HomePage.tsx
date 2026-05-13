@@ -1,7 +1,7 @@
 import HeroSection from "@/components/home/HeroSection";
 import IntroSection from "@/components/home/IntroSection";
 import LeagueTable from "@/components/home/LeagueTable";
-import TopScorers from "@/components/home/TopScorers";
+import ClubValues from "@/components/home/ClubValues";
 
 export default function HomePage() {
   return (
@@ -9,7 +9,7 @@ export default function HomePage() {
       <HeroSection />
       <IntroSection />
       <LeagueTable />
-      <TopScorers />
+      <ClubValues />
     </>
   );
 }
