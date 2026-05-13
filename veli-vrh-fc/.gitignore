@@ -35,3 +35,7 @@ supabasepassword.txt
 
 # Database
 *.db
+
+# Git worktrees
+.worktrees/
+.superpowers/
