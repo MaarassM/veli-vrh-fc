@@ -179,3 +179,39 @@ export function useTopScorers(limit: number = 5) {
 
   return { data: topScorers, loading, error }
 }
+
+interface NewsPost {
+  id: string
+  message: string | null
+  full_picture: string | null
+  created_time: string
+  permalink_url: string
+}
+
+export function useNews(limit: number = 6) {
+  const [data, setData] = useState<NewsPost[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch(`${API_BASE_URL}/news?limit=${limit}`)
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
+        }
+        const result: APIResponse<NewsPost[]> = await response.json()
+        setData(result.data)
+        setError(null)
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Unknown error')
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchData()
+  }, [limit])
+
+  return { data, loading, error }
+}
