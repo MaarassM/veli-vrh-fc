@@ -1,7 +1,7 @@
 // api/cron/sync.ts
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import * as cheerio from 'cheerio'
-import { supabaseAdmin } from '../../lib/supabase'
+import { supabaseAdmin } from '../../lib/supabase.js'
 
 const BASE_URL = 'https://semafor.hns.family/klubovi/1546/nk-veli-vrh/'
 const VELI_VRH_ID = '1546'
