@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS players (
   yellow_cards INTEGER DEFAULT 0,
   red_cards INTEGER DEFAULT 0,
   image_url TEXT,
+  category TEXT NOT NULL DEFAULT 'seniori',
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
@@ -30,6 +31,7 @@ CREATE TABLE IF NOT EXISTS standings (
   goals_against INTEGER DEFAULT 0,
   goal_difference INTEGER DEFAULT 0,
   points INTEGER DEFAULT 0,
+  category TEXT NOT NULL DEFAULT 'seniori',
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
@@ -45,6 +47,7 @@ CREATE TABLE IF NOT EXISTS matches (
   competition TEXT,
   status TEXT CHECK (status IN ('played', 'upcoming', 'postponed')),
   venue TEXT CHECK (venue IN ('home', 'away')),
+  category TEXT NOT NULL DEFAULT 'seniori',
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
