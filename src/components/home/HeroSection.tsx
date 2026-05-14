@@ -77,13 +77,6 @@ export default function HeroSection() {
           <Button href="/about" variant="outline" size="md">
             O Klubu
           </Button>
-          <a
-            href="/team"
-            className="font-semibold text-[13px] text-gray-400 hover:text-orange-500 transition-colors duration-200"
-            style={{ fontFamily: "var(--font-display)" }}
-          >
-            Momčad →
-          </a>
         </motion.div>
       </div>
     </section>
