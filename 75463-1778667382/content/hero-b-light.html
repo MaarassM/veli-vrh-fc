@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero B — Light</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background: #f0f0ee; font-family: 'Barlow', sans-serif; }
+
+.page-header {
+  text-align:center;
+  padding: 20px 16px 16px;
+  background: #fff;
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 24px;
+}
+.page-header h1 {
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:14px; font-weight:700;
+  letter-spacing:3px; text-transform:uppercase;
+  color:#f97316;
+}
+.page-header p { font-size:13px; color:#999; margin-top:3px; }
+
+.variants { display:flex; flex-direction:column; gap:24px; padding: 0 24px 32px; }
+
+/* ========= VARIANT 1: Pure white with orange diagonal ========= */
+.hero {
+  position:relative;
+  min-height: 500px;
+  overflow:hidden;
+  border-radius: 4px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.12);
+  cursor:pointer;
+  transition: box-shadow 0.2s, outline 0.15s;
+}
+.hero:hover { box-shadow: 0 8px 48px rgba(249,115,22,0.25); outline: 3px solid #f97316; }
+
+/* VARIANT 1 */
+.v1 { background: #ffffff; }
+
+.v1 .orange-slab {
+  position:absolute;
+  top:0; right:0; bottom:0;
+  width: 48%;
+  background: #f97316;
+  clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%);
+}
+/* Dot texture on orange */
+.v1 .orange-slab::after {
+  content:'';
+  position:absolute;
+  inset:0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.15) 1.5px, transparent 1.5px);
+  background-size: 18px 18px;
+}
+
+/* Large faded VV watermark */
+.v1 .watermark {
+  position:absolute;
+  right: 40px;
+  bottom: -20px;
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:900;
+  font-size: 260px;
+  line-height:1;
+  color: rgba(255,255,255,0.15);
+  user-select:none;
+  letter-spacing:-8px;
+}
+
+.v1 .content {
+  position:relative;
+  z-index:10;
+  display:flex;
+  align-items:center;
+  min-height:500px;
+  padding: 56px 56px;
+  gap: 48px;
+}
+
+/* Left — white bg side */
+.v1 .left { flex: 0 0 auto; width: 340px; }
+
+.v1 .logo-mark {
+  width:52px; height:52px;
+  background:#f97316;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:900; font-size:18px; color:white;
+  letter-spacing:1px;
+  margin-bottom: 20px;
+}
+
+.v1 .location {
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:11px; font-weight:700;
+  letter-spacing:4px; text-transform:uppercase;
+  color:#f97316;
+  margin-bottom:10px;
+}
+
+.v1 .club-name {
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:900;
+  font-size: 88px;
+  line-height:0.88;
+  color:#111;
+  text-transform:uppercase;
+  letter-spacing:-1px;
+  margin-bottom:20px;
+}
+.v1 .club-name em { font-style:normal; color:#f97316; }
+
+.v1 .tagline {
+  font-size:15px; color:#777;
+  line-height:1.65;
+  max-width:280px;
+  margin-bottom:28px;
+}
+
+.v1 .cta-row { display:flex; gap:12px; align-items:center; }
+.v1 .btn-primary {
+  background:#f97316; color:white;
+  padding:13px 28px;
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700; font-size:14px;
+  letter-spacing:2px; text-transform:uppercase;
+  border:none; cursor:pointer;
+  transition: background 0.2s;
+}
+.v1 .btn-primary:hover { background:#ea580c; }
+.v1 .btn-ghost {
+  background:transparent; color:#333;
+  padding:13px 24px;
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700; font-size:14px;
+  letter-spacing:2px; text-transform:uppercase;
+  border:2px solid #ddd; cursor:pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+.v1 .btn-ghost:hover { border-color:#f97316; color:#f97316; }
+
+/* Right — on the orange slab */
+.v1 .right {
+  flex:1;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:2px;
+  padding-left:60px;
+}
+.v1 .stat-box {
+  background: rgba(255,255,255,0.18);
+  padding: 22px 20px;
+  backdrop-filter: blur(4px);
+}
+.v1 .stat-n {
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:900; font-size:52px;
+  line-height:1; color:white;
+  margin-bottom:4px;
+}
+.v1 .stat-t {
+  font-size:11px; text-transform:uppercase;
+  letter-spacing:2px; color:rgba(255,255,255,0.6);
+}
+.v1 .stat-s {
+  font-size:13px; color:rgba(255,255,255,0.8);
+  margin-top:3px;
+}
+
+/* season */
+.v1 .season {
+  position:absolute; top:24px; right:32px; z-index:20;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:11px; letter-spacing:3px;
+  text-transform:uppercase; color:rgba(255,255,255,0.6);
+}
+
+/* ========= VARIANT 2: Warm off-white, softer ========= */
+.v2 { background: #fafaf8; }
+
+.v2 .top-bar {
+  position:absolute;
+  top:0; left:0; right:0;
+  height:5px;
+  background:linear-gradient(to right, #f97316, #fb923c, #f97316);
+}
+
+.v2 .left-accent {
+  position:absolute;
+  left:0; top:0; bottom:0;
+  width:6px;
+  background:#f97316;
+}
+
+.v2 .bg-shape {
+  position:absolute;
+  right:-40px; top:-40px;
+  width:480px; height:480px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(249,115,22,0.08) 0%, transparent 70%);
+}
+
+.v2 .bg-number {
+  position:absolute;
+  right:24px; bottom:-30px;
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:900; font-size:320px;
+  line-height:1; color:rgba(249,115,22,0.05);
+  user-select:none; letter-spacing:-10px;
+}
+
+.v2 .content {
+  position:relative; z-index:10;
+  display:flex; align-items:center;
+  min-height:500px;
+  padding:56px 56px 56px 62px;
+  gap:56px;
+}
+
+.v2 .left { flex:0 0 auto; width:320px; }
+
+.v2 .eyebrow {
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:11px; font-weight:700;
+  letter-spacing:4px; text-transform:uppercase;
+  color:#f97316;
+  margin-bottom:16px;
+}
+.v2 .eyebrow::before {
+  content:'';
+  display:block; width:24px; height:2px;
+  background:#f97316;
+}
+
+.v2 .club-name {
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:900; font-size:96px;
+  line-height:0.85;
+  letter-spacing:-2px;
+  margin-bottom:22px;
+}
+.v2 .club-name .line1 { color:#111; display:block; }
+.v2 .club-name .line2 { color:#f97316; display:block; font-size:88px; }
+.v2 .club-name .line3 { color:#111; display:block; }
+
+.v2 .tagline {
+  font-size:15px; color:#888;
+  line-height:1.65; max-width:270px;
+  margin-bottom:32px;
+}
+
+.v2 .cta-row { display:flex; gap:12px; align-items:center; }
+.v2 .btn-p {
+  background:#f97316; color:white;
+  padding:14px 30px;
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700; font-size:14px;
+  letter-spacing:2px; text-transform:uppercase;
+  border:none; cursor:pointer;
+  transition: background 0.2s;
+}
+.v2 .btn-p:hover { background:#ea580c; }
+.v2 .link {
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:13px; font-weight:700;
+  letter-spacing:2px; text-transform:uppercase;
+  color:#bbb; text-decoration:none;
+  display:flex; align-items:center; gap:6px;
+  transition:color 0.2s;
+}
+.v2 .link:hover { color:#f97316; }
+.v2 .link::after { content:'→'; }
+
+/* Right stats */
+.v2 .right {
+  flex:1;
+  display:flex; flex-direction:column; gap:2px;
+}
+.v2 .stat-row {
+  display:flex; align-items:stretch;
+  border:1px solid #eee;
+  background:white;
+}
+.v2 .stat-row + .stat-row { border-top:none; }
+.v2 .stat-num-col {
+  flex:0 0 90px;
+  display:flex; align-items:center; justify-content:center;
+  padding:20px;
+  border-right:3px solid #f97316;
+}
+.v2 .stat-num-col.first { border-right-color:#f97316; }
+.v2 .s-num {
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:900; font-size:44px;
+  line-height:1; color:#111;
+}
+.v2 .stat-num-col.accent .s-num { color:#f97316; }
+.v2 .stat-text-col {
+  flex:1;
+  padding:18px 20px;
+  display:flex; flex-direction:column; justify-content:center;
+}
+.v2 .s-label {
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:12px; font-weight:700;
+  letter-spacing:3px; text-transform:uppercase;
+  color:#ccc; margin-bottom:2px;
+}
+.v2 .s-title {
+  font-size:16px; font-weight:600; color:#333;
+  font-family:'Barlow Condensed',sans-serif;
+  letter-spacing:0.5px;
+}
+
+.variant-label {
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:11px; font-weight:700;
+  letter-spacing:3px; text-transform:uppercase;
+  color:#bbb;
+  margin-bottom:10px;
+  padding: 0 4px;
+  display:flex; align-items:center; gap:10px;
+}
+.variant-label::before, .variant-label::after {
+  content:''; flex:1; height:1px; background:#ddd;
+}
+
+/* mobile preview note */
+.note {
+  text-align:center;
+  font-size:12px; color:#bbb;
+  padding:16px 0 8px;
+}
+.note strong { color:#f97316; }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Hero B — White & Orange Variations</h1>
+  <p>Barlow Condensed 900 · Click to select</p>
+</div>
+
+<div class="variants">
+
+  <!-- VARIANT 1 -->
+  <div>
+    <div class="variant-label">Varijanta 1 — Orange slab right, white left</div>
+    <div class="hero v1" onclick="pick(1)">
+      <div class="orange-slab">
+        <div class="watermark">VV</div>
+      </div>
+      <div class="season">Elitna liga NSŽI · 25/26</div>
+      <div class="content">
+        <div class="left">
+          <div class="logo-mark">VV</div>
+          <div class="location">Pula · Istra</div>
+          <div class="club-name">NK<br><em>Veli</em><br>Vrh</div>
+          <div class="tagline">Tradicija, zajednica i strast prema nogometu iz srca Istre.</div>
+          <div class="cta-row">
+            <button class="btn-primary">O Klubu</button>
+            <button class="btn-ghost">Momčad</button>
+          </div>
+        </div>
+        <div class="right">
+          <div class="stat-box">
+            <div class="stat-n">4.</div>
+            <div class="stat-t">Pozicija</div>
+            <div class="stat-s">Elitna liga NSŽI</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-n">22</div>
+            <div class="stat-t">Bodova</div>
+            <div class="stat-s">13 utakmica</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-n">7</div>
+            <div class="stat-t">Pobjeda</div>
+            <div class="stat-s">Ova sezona</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-n">25</div>
+            <div class="stat-t">Dani golovi</div>
+            <div class="stat-s">Napadački rekord</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VARIANT 2 -->
+  <div>
+    <div class="variant-label">Varijanta 2 — All white, orange accents & stat rows</div>
+    <div class="hero v2" onclick="pick(2)">
+      <div class="top-bar"></div>
+      <div class="left-accent"></div>
+      <div class="bg-shape"></div>
+      <div class="bg-number">25</div>
+      <div class="content">
+        <div class="left">
+          <div class="eyebrow">Pula · Istra</div>
+          <div class="club-name">
+            <span class="line1">NK</span>
+            <span class="line2">Veli</span>
+            <span class="line3">Vrh</span>
+          </div>
+          <div class="tagline">Tradicija, zajednica i strast prema nogometu iz srca Istre.</div>
+          <div class="cta-row">
+            <button class="btn-p">O Klubu</button>
+            <a class="link" href="#">Momčad</a>
+          </div>
+        </div>
+        <div class="right">
+          <div class="stat-row">
+            <div class="stat-num-col accent">
+              <div class="s-num">4.</div>
+            </div>
+            <div class="stat-text-col">
+              <div class="s-label">Trenutno</div>
+              <div class="s-title">Pozicija u ligi</div>
+            </div>
+          </div>
+          <div class="stat-row">
+            <div class="stat-num-col">
+              <div class="s-num">22</div>
+            </div>
+            <div class="stat-text-col">
+              <div class="s-label">Ukupno</div>
+              <div class="s-title">Bodova ove sezone</div>
+            </div>
+          </div>
+          <div class="stat-row">
+            <div class="stat-num-col">
+              <div class="s-num">7</div>
+            </div>
+            <div class="stat-text-col">
+              <div class="s-label">Pobjede</div>
+              <div class="s-title">Od 13 utakmica</div>
+            </div>
+          </div>
+          <div class="stat-row">
+            <div class="stat-num-col">
+              <div class="s-num">25</div>
+            </div>
+            <div class="stat-text-col">
+              <div class="s-label">Golovi</div>
+              <div class="s-title">Dano ove sezone</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="note">
+  Both are fully responsive. Stats come from <strong>live HNS data</strong>. Pick one or describe what to change.
+</div>
+
+<script>
+function pick(n) {
+  document.querySelectorAll('.hero').forEach(h => h.style.outline = '');
+  const el = document.querySelector('.v' + n);
+  if (el) el.style.outline = '3px solid #f97316';
+  console.log('Picked variant', n);
+}
+</script>
+
+</body>
+</html>

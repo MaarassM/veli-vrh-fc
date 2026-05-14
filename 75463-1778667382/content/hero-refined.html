@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero Mockup — NK Veli Vrh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0f0f0f;
+    color: white;
+    font-family: 'Barlow', sans-serif;
+    min-height: 100vh;
+  }
+
+  .page-header {
+    text-align: center;
+    padding: 24px 16px 12px;
+    border-bottom: 1px solid #222;
+    margin-bottom: 32px;
+  }
+  .page-header h1 { font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 600; color: #f97316; letter-spacing: 2px; text-transform: uppercase; }
+  .page-header p { font-size: 13px; color: #666; margin-top: 4px; }
+
+  .label-row {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 12px;
+    padding: 0 16px;
+  }
+  .font-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #555;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .font-label span {
+    font-size: 13px;
+    color: #f97316;
+    font-weight: 600;
+  }
+
+  /* ========== OPTION A: Bebas Neue ========== */
+  .hero-a {
+    position: relative;
+    min-height: 520px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: outline 0.15s;
+  }
+  .hero-a:hover { outline: 3px solid #f97316; }
+  .hero-a.selected { outline: 3px solid #f97316; }
+
+  /* Background layers */
+  .hero-a .bg-layer {
+    position: absolute;
+    inset: 0;
+    background: #111;
+  }
+  /* Diagonal orange slab */
+  .hero-a .diagonal {
+    position: absolute;
+    inset: 0;
+    background: #f97316;
+    clip-path: polygon(0 0, 62% 0, 44% 100%, 0 100%);
+  }
+  /* Subtle texture dots on orange */
+  .hero-a .dots {
+    position: absolute;
+    inset: 0;
+    clip-path: polygon(0 0, 62% 0, 44% 100%, 0 100%);
+    background-image: radial-gradient(circle, rgba(0,0,0,0.12) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  /* Dark overlay on right side */
+  .hero-a .dark-side {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 60%;
+    background: linear-gradient(to right, transparent, #111 30%);
+  }
+
+  .hero-a .content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    min-height: 520px;
+    padding: 60px 48px;
+    gap: 48px;
+  }
+
+  /* Left side — on orange */
+  .hero-a .left {
+    flex: 0 0 auto;
+    width: 280px;
+  }
+  .hero-a .eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.55);
+    margin-bottom: 12px;
+  }
+  .hero-a .club-name-a {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 96px;
+    line-height: 0.9;
+    color: #111;
+    letter-spacing: 2px;
+  }
+  .hero-a .tagline {
+    font-family: 'Barlow', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: rgba(0,0,0,0.6);
+    margin-top: 16px;
+    max-width: 220px;
+    line-height: 1.5;
+  }
+  .hero-a .cta-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 28px;
+  }
+  .hero-a .btn-primary {
+    background: #111;
+    color: white;
+    padding: 12px 24px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .hero-a .btn-primary:hover { background: #000; }
+  .hero-a .btn-ghost {
+    background: transparent;
+    color: #111;
+    padding: 12px 24px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: 2px solid rgba(0,0,0,0.4);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .hero-a .btn-ghost:hover { background: rgba(0,0,0,0.1); }
+
+  /* Right side — stat pills */
+  .hero-a .right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+    padding-left: 32px;
+  }
+  .hero-a .stat-pill {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 16px 24px;
+    width: 240px;
+  }
+  .hero-a .stat-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    line-height: 1;
+    color: #f97316;
+  }
+  .hero-a .stat-label {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.4;
+  }
+  .hero-a .stat-label strong {
+    display: block;
+    font-size: 14px;
+    color: #ccc;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  /* Season badge */
+  .hero-a .season-badge {
+    position: absolute;
+    top: 28px;
+    right: 48px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #444;
+    text-transform: uppercase;
+  }
+
+
+  /* ========== OPTION B: Barlow Condensed ========== */
+  .hero-b {
+    position: relative;
+    min-height: 520px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: outline 0.15s;
+    background: #0e0e0e;
+  }
+  .hero-b:hover { outline: 3px solid #f97316; }
+  .hero-b.selected { outline: 3px solid #f97316; }
+
+  /* Thin vertical accent line */
+  .hero-b .accent-line {
+    position: absolute;
+    left: 340px;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: #f97316;
+  }
+
+  /* Large faded number */
+  .hero-b .bg-number {
+    position: absolute;
+    right: -20px;
+    bottom: -60px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 380px;
+    font-weight: 900;
+    color: rgba(249,115,22,0.04);
+    line-height: 1;
+    user-select: none;
+    letter-spacing: -20px;
+  }
+
+  .hero-b .content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    min-height: 520px;
+    padding: 60px 48px;
+  }
+
+  .hero-b .left {
+    flex: 0 0 340px;
+    padding-right: 48px;
+  }
+
+  .hero-b .logo-mark {
+    width: 64px;
+    height: 64px;
+    background: #f97316;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 22px;
+    color: white;
+    letter-spacing: 1px;
+  }
+
+  .hero-b .location {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    color: #f97316;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .hero-b .club-name-b {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 80px;
+    line-height: 0.88;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+  }
+  .hero-b .club-name-b em {
+    font-style: normal;
+    color: #f97316;
+  }
+
+  .hero-b .tagline-b {
+    font-size: 15px;
+    color: #666;
+    line-height: 1.6;
+    max-width: 260px;
+    margin-bottom: 28px;
+  }
+
+  .hero-b .cta-b {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-b .btn-b {
+    background: #f97316;
+    color: white;
+    padding: 13px 28px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+  }
+  .hero-b .link-b {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #555;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .hero-b .link-b::after { content: '→'; }
+
+  /* Right side */
+  .hero-b .right {
+    flex: 1;
+    padding-left: 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+  .hero-b .stat-box {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 24px;
+  }
+  .hero-b .stat-box.accent {
+    background: rgba(249,115,22,0.08);
+    border-color: rgba(249,115,22,0.2);
+  }
+  .hero-b .stat-n {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 52px;
+    line-height: 1;
+    color: white;
+    margin-bottom: 4px;
+  }
+  .hero-b .stat-box.accent .stat-n { color: #f97316; }
+  .hero-b .stat-t {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #555;
+  }
+  .hero-b .stat-s {
+    font-size: 13px;
+    color: #888;
+    margin-top: 4px;
+  }
+
+  /* ========== selection state ========== */
+  .hero-wrapper {
+    position: relative;
+    margin: 0 24px 32px;
+  }
+  .option-tag {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 20;
+    background: rgba(0,0,0,0.7);
+    border: 1px solid #333;
+    padding: 6px 14px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #999;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .hero-a:hover ~ .option-tag, .hero-a.selected ~ .option-tag,
+  .hero-b:hover ~ .option-tag, .hero-b.selected ~ .option-tag {
+    background: #f97316;
+    border-color: #f97316;
+    color: white;
+  }
+  .selected-badge {
+    display: none;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 20;
+    background: #f97316;
+    padding: 6px 14px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: white;
+  }
+  .selected .selected-badge { display: block; }
+
+  .divider {
+    text-align: center;
+    padding: 12px 0 24px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #333;
+    text-transform: uppercase;
+  }
+
+  .bottom-note {
+    text-align: center;
+    padding: 24px;
+    font-size: 13px;
+    color: #444;
+    border-top: 1px solid #1a1a1a;
+  }
+  .bottom-note strong { color: #f97316; }
+
+  /* Responsive preview bar */
+  .preview-bar {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    padding: 0 24px 24px;
+  }
+  .preview-pill {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border: 1px solid #222;
+    color: #444;
+  }
+
+  /* Click handler */
+  .hero-wrapper { cursor: pointer; }
+  .hero-wrapper.chosen .hero-a,
+  .hero-wrapper.chosen .hero-b { outline: 3px solid #f97316; }
+
+  @media (max-width: 768px) {
+    .hero-a .content, .hero-b .content {
+      flex-direction: column;
+      padding: 40px 24px;
+      min-height: auto;
+    }
+    .hero-a .left, .hero-b .left { width: 100%; }
+    .hero-a .club-name-a { font-size: 64px; }
+    .hero-b .club-name-b { font-size: 60px; }
+    .hero-a .diagonal { clip-path: polygon(0 0, 100% 0, 100% 45%, 0 65%); }
+    .hero-b .accent-line { display: none; }
+    .hero-b .right { display: none; }
+    .hero-a .right { padding-left: 0; flex-direction: row; flex-wrap: wrap; }
+    .hero-a .stat-pill { width: 48%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Hero Section — Refined Concepts</h1>
+  <p>Based on option C. Click the design you prefer.</p>
+</div>
+
+<div class="preview-bar">
+  <div class="preview-pill">Desktop</div>
+  <div class="preview-pill" style="color:#f97316;border-color:#f97316;">Mockup only — not interactive</div>
+  <div class="preview-pill">Mobile adapted</div>
+</div>
+
+<!-- OPTION A -->
+<div class="label-row">
+  <div class="font-label">Font: <span>Bebas Neue</span> — Bold Statement (already in project)</div>
+</div>
+
+<div class="hero-wrapper" id="wrapA" onclick="pick('A')">
+  <div class="hero-a" id="heroA">
+    <div class="bg-layer"></div>
+    <div class="diagonal"></div>
+    <div class="dots"></div>
+    <div class="dark-side"></div>
+
+    <div class="season-badge">Elitna liga NSŽI · Sezona 25/26</div>
+
+    <div class="content">
+      <div class="left">
+        <div class="eyebrow">Pula · Istra · Osnovan</div>
+        <div class="club-name-a">NK<br>VELI<br>VRH</div>
+        <div class="tagline">Tradicija, zajednica i strast prema nogometu iz srca Istre.</div>
+        <div class="cta-row">
+          <button class="btn-primary">O Klubu</button>
+          <button class="btn-ghost">Momčad</button>
+        </div>
+      </div>
+      <div class="right">
+        <div class="stat-pill">
+          <div class="stat-number">4.</div>
+          <div class="stat-label"><strong>Pozicija</strong>Elitna liga NSŽI</div>
+        </div>
+        <div class="stat-pill">
+          <div class="stat-number">22</div>
+          <div class="stat-label"><strong>Bodova</strong>13 utakmica</div>
+        </div>
+        <div class="stat-pill">
+          <div class="stat-number">7</div>
+          <div class="stat-label"><strong>Pobjeda</strong>Ove sezone</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="selected-badge">Odabrano</div>
+</div>
+
+<div class="divider">— ili —</div>
+
+<!-- OPTION B -->
+<div class="label-row">
+  <div class="font-label">Font: <span>Barlow Condensed 900</span> — Sports/Athletic (Google Fonts)</div>
+</div>
+
+<div class="hero-wrapper" id="wrapB" onclick="pick('B')">
+  <div class="hero-b" id="heroB">
+    <div class="accent-line"></div>
+    <div class="bg-number">25</div>
+
+    <div class="content">
+      <div class="left">
+        <div class="logo-mark">VV</div>
+        <div class="location">Pula · Istra</div>
+        <div class="club-name-b">NK<br><em>Veli</em><br>Vrh</div>
+        <div class="tagline-b">Tradicija, zajednica i strast prema nogometu iz srca Istre.</div>
+        <div class="cta-b">
+          <button class="btn-b">O Klubu</button>
+          <a class="link-b" href="#">Momčad</a>
+        </div>
+      </div>
+      <div class="right">
+        <div class="stat-box accent">
+          <div class="stat-n">4.</div>
+          <div class="stat-t">Pozicija</div>
+          <div class="stat-s">Elitna liga NSŽI</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-n">22</div>
+          <div class="stat-t">Bodova</div>
+          <div class="stat-s">13 utakmica</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-n">7-1-5</div>
+          <div class="stat-t">P · N · I</div>
+          <div class="stat-s">Ova sezona</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-n">25</div>
+          <div class="stat-t">Dani golovi</div>
+          <div class="stat-s">Napadački rekord</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="selected-badge">Odabrano</div>
+</div>
+
+<div class="bottom-note">
+  Both use the <strong>orange diagonal concept</strong> you picked. A uses <strong>Bebas Neue</strong> (already installed). B uses <strong>Barlow Condensed 900</strong> — more athletic, mixed case. Stats shown are live data from HNS.
+</div>
+
+<script>
+  let chosen = null;
+  function pick(id) {
+    if (chosen === id) return;
+    chosen = id;
+    document.getElementById('wrapA').classList.toggle('chosen', id === 'A');
+    document.getElementById('wrapB').classList.toggle('chosen', id === 'B');
+    // Also record to events file via localStorage trick — parent reads terminal anyway
+    console.log('Selected hero option:', id);
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<h2>Hero section — which direction?</h2>
+<p class="subtitle">No real photos yet. Pick the visual approach that feels right for NK Veli Vrh.</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#111;padding:20px;min-height:220px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">
+      <!-- Geometric field lines -->
+      <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.15" viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice">
+        <ellipse cx="200" cy="110" rx="150" ry="90" stroke="#f97316" stroke-width="2" fill="none"/>
+        <line x1="200" y1="0" x2="200" y2="220" stroke="#f97316" stroke-width="1"/>
+        <rect x="30" y="20" width="340" height="180" stroke="#f97316" stroke-width="1.5" fill="none"/>
+        <rect x="130" y="20" width="140" height="40" stroke="#f97316" stroke-width="1" fill="none"/>
+        <rect x="130" y="160" width="140" height="40" stroke="#f97316" stroke-width="1" fill="none"/>
+      </svg>
+      <div style="text-align:center;position:relative;z-index:1;">
+        <div style="width:56px;height:56px;background:#f97316;border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-weight:900;color:white;font-size:18px;">VV</div>
+        <div style="color:white;font-size:22px;font-weight:800;letter-spacing:1px;">NK VELI VRH</div>
+        <div style="color:#f97316;font-size:11px;letter-spacing:3px;margin-top:4px;">PULA · ISTRA</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Football Field Lines</h3>
+      <p>Dark background with abstract pitch markings in orange. Sports-classic feel, works great on all screens. Club crest/initials centered.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 40%,#0f3460 100%);padding:20px;min-height:220px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">
+      <!-- Bento grid preview -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:8px;width:100%;max-width:280px;position:relative;z-index:1;">
+        <div style="grid-column:1/-1;background:rgba(249,115,22,0.15);border:1px solid rgba(249,115,22,0.4);border-radius:10px;padding:16px;text-align:center;">
+          <div style="color:white;font-size:18px;font-weight:800;">NK VELI VRH</div>
+          <div style="color:#f97316;font-size:10px;letter-spacing:2px;margin-top:3px;">ELITNA LIGA 25/26</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:12px;text-align:center;">
+          <div style="color:#f97316;font-size:24px;font-weight:900;">4.</div>
+          <div style="color:#9ca3af;font-size:10px;">Mjesto</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:12px;text-align:center;">
+          <div style="color:white;font-size:18px;font-weight:700;">22</div>
+          <div style="color:#9ca3af;font-size:10px;">Bodova</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Bento Stats Hero</h3>
+      <p>Dark blue gradient with live stat cards baked into the hero — position, points, next match. Modern, data-forward. No photo needed at all.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:linear-gradient(160deg,#f97316 0%,#ea580c 50%,#111827 100%);padding:20px;min-height:220px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">
+      <!-- Diagonal split -->
+      <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.2" viewBox="0 0 400 220">
+        <polygon points="0,0 260,0 180,220 0,220" fill="white"/>
+      </svg>
+      <div style="text-align:left;position:relative;z-index:1;padding-left:8px;">
+        <div style="color:white;font-size:11px;letter-spacing:3px;margin-bottom:8px;opacity:0.85;">OSNOVAN · PULA · ISTRA</div>
+        <div style="color:white;font-size:28px;font-weight:900;line-height:1.1;">NK<br>VELI VRH</div>
+        <div style="margin-top:14px;display:flex;gap:8px;">
+          <div style="background:white;color:#f97316;padding:6px 14px;border-radius:4px;font-size:12px;font-weight:700;">O klubu</div>
+          <div style="border:2px solid white;color:white;padding:6px 14px;border-radius:4px;font-size:12px;font-weight:700;">Momčad</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Bold Orange Split</h3>
+      <p>Strong diagonal split with club orange dominating. High energy, very "club brand" feel. Text-left layout, less symmetrical. Works well on mobile.</p>
+    </div>
+  </div>
+
+</div>
