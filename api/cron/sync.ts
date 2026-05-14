@@ -1,13 +1,20 @@
-// Vercel Cron Job
-// POST /api/cron/sync - Scrape HNS i spremi u Supabase
-// Vercel poziva ovo automatski prema rasporedu u vercel.json
-
+// api/cron/sync.ts
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import * as cheerio from 'cheerio'
 import { supabaseAdmin } from '../../lib/supabase'
 
-const HNS_URL = 'https://semafor.hns.family/klubovi/1546/nk-veli-vrh/'
+const BASE_URL = 'https://semafor.hns.family/klubovi/1546/nk-veli-vrh/'
 const VELI_VRH_ID = '1546'
+
+const CATEGORIES = [
+  { key: 'seniori',       cid: '100703751' },
+  { key: 'juniori',       cid: '100949387' },
+  { key: 'pioniri',       cid: '112161359' },
+  { key: 'mladi-pioniri', cid: '100968848' },
+  { key: 'u-11',          cid: '102600299' },
+  { key: 'u-9',           cid: '102049500' },
+  { key: 'veterani',      cid: '102383368' },
+]
 
 interface PlayerRow {
   first_name: string
@@ -20,6 +27,7 @@ interface PlayerRow {
   yellow_cards: number
   red_cards: number
   image_url: string
+  category: string
 }
 
 interface StandingRow {
@@ -33,6 +41,7 @@ interface StandingRow {
   goals_against: number
   goal_difference: number
   points: number
+  category: string
 }
 
 interface MatchRow {
@@ -46,18 +55,20 @@ interface MatchRow {
   competition: string
   status: 'played' | 'upcoming' | 'postponed'
   venue: 'home' | 'away'
+  category: string
 }
 
-async function scrapeAll(): Promise<{
+async function scrapeCategory(categoryKey: string, cid: string): Promise<{
   players: PlayerRow[]
   standings: StandingRow[]
   matches: MatchRow[]
 }> {
-  const response = await fetch(HNS_URL, {
+  const url = `${BASE_URL}?cid=${cid}`
+  const response = await fetch(url, {
     headers: { 'User-Agent': 'Mozilla/5.0 (compatible; NK-Veli-Vrh-Bot/1.0)' }
   })
 
-  if (!response.ok) throw new Error(`HNS returned ${response.status}`)
+  if (!response.ok) throw new Error(`HNS returned ${response.status} for ${url}`)
 
   const html = await response.text()
   const $ = cheerio.load(html)
@@ -72,28 +83,28 @@ async function scrapeAll(): Promise<{
     const first_name = nameParts[0] || ''
     const last_name = nameParts.slice(1).join(' ') || ''
 
-    // Pozicija je tekst direktno u .playerName, van h3
     const playerNameEl = $row.find('.playerName')
     playerNameEl.find('h3').remove()
     const position = playerNameEl.text().trim()
 
     const appearances = parseInt($row.find('.apps').text().trim()) || 0
 
-    // Golovi — ako span ima klasu 'conceded' to su primljeni golovi (vratar), ne daju se
     const $goalsSpan = $row.find('.goals span')
     const goals = $goalsSpan.hasClass('conceded') ? 0 : parseInt($goalsSpan.text().trim()) || 0
 
-    // Kartoni format: "2 / 0"
     const cardsText = $row.find('.cards').text().trim()
     const cardsParts = cardsText.split('/')
     const yellow_cards = parseInt(cardsParts[0]?.trim()) || 0
     const red_cards = parseInt(cardsParts[1]?.trim()) || 0
 
-    // Slika — lazy loaded, src je u data-url
     const image_url = $row.find('.playerPhoto img').attr('data-url') || ''
 
     if (fullName && number > 0) {
-      players.push({ first_name, last_name, number, position, goals, assists: 0, appearances, yellow_cards, red_cards, image_url })
+      players.push({
+        first_name, last_name, number, position,
+        goals, assists: 0, appearances, yellow_cards, red_cards,
+        image_url, category: categoryKey
+      })
     }
   })
 
@@ -103,7 +114,6 @@ async function scrapeAll(): Promise<{
     const $row = $(row)
     const position = parseInt($row.find('.position').text().trim()) || 0
 
-    // Tim naziv — ukloni logo div da dobijemo cisti tekst
     const $clubEl = $row.find('.club a').clone()
     $clubEl.find('div').remove()
     const team = $clubEl.text().trim()
@@ -118,7 +128,11 @@ async function scrapeAll(): Promise<{
     const points = parseInt($row.find('.points').text().trim()) || 0
 
     if (team && position > 0) {
-      standings.push({ position, team, played, wins, draws, losses, goals_for, goals_against, goal_difference, points })
+      standings.push({
+        position, team, played, wins, draws, losses,
+        goals_for, goals_against, goal_difference, points,
+        category: categoryKey
+      })
     }
   })
 
@@ -129,10 +143,9 @@ async function scrapeAll(): Promise<{
     const matchId = $row.attr('data-match') || ''
 
     const dateText = $row.find('.date').text().trim()
-    // Format: "07.09.2025. 10:30" → "2025-09-07"
     let date = dateText
     try {
-      const datePart = dateText.split(' ')[0].replace('.', '')
+      const datePart = dateText.split(' ')[0].replace(/\.$/, '')
       const parts = datePart.split('.')
       if (parts.length === 3) {
         date = `${parts[2]}-${parts[1].padStart(2, '0')}-${parts[0].padStart(2, '0')}`
@@ -140,9 +153,7 @@ async function scrapeAll(): Promise<{
     } catch (_) {}
 
     const club1Id = $row.find('.club1').attr('data-id') || ''
-    const club2Id = $row.find('.club2').attr('data-id') || ''
 
-    // Izvuci ime kluba bez logo diva
     const $club1 = $row.find('.club1 a').clone()
     $club1.find('div').remove()
     const club1Name = $club1.text().trim()
@@ -159,16 +170,21 @@ async function scrapeAll(): Promise<{
 
     const res1Text = $row.find('.res1').text().trim()
     const res2Text = $row.find('.res2').text().trim()
-    const isPlayed = res1Text !== '-' && res2Text !== '-'
+    const isPlayed = res1Text !== '-' && res2Text !== '-' && res1Text !== '' && res2Text !== ''
 
     const home_score = isPlayed ? (parseInt(res1Text) || 0) : null
     const away_score = isPlayed ? (parseInt(res2Text) || 0) : null
     const status: 'played' | 'upcoming' = isPlayed ? 'played' : 'upcoming'
 
-    const competition = $row.find('.competitionround').text().split(',')[0].trim() || 'ELITNA LIGA NSŽI'
+    const competition = $row.find('.competitionround').text().split(',')[0].trim() || ''
 
     if (matchId && (club1Name || club2Name)) {
-      matches.push({ id: matchId, date, opponent, home_team, away_team, home_score, away_score, competition, status, venue })
+      matches.push({
+        id: `${categoryKey}-${matchId}`,
+        date, opponent, home_team, away_team,
+        home_score, away_score, competition,
+        status, venue, category: categoryKey
+      })
     }
   })
 
@@ -182,54 +198,61 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   const startTime = Date.now()
-  console.log('[sync] Starting HNS scrape...')
+  console.log('[sync] Starting multi-category HNS scrape...')
 
-  try {
-    const { players, standings, matches } = await scrapeAll()
-    console.log(`[sync] Scraped: ${players.length} players, ${standings.length} standings, ${matches.length} matches`)
+  const results = { players: 0, standings: 0, matches: 0 }
+  const errors: string[] = []
 
-    const [playersResult, standingsResult, matchesResult] = await Promise.all([
-      supabaseAdmin.from('players').delete().neq('id', 0).then(() =>
-        supabaseAdmin.from('players').insert(players)
-      ),
-      supabaseAdmin.from('standings').delete().neq('id', 0).then(() =>
-        supabaseAdmin.from('standings').insert(standings)
-      ),
-      supabaseAdmin.from('matches').delete().neq('id', '').then(() =>
-        supabaseAdmin.from('matches').insert(matches)
-      )
-    ])
+  for (const { key, cid } of CATEGORIES) {
+    try {
+      console.log(`[sync] Scraping category: ${key}`)
+      const { players, standings, matches } = await scrapeCategory(key, cid)
 
-    const errors = [playersResult, standingsResult, matchesResult]
-      .map(r => r.error?.message)
-      .filter(Boolean)
+      // Delete old rows for this category, then insert fresh
+      await supabaseAdmin.from('players').delete().eq('category', key)
+      await supabaseAdmin.from('standings').delete().eq('category', key)
+      await supabaseAdmin.from('matches').delete().eq('category', key)
 
-    if (errors.length > 0) throw new Error(`DB errors: ${errors.join(', ')}`)
+      if (players.length > 0) {
+        const { error } = await supabaseAdmin.from('players').insert(players)
+        if (error) throw new Error(`players insert: ${error.message}`)
+      }
+      if (standings.length > 0) {
+        const { error } = await supabaseAdmin.from('standings').insert(standings)
+        if (error) throw new Error(`standings insert: ${error.message}`)
+      }
+      if (matches.length > 0) {
+        const { error } = await supabaseAdmin.from('matches').insert(matches)
+        if (error) throw new Error(`matches insert: ${error.message}`)
+      }
 
-    await supabaseAdmin.from('sync_log').insert({
-      players_count: players.length,
-      standings_count: standings.length,
-      matches_count: matches.length,
-      success: true
-    })
+      results.players += players.length
+      results.standings += standings.length
+      results.matches += matches.length
 
-    const duration = Date.now() - startTime
-    console.log(`[sync] Done in ${duration}ms — players: ${players.length}, standings: ${standings.length}, matches: ${matches.length}`)
-
-    return res.status(200).json({
-      success: true,
-      duration_ms: duration,
-      counts: { players: players.length, standings: standings.length, matches: matches.length }
-    })
-  } catch (error) {
-    const message = error instanceof Error ? error.message : 'Unknown error'
-    console.error('[sync] Error:', message)
-
-    await supabaseAdmin.from('sync_log').insert({
-      success: false,
-      error_message: message
-    }).catch(() => {})
-
-    return res.status(500).json({ success: false, error: message })
+      console.log(`[sync] ${key}: ${standings.length} standings, ${players.length} players, ${matches.length} matches`)
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err)
+      console.error(`[sync] Error in category ${key}:`, msg)
+      errors.push(`${key}: ${msg}`)
+    }
   }
+
+  await supabaseAdmin.from('sync_log').insert({
+    players_count: results.players,
+    standings_count: results.standings,
+    matches_count: results.matches,
+    success: errors.length === 0,
+    error_message: errors.length > 0 ? errors.join(' | ') : null
+  })
+
+  const duration = Date.now() - startTime
+  console.log(`[sync] Done in ${duration}ms`, results)
+
+  return res.status(200).json({
+    success: true,
+    duration_ms: duration,
+    counts: results,
+    errors: errors.length > 0 ? errors : undefined
+  })
 }
