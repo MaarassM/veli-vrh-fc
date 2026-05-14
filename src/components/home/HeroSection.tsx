@@ -4,13 +4,6 @@ import Button from "@/components/ui/Button";
 export default function HeroSection() {
   return (
     <section className="relative overflow-hidden" style={{ background: "#fff8f3" }}>
-      {/* Top gradient bar */}
-      <div
-        className="absolute top-0 left-0 right-0 h-[5px] z-10"
-        style={{ background: "linear-gradient(to right, #f97316, #fb923c, #f97316)" }}
-      />
-      {/* Left orange accent */}
-      <div className="absolute left-0 top-0 bottom-0 w-[6px] bg-orange-500 z-10" />
 
       {/* Background blobs */}
       <div
@@ -38,6 +31,12 @@ export default function HeroSection() {
         }}
       />
 
+      {/* Bottom fade to white */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none z-10"
+        style={{ background: "linear-gradient(to bottom, transparent, #ffffff)" }}
+      />
+
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center text-center min-h-[540px] py-16 px-6">
         <motion.span
@@ -53,7 +52,7 @@ export default function HeroSection() {
         <motion.img
           src="/images/logo.png"
           alt="NK Veli Vrh"
-          className="w-[110px] h-[110px] md:w-[140px] md:h-[140px] object-contain mb-6"
+          className="w-[160px] h-[160px] md:w-[200px] md:h-[200px] object-contain mb-6"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.1 }}
