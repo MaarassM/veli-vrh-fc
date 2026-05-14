@@ -110,7 +110,7 @@ async function scrapeCategory(categoryKey: string, cid: string): Promise<{
 
   // --- Standings ---
   const standings: StandingRow[] = []
-  $('div.competition_table.type1 li.row[data-clubid]').each((_, row) => {
+  $('div.competition_table.type1').first().find('li.row[data-clubid]').each((_, row) => {
     const $row = $(row)
     const position = parseInt($row.find('.position').text().trim()) || 0
 
