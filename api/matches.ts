@@ -1,6 +1,3 @@
-// Vercel Serverless Function
-// GET /api/matches - Vraca utakmice iz Supabase baze
-
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import { supabase } from '../lib/supabase'
 
@@ -12,9 +9,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
+  const category = typeof req.query.category === 'string' ? req.query.category : 'seniori'
+
   const { data, error } = await supabase
     .from('matches')
     .select('*')
+    .eq('category', category)
     .order('date', { ascending: true })
 
   if (error) {
@@ -22,7 +22,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(500).json({ error: 'Failed to fetch matches' })
   }
 
-  // Normalizacija u camelCase za frontend
   const matches = (data ?? []).map(m => ({
     id: m.id,
     date: m.date,

@@ -1,6 +1,3 @@
-// Vercel Serverless Function
-// GET /api/players - Vraca igraca iz Supabase baze
-
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import { supabase } from '../lib/supabase'
 
@@ -12,17 +9,19 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
+  const category = typeof req.query.category === 'string' ? req.query.category : 'seniori'
+
   const { data, error } = await supabase
     .from('players')
     .select('*')
-    .order('goals', { ascending: false })
+    .eq('category', category)
+    .order('number', { ascending: true })
 
   if (error) {
     console.error('[/api/players] Supabase error:', error.message)
     return res.status(500).json({ error: 'Failed to fetch players' })
   }
 
-  // Normalizacija u camelCase za frontend
   const players = (data ?? []).map(p => ({
     firstName: p.first_name,
     lastName: p.last_name,
