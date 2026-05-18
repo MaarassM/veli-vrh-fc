@@ -17,7 +17,7 @@ export default function MainLayout() {
   return (
     <div className="min-h-screen flex flex-col bg-white text-gray-900 transition-colors duration-300">
       <Navbar />
-      <main className="flex-1 pt-24 md:pt-28">
+      <main className={`flex-1 ${location.pathname === '/' ? '' : 'pt-24 md:pt-28'}`}>
         <AnimatePresence mode="wait">
           <PageTransition key={location.pathname}>
             {outlet}
