@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import { Menu } from "lucide-react";
 import { useStickyNavbar } from "@/hooks/useStickyNavbar";
 import { navigationItems } from "@/data/navigation";
@@ -8,7 +8,10 @@ import MobileMenu from "./MobileMenu";
 
 export default function Navbar() {
   const { isScrolled } = useStickyNavbar();
+  const { pathname } = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const isDark = pathname === "/" && !isScrolled;
 
   return (
     <header
@@ -31,7 +34,7 @@ export default function Navbar() {
         {/* Desktop navigation */}
         <nav className="hidden md:flex items-center gap-6">
           {navigationItems.map((item) => (
-            <NavLink key={item.path} to={item.path} label={item.label} />
+            <NavLink key={item.path} to={item.path} label={item.label} isDark={isDark} />
           ))}
         </nav>
 
@@ -39,13 +42,14 @@ export default function Navbar() {
         <button
           onClick={() => setIsMobileMenuOpen(true)}
           aria-label="Open menu"
-          className="md:hidden rounded-full p-2 text-gray-600 hover:text-gray-900 transition-colors"
+          className={`md:hidden rounded-full p-2 transition-colors ${
+            isDark ? "text-white hover:text-white/70" : "text-gray-600 hover:text-gray-900"
+          }`}
         >
           <Menu className="h-6 w-6" />
         </button>
       </div>
 
-      {/* Mobile menu */}
       <MobileMenu
         isOpen={isMobileMenuOpen}
         onClose={() => setIsMobileMenuOpen(false)}

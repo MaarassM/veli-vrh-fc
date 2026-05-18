@@ -4,7 +4,7 @@ import type { LucideIcon } from 'lucide-react'
 
 interface ButtonProps {
   children: ReactNode
-  variant?: 'primary' | 'secondary' | 'outline'
+  variant?: 'primary' | 'secondary' | 'outline' | 'outline-white'
   size?: 'sm' | 'md' | 'lg'
   href?: string
   onClick?: () => void
@@ -16,6 +16,7 @@ const variantStyles = {
   primary: 'bg-orange-500 text-white hover:bg-orange-600 border-2 border-orange-500 hover:border-orange-600',
   secondary: 'bg-gray-900 text-white hover:bg-gray-800 border-2 border-gray-900 hover:border-gray-800',
   outline: 'border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white',
+  'outline-white': 'border-2 border-white text-white hover:bg-white hover:text-gray-900',
 }
 
 const sizeStyles = {

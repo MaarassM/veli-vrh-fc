@@ -5,9 +5,10 @@ interface NavLinkProps {
   to: string;
   label: string;
   onClick?: () => void;
+  isDark?: boolean;
 }
 
-export default function NavLink({ to, label, onClick }: NavLinkProps) {
+export default function NavLink({ to, label, onClick, isDark = false }: NavLinkProps) {
   return (
     <RouterNavLink
       to={to}
@@ -19,7 +20,9 @@ export default function NavLink({ to, label, onClick }: NavLinkProps) {
           <span
             className={`font-medium text-sm transition-colors ${
               isActive
-                ? 'text-orange-500'
+                ? 'text-orange-400'
+                : isDark
+                ? 'text-white hover:text-orange-400'
                 : 'text-gray-700 hover:text-orange-500'
             }`}
           >
@@ -28,7 +31,7 @@ export default function NavLink({ to, label, onClick }: NavLinkProps) {
           {isActive && (
             <motion.div
               layoutId="navbar-indicator"
-              className="absolute bottom-0 left-0 right-0 h-0.5 bg-orange-500"
+              className="absolute bottom-0 left-0 right-0 h-0.5 bg-orange-400"
               transition={{ type: 'spring', stiffness: 500, damping: 30 }}
             />
           )}

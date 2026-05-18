@@ -39,3 +39,4 @@ supabasepassword.txt
 # Git worktrees
 .worktrees/
 .superpowers/
+.vercel
