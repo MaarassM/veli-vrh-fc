@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react'
 import { players as staticPlayers } from '@/data/players'
 import { leagueStandings as staticStandings } from '@/data/standings'
+import { staticNewsPosts } from '@/data/news'
 
 const API_BASE_URL = '/api'
 
@@ -204,7 +205,9 @@ export function useNews(limit: number = 6) {
         setData(result.data)
         setError(null)
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Unknown error')
+        console.log('Using static news data as fallback')
+        setData(staticNewsPosts.slice(0, limit))
+        setError(null)
       } finally {
         setLoading(false)
       }
