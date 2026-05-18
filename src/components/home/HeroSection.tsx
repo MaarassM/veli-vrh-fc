@@ -38,7 +38,7 @@ export default function HeroSection() {
       />
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center text-center min-h-[540px] py-16 px-6">
+      <div className="relative z-10 flex flex-col items-center justify-center text-center min-h-[600px] pt-32 pb-16 px-6">
         <motion.span
           className="block mb-5 text-orange-500 uppercase tracking-[5px] text-[10px] font-bold"
           style={{ fontFamily: "var(--font-display)" }}
@@ -76,6 +76,9 @@ export default function HeroSection() {
         >
           <Button href="/about" variant="outline" size="md">
             O Klubu
+          </Button>
+          <Button href="/novosti" variant="primary" size="md">
+            Novosti
           </Button>
         </motion.div>
       </div>
