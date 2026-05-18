@@ -20,9 +20,9 @@ const variantStyles = {
 }
 
 const sizeStyles = {
-  sm: 'px-4 py-1.5 text-xs',
-  md: 'px-6 py-2.5 text-xs',
-  lg: 'px-8 py-3 text-sm',
+  sm: 'px-4 py-2 text-sm',
+  md: 'px-6 py-3 text-base',
+  lg: 'px-8 py-4 text-lg',
 }
 
 export default function Button({
@@ -34,11 +34,13 @@ export default function Button({
   className = '',
   icon: Icon,
 }: ButtonProps) {
-  const baseStyles = `inline-flex items-center justify-center gap-2 font-bold uppercase tracking-widest rounded-none transition-colors duration-200 cursor-pointer ${variantStyles[variant]} ${sizeStyles[size]} ${className}`
+  const baseStyles = `inline-flex items-center justify-center gap-2 font-black italic uppercase tracking-widest rounded-none transition-colors duration-200 cursor-pointer ${variantStyles[variant]} ${sizeStyles[size]} ${className}`
+
+  const style = { fontFamily: "var(--font-barlow-condensed)" }
 
   if (href) {
     return (
-      <Link to={href} className={baseStyles}>
+      <Link to={href} className={baseStyles} style={style}>
         {Icon && <Icon className="w-4 h-4" />}
         {children}
       </Link>
@@ -46,7 +48,7 @@ export default function Button({
   }
 
   return (
-    <button onClick={onClick} className={baseStyles}>
+    <button onClick={onClick} className={baseStyles} style={style}>
       {Icon && <Icon className="w-4 h-4" />}
       {children}
     </button>
