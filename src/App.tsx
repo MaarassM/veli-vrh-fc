@@ -5,6 +5,7 @@ import AboutPage from '@/pages/AboutPage'
 import TeamPage from '@/pages/TeamPage'
 import KategorijaPage from '@/pages/KategorijaPage'
 import ContactPage from '@/pages/ContactPage'
+import NovostiPage from '@/pages/NovostiPage'
 import NotFoundPage from '@/pages/NotFoundPage'
 
 const router = createBrowserRouter([
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
       { path: 'team', element: <TeamPage /> },
       { path: 'kategorije', element: <KategorijaPage /> },
       { path: 'contact', element: <ContactPage /> },
+      { path: 'novosti', element: <NovostiPage /> },
       { path: '*', element: <NotFoundPage /> },
     ],
   },
