@@ -15,9 +15,10 @@ export default function NextMatchBanner() {
 
   if (loading) {
     return (
-      <div className="py-6 bg-white">
-        <div className="mx-auto max-w-lg px-4">
-          <div className="animate-pulse rounded-xl bg-gray-100 h-28" />
+      <div className="py-10 px-6" style={{ background: "#f5e8d8" }}>
+        <div className="mx-auto max-w-5xl animate-pulse">
+          <div className="h-10 bg-white/30 rounded w-64 mb-4" />
+          <div className="h-4 bg-white/30 rounded w-48" />
         </div>
       </div>
     );
@@ -26,44 +27,80 @@ export default function NextMatchBanner() {
   const next = matches.find((m) => m.status === "upcoming");
   if (!next) return null;
 
-  const isHome = next.venue === "home";
-
   return (
     <motion.section
-      className="py-6 bg-white"
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0 }}
+      style={{ background: "#f5e8d8" }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="mx-auto max-w-lg px-4">
-        <div className="rounded-xl border border-gray-100 shadow-sm bg-white px-6 py-5">
-          <p className="text-[10px] font-bold uppercase tracking-[4px] text-orange-500 mb-3">
-            Sljedeća utakmica seniora
-          </p>
-          <div className="flex items-center justify-between gap-4">
-            <span className="text-lg font-bold text-gray-900 leading-tight">
-              {next.homeTeam}
-            </span>
-            <span className="text-sm font-semibold text-gray-400">vs</span>
-            <span className="text-lg font-bold text-gray-900 leading-tight text-right">
-              {next.awayTeam}
-            </span>
-          </div>
-          <div className="mt-3 flex flex-wrap items-center gap-3 text-sm text-gray-500">
-            <span>{formatMatchDate(next.date)}</span>
-            <span className="text-gray-300">·</span>
-            <span>{next.competition}</span>
-            <span className="text-gray-300">·</span>
-            <span
-              className={`text-xs font-semibold px-2 py-0.5 rounded-full ${
-                isHome
-                  ? "bg-orange-100 text-orange-600"
-                  : "bg-gray-100 text-gray-600"
-              }`}
+      <div className="mx-auto max-w-5xl px-6 py-10">
+
+        {/* Desktop: two-column | Mobile: stacked */}
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+
+          {/* Left — heading + meta */}
+          <div className="flex-1">
+            <h2
+              className="text-4xl md:text-5xl font-black italic uppercase leading-none text-gray-900 mb-4"
+              style={{ fontFamily: "var(--font-barlow-condensed)" }}
             >
-              {isHome ? "Domaćin" : "Gost"}
-            </span>
+              Sljedeća utakmica
+            </h2>
+            <p className="text-sm text-gray-700 leading-snug">
+              {next.competition}
+            </p>
+            <p className="text-sm text-gray-700 leading-snug">
+              {formatMatchDate(next.date)}
+              {next.venue && (
+                <span className="ml-2 text-gray-500">
+                  · {next.venue === "home" ? "Domaćin" : "Gost"}
+                </span>
+              )}
+            </p>
           </div>
+
+          {/* Right — teams */}
+          <div className="flex items-center justify-center gap-6 md:gap-10">
+            {/* Home team */}
+            <div className="flex flex-col items-center gap-1 min-w-[80px]">
+              <div
+                className="w-14 h-14 rounded-full bg-white/60 flex items-center justify-center text-xs font-bold text-gray-700 uppercase text-center leading-tight"
+              >
+                {next.homeTeam.split(" ").map(w => w[0]).join("").slice(0, 3)}
+              </div>
+              <span
+                className="text-xs font-bold uppercase tracking-wide text-center text-gray-900 leading-tight max-w-[80px]"
+                style={{ fontFamily: "var(--font-barlow-condensed)" }}
+              >
+                {next.homeTeam}
+              </span>
+            </div>
+
+            {/* VS */}
+            <span
+              className="text-3xl md:text-4xl font-black italic text-gray-900"
+              style={{ fontFamily: "var(--font-barlow-condensed)" }}
+            >
+              VS
+            </span>
+
+            {/* Away team */}
+            <div className="flex flex-col items-center gap-1 min-w-[80px]">
+              <div
+                className="w-14 h-14 rounded-full bg-white/60 flex items-center justify-center text-xs font-bold text-gray-700 uppercase text-center leading-tight"
+              >
+                {next.awayTeam.split(" ").map(w => w[0]).join("").slice(0, 3)}
+              </div>
+              <span
+                className="text-xs font-bold uppercase tracking-wide text-center text-gray-900 leading-tight max-w-[80px]"
+                style={{ fontFamily: "var(--font-barlow-condensed)" }}
+              >
+                {next.awayTeam}
+              </span>
+            </div>
+          </div>
+
         </div>
       </div>
     </motion.section>
