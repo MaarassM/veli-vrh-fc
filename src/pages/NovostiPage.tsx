@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { ExternalLink } from "lucide-react";
 import { useNews } from "@/hooks/useHNSData";
+import SEO from "@/components/seo/SEO";
 
 function formatDate(isoString: string): string {
   return new Date(isoString).toLocaleDateString("hr-HR", {
@@ -15,6 +16,11 @@ export default function NovostiPage() {
 
   return (
     <section className="py-16 md:py-20">
+      <SEO
+        title="Novosti | NK Veli Vrh"
+        description="Najnovije vijesti, izvještaji s utakmica i obavijesti NK Veli Vrh Pula, Istra."
+        canonicalPath="/novosti"
+      />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

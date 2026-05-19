@@ -14,10 +14,10 @@ const router = createBrowserRouter([
     element: <MainLayout />,
     children: [
       { index: true, element: <HomePage /> },
-      { path: 'about', element: <AboutPage /> },
-      { path: 'team', element: <TeamPage /> },
+      { path: 'o-klubu', element: <AboutPage /> },
+      { path: 'strucni-stozer', element: <TeamPage /> },
       { path: 'kategorije', element: <KategorijaPage /> },
-      { path: 'contact', element: <ContactPage /> },
+      { path: 'kontakt', element: <ContactPage /> },
       { path: 'novosti', element: <NovostiPage /> },
       { path: '*', element: <NotFoundPage /> },
     ],

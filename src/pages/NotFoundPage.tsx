@@ -2,10 +2,15 @@ import { Link } from 'react-router'
 import { motion } from 'motion/react'
 import { Home } from 'lucide-react'
 import Button from '@/components/ui/Button'
+import SEO from '@/components/seo/SEO'
 
 export default function NotFoundPage() {
   return (
     <div className="min-h-[70vh] flex items-center justify-center px-4">
+      <SEO
+        title="Stranica nije pronađena | NK Veli Vrh"
+        description="Stranica koju tražite ne postoji ili je premještena. Povratak na NK Veli Vrh."
+      />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

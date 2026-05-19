@@ -1,0 +1,17 @@
+{
+  "name": "NK Veli Vrh",
+  "short_name": "NK Veli Vrh",
+  "description": "Službena stranica NK Veli Vrh — nogometni klub iz Pule, Istra",
+  "icons": [
+    {
+      "src": "/images/logo.png",
+      "sizes": "any",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#ffffff",
+  "theme_color": "#f97316",
+  "lang": "hr"
+}

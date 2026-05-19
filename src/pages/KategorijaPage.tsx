@@ -3,6 +3,7 @@ import { motion } from 'motion/react'
 import { useKategorija } from '@/hooks/useKategorija'
 import StandingsTable from '@/components/kategorija/StandingsTable'
 import PlayersList from '@/components/kategorija/PlayersList'
+import SEO from '@/components/seo/SEO'
 
 const TABS = [
   { key: 'seniori',       label: 'Seniori' },
@@ -20,6 +21,11 @@ export default function KategorijaPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4">
+      <SEO
+        title="Kategorije | NK Veli Vrh"
+        description="Ljestvice, rezultati i statistike svih kategorija NK Veli Vrh — seniori, juniori, pioniri i mlađi uzrasti."
+        canonicalPath="/kategorije"
+      />
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <motion.div

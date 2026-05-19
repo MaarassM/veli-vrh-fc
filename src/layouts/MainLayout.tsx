@@ -4,6 +4,7 @@ import { AnimatePresence } from 'motion/react';
 import Navbar from '@/components/navbar/Navbar';
 import Footer from '@/components/footer/Footer';
 import PageTransition from './PageTransition';
+import CookieNotice from '@/components/ui/CookieNotice';
 
 export default function MainLayout() {
   const location = useLocation();
@@ -25,6 +26,7 @@ export default function MainLayout() {
         </AnimatePresence>
       </main>
       <Footer />
+      <CookieNotice />
     </div>
   );
 }
