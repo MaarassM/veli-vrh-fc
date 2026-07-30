@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "test": "vitest run",
     "db:seed": "tsx scripts/seed-players.ts",
-    "db:seed-simple": "tsx scripts/seed-simple.ts"
+    "db:seed-simple": "tsx scripts/seed-simple.ts",
+    "sync:local": "tsx scripts/sync-local.ts"
   },
   "dependencies": {
     "@libsql/client": "^0.17.0",
