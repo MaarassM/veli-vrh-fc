@@ -5,6 +5,9 @@ import type {
   ParsedStanding,
   ParsedMatch,
   ParsedScorer,
+  ParsedMatchDetail,
+  ParsedLineupPlayer,
+  ParsedMatchEvent,
 } from './types.js'
 
 export function parseCompetitionPage(html: string): ParsedCompetitionPage {
@@ -129,4 +132,88 @@ export function parseCompetitionPage(html: string): ParsedCompetitionPage {
   scorers.sort((a, b) => b.goals - a.goals)
 
   return { standingsParts, matches, scorers }
+}
+
+export function parseMatchDetail(html: string): ParsedMatchDetail {
+  const $ = cheerio.load(html)
+
+  const homeTeam = $('.clubs .club1 .title').first().text().trim()
+  const awayTeam = $('.clubs .club2 .title').first().text().trim()
+  const homeLogoUrl = $('.clubs .club1 img').attr('src') || ''
+  const awayLogoUrl = $('.clubs .club2 img').attr('src') || ''
+  const r1 = $('.result .res1').first().text().trim()
+  const r2 = $('.result .res2').first().text().trim()
+  const played = /^\d+$/.test(r1) && /^\d+$/.test(r2)
+
+  // facility: "Fortin, Štinjan, 26.10.2025. 10:30" → mjesto + početak
+  const facility = $('.facility').first().text().trim()
+  const fm = facility.match(/^(.*?),?\s*(\d{2})\.(\d{2})\.(\d{4})\.?\s+(\d{2}:\d{2})$/)
+  const venue = fm ? fm[1].replace(/,\s*$/, '') : facility
+  const kickoffAt = fm ? `${fm[4]}-${fm[3]}-${fm[2]}T${fm[5]}` : null
+
+  // "Gledatelja: 24.935" — točka je separator tisućica
+  const attText = $('.attendance').first().text()
+  const am = attText.match(/([\d.]+)\s*$/)
+  const attendance = am ? parseInt(am[1].replace(/\./g, '')) : null
+
+  const lineups: ParsedLineupPlayer[] = []
+  const events: ParsedMatchEvent[] = []
+  // Dvije playerslist liste sa sastavima: prva = domaći, druga = gosti
+  const lineupBlocks = $('div.playerslist').filter(
+    (_, el) => $(el).find('li.row.match_lineup').length > 0
+  )
+  lineupBlocks.each((blockIdx, blockEl) => {
+    const team: 'home' | 'away' = blockIdx === 0 ? 'home' : 'away'
+    const teamName = $(blockEl).find('li.header.clubName').first().text().trim()
+    $(blockEl).find('li.row.match_lineup').each((_, rowEl) => {
+      const $row = $(rowEl)
+      const personId = parseInt($row.attr('data-personid') || '') || 0
+      const $nameEl = $row.find('.playerName')
+      const rawName = $nameEl.find('h3').first().text().trim()
+      const isCaptain = /\(C\)\s*$/.test(rawName)
+      const name = $nameEl.find('h3 a').first().text().trim()
+      const $pos = $nameEl.clone()
+      $pos.find('h3').remove()
+      lineups.push({
+        personId,
+        team,
+        teamName,
+        number: parseInt($row.find('.shirtNumber').text().trim()) || 0,
+        name,
+        isCaptain,
+        position: $pos.text().trim(),
+        photoUrl: $row.find('.playerPhoto img').attr('src') || '',
+      })
+      $row.find('.matchEvents ul.events li').each((_, evEl) => {
+        const $ev = $(evEl)
+        const type = ($ev.attr('class') || '').trim()
+        const label = $ev.find('.icon').attr('title') || ''
+        const minuteMatch = $ev.text().match(/(\d+)\s*'/)
+        events.push({
+          personId,
+          playerName: name,
+          team,
+          minute: minuteMatch ? parseInt(minuteMatch[1]) : null,
+          type,
+          label,
+        })
+      })
+    })
+  })
+
+  return {
+    homeTeam,
+    awayTeam,
+    homeLogoUrl,
+    awayLogoUrl,
+    homeScore: played ? parseInt(r1) : null,
+    awayScore: played ? parseInt(r2) : null,
+    status: $('.status').first().text().trim(),
+    venue,
+    kickoffAt,
+    attendance,
+    referees: $('.referees').first().text().trim(),
+    lineups,
+    events,
+  }
 }
