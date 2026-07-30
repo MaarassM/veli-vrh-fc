@@ -41,3 +41,70 @@ describe('parseCompetitionPage — standings', () => {
     expect(standingsParts.some(s => s.team.includes('Dinamo'))).toBe(false)
   })
 })
+
+describe('parseCompetitionPage — matches', () => {
+  const { matches } = parseCompetitionPage(html)
+
+  it('parses all rounds of both parts (18 + 9 rounds × 5 matches)', () => {
+    expect(matches.length).toBeGreaterThanOrEqual(130)
+    const rounds = new Set(matches.map(m => m.round))
+    expect(rounds.has(1)).toBe(true)
+    expect(rounds.has(18)).toBe(true)
+  })
+
+  it('parses the Štinjan 7:1 Veli Vrh match (round 8, id 100703921)', () => {
+    const m = matches.find(x => x.matchId === 100703921)!
+    expect(m).toBeDefined()
+    expect(m.round).toBe(8)
+    expect(m.homeTeam).toBe('NK Štinjan')
+    expect(m.awayTeam).toBe('NK Veli Vrh')
+    expect(m.homeClubId).toBe(1542)
+    expect(m.awayClubId).toBe(1546)
+    expect(m.homeScore).toBe(7)
+    expect(m.awayScore).toBe(1)
+    expect(m.status).toBe('played')
+    expect(m.date).toBe('2025-10-26')
+    expect(m.time).toBe('10:30')
+  })
+
+  it('does not include HNL matches from the top scoreboard', () => {
+    expect(matches.some(m => m.homeTeam.includes('Dinamo'))).toBe(false)
+  })
+
+  it('has no duplicate matchIds', () => {
+    const ids = matches.map(m => m.matchId)
+    expect(new Set(ids).size).toBe(ids.length)
+  })
+
+  it('marks matches without result as upcoming with null scores', () => {
+    const upcoming = matches.filter(m => m.status === 'upcoming')
+    for (const m of upcoming.slice(0, 3)) {
+      expect(m.homeScore).toBeNull()
+      expect(m.awayScore).toBeNull()
+    }
+  })
+})
+
+describe('parseCompetitionPage — scorers (league top 5)', () => {
+  const { scorers } = parseCompetitionPage(html)
+
+  it('parses exactly the top-5 league list', () => {
+    expect(scorers).toHaveLength(5)
+    expect(scorers[0].name).toBe('Antonio Gračić')
+    expect(scorers[0].goals).toBe(24)
+  })
+
+  it('parses Irian Beviakva (NK Veli Vrh) with 12 goals', () => {
+    const b = scorers.find(s => s.name === 'Irian Beviakva')!
+    expect(b).toBeDefined()
+    expect(b.personId).toBe(215967)
+    expect(b.club).toBe('NK Veli Vrh')
+    expect(b.goals).toBe(12)
+    expect(b.photoUrl).toContain('hns.family')
+  })
+
+  it('does not leak per-club widget lists or the Kartoni list', () => {
+    // top-5 liste po klubovima su izvan scope bloka; Kartoni redovi imaju prazan .goals
+    expect(scorers.every(s => s.goals > 0)).toBe(true)
+  })
+})
