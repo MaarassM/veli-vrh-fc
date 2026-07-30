@@ -8,6 +8,7 @@ import type {
   ParsedMatchDetail,
   ParsedLineupPlayer,
   ParsedMatchEvent,
+  ParsedRosterPlayer,
 } from './types.js'
 
 export function parseCompetitionPage(html: string): ParsedCompetitionPage {
@@ -132,6 +133,56 @@ export function parseCompetitionPage(html: string): ParsedCompetitionPage {
   scorers.sort((a, b) => b.goals - a.goals)
 
   return { standingsParts, matches, scorers }
+}
+
+// Roster s klupske stranice (/klubovi/{id}/{slug}/?cid={cid}) — lista igrača sa statistikama
+export function parseClubRoster(html: string): ParsedRosterPlayer[] {
+  const $ = cheerio.load(html)
+  const roster: ParsedRosterPlayer[] = []
+
+  $('div.playerslist.withStats li.row').each((_, rowEl) => {
+    const $row = $(rowEl)
+    const number = parseInt($row.find('.shirtNumber').text().trim()) || 0
+    const fullName = $row.find('.playerName h3 a').text().trim()
+    const nameParts = fullName.split(' ')
+    const firstName = nameParts[0] || ''
+    const lastName = nameParts.slice(1).join(' ') || ''
+
+    const $nameEl = $row.find('.playerName').clone()
+    $nameEl.find('h3').remove()
+    const position = $nameEl.text().trim()
+
+    const appearances = parseInt($row.find('.apps').text().trim()) || 0
+
+    // vratari imaju primljene golove (span.conceded) umjesto zabijenih
+    const $goalsSpan = $row.find('.goals span')
+    const goals = $goalsSpan.hasClass('conceded')
+      ? 0
+      : parseInt($goalsSpan.text().trim()) || 0
+
+    const cardsParts = $row.find('.cards').text().trim().split('/')
+    const yellowCards = parseInt(cardsParts[0]?.trim()) || 0
+    const redCards = parseInt(cardsParts[1]?.trim()) || 0
+
+    const $img = $row.find('.playerPhoto img')
+    const imageUrl = $img.attr('data-url') || $img.attr('src') || ''
+
+    if (fullName && number > 0) {
+      roster.push({
+        firstName,
+        lastName,
+        number,
+        position,
+        appearances,
+        goals,
+        yellowCards,
+        redCards,
+        imageUrl,
+      })
+    }
+  })
+
+  return roster
 }
 
 export function parseMatchDetail(html: string): ParsedMatchDetail {
