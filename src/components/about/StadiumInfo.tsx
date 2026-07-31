@@ -2,30 +2,31 @@ import { motion } from "motion/react";
 import { MapPin, Users, Maximize } from "lucide-react";
 import SectionHeader from "@/components/ui/SectionHeader";
 
+// TODO-korisnik: provjeri podatke o stadionu (dimenzije, sadržaji)
 const stadiumFeatures = [
   {
     icon: MapPin,
     label: "Lokacija",
-    value: "Veli Vrh, Pula",
-    description: "Tivoli 1",
+    value: "Stadion Tivoli",
+    description: "Veli Vrh, Pula — na mjestu bivšeg kamenoloma",
   },
   {
     icon: Maximize,
     label: "Dimenzije",
     value: "100m × 64m",
-    description: "Standardno igralište",
+    description: "Glavni teren",
   },
   {
     icon: Users,
     label: "Kapacitet",
     value: "200 gledatelja",
-    description: "Tribine",
+    description: "Sjedeća mjesta",
   },
 ];
 
 const facilities = [
-  "Prirodni travnjak sa sustavom navodnjavanja",
-  "LED reflektori za noćne utakmice",
+  "Glavni teren s prirodnim travnjakom",
+  "Dva pomoćna terena 40×20 m s umjetnom travom",
   "Svlačionice za domaće i gostujuće ekipe",
   "Prostor za suce i delegata",
   "Skladište opreme",
