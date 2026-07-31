@@ -132,6 +132,13 @@ export default function GalleryGrid() {
               ))}
             </motion.div>
             )}
+
+            {/* Empty state */}
+            {!albumsLoading && albums.length === 0 && (
+              <p className="text-center text-gray-400 mt-12">
+                Galerija se puni — fotografije stižu uskoro.
+              </p>
+            )}
           </>
         )}
       </div>
