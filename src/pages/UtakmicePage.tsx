@@ -63,6 +63,12 @@ export default function UtakmicePage() {
             Utakmice
           </h1>
           <p className="text-gray-500 text-lg">Raspored i rezultati — NK Veli Vrh</p>
+          <a
+            href={`/kalendar.ics?category=${category}`}
+            className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-orange-500 hover:text-orange-600 transition-colors"
+          >
+            📅 Dodaj raspored u svoj kalendar
+          </a>
         </motion.div>
 
         {/* Kategorije */}

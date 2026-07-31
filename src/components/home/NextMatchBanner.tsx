@@ -25,7 +25,33 @@ export default function NextMatchBanner() {
   }
 
   const next = matches.find((m) => m.status === "upcoming");
-  if (!next) return null;
+
+  if (!next) {
+    return (
+      <section className="bg-[#111111]">
+        <div className="mx-auto max-w-5xl px-6 py-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div>
+            <p
+              className="text-[10px] font-bold uppercase tracking-[4px] text-orange-500 mb-2"
+              style={{ fontFamily: "var(--font-barlow-condensed)" }}
+            >
+              Sljedeća utakmica seniora
+            </p>
+            <p className="text-sm text-gray-400">
+              Raspored nove sezone objavljujemo čim ga HNS potvrdi.
+            </p>
+          </div>
+          <a
+            href="/kalendar.ics"
+            className="inline-flex items-center gap-2 self-start md:self-auto text-xs font-bold uppercase tracking-widest px-4 py-2 border border-orange-500/60 text-orange-400 hover:bg-orange-500 hover:text-white transition-colors"
+            style={{ fontFamily: "var(--font-barlow-condensed)" }}
+          >
+            📅 Pretplati se na raspored
+          </a>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <motion.section

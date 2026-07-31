@@ -5,6 +5,7 @@ import Navbar from '@/components/navbar/Navbar';
 import Footer from '@/components/footer/Footer';
 import PageTransition from './PageTransition';
 import CookieNotice from '@/components/ui/CookieNotice';
+import PushBell from '@/components/ui/PushBell';
 
 export default function MainLayout() {
   const location = useLocation();
@@ -27,6 +28,7 @@ export default function MainLayout() {
       </main>
       <Footer />
       <CookieNotice />
+      <PushBell />
     </div>
   );
 }

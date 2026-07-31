@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router'
 import { motion } from 'motion/react'
-import { ArrowLeft, MapPin, Users, UserCheck } from 'lucide-react'
+import { ArrowLeft, MapPin, Users, UserCheck, ImageDown } from 'lucide-react'
 import { useMatch } from '@/hooks/useMatch'
 import MatchEvents from '@/components/utakmice/MatchEvents'
 import MatchLineups from '@/components/utakmice/MatchLineups'
@@ -122,6 +122,17 @@ export default function UtakmicaDetaljPage() {
               </h2>
               <MatchLineups lineups={match.lineups} />
             </section>
+
+            <div className="text-center">
+              <a
+                href={`/api/og/match?id=${id}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-orange-500 hover:text-orange-600 transition-colors"
+              >
+                <ImageDown className="h-4 w-4" /> Preuzmi grafiku rezultata
+              </a>
+            </div>
 
             <p className="text-center text-xs text-gray-400">Podaci: HNS Semafor</p>
           </motion.div>
