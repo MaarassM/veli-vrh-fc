@@ -19,6 +19,12 @@ export function currentSeason(now: Date): string {
   return now.getMonth() >= 6 ? `${y}/${y + 1}` : `${y - 1}/${y}`
 }
 
+// Ljeti nova sezona na Semaforu još ne postoji — treba korak natrag
+export function previousSeason(season: string): string {
+  const y = parseInt(season.split('/')[0], 10)
+  return `${y - 1}/${y}`
+}
+
 export async function discoverCompetitions(
   clubId: number,
   season: string,

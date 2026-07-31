@@ -2,7 +2,7 @@
 // Pisanje u Supabase je "guarded": briše se samo kad postoje novi redovi za zamjenu.
 import { supabaseAdmin } from '../supabase.js'
 import { SEMAFOR_BASE, fetchHtml, sleep } from './fetch.js'
-import { currentSeason, discoverCompetitions } from './discovery.js'
+import { currentSeason, previousSeason, discoverCompetitions } from './discovery.js'
 import { parseCompetitionPage, parseClubRoster, parseMatchDetail } from './parsers.js'
 import type { CompetitionInfo } from './types.js'
 
@@ -269,7 +269,7 @@ async function syncMatchDetails(
 }
 
 export async function runSync(): Promise<SyncResult> {
-  const season = currentSeason(new Date())
+  let season = currentSeason(new Date())
   const counts: SyncResult['counts'] = {
     competitions: 0,
     standings: 0,
@@ -280,7 +280,17 @@ export async function runSync(): Promise<SyncResult> {
   }
   const errors: string[] = []
 
-  const competitions = await getCompetitions(season, errors)
+  // Nova sezona ljeti još nema natjecanja na Semaforu — tada nastavljamo prošlu.
+  // Greške prvog pokušaja gutamo samo ako fallback uspije.
+  const firstAttemptErrors: string[] = []
+  let competitions = await getCompetitions(season, firstAttemptErrors)
+  if (competitions.length === 0) {
+    season = previousSeason(season)
+    console.log(`[sync] no competitions for new season, falling back to ${season}`)
+    competitions = await getCompetitions(season, errors)
+  } else {
+    errors.push(...firstAttemptErrors)
+  }
   if (competitions.length === 0) {
     throw new Error('No competitions available (discovery failed and no stored fallback)')
   }

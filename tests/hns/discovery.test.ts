@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { readFileSync } from 'node:fs'
-import { currentSeason, discoverCompetitions } from '../../lib/hns/discovery.js'
+import { currentSeason, previousSeason, discoverCompetitions } from '../../lib/hns/discovery.js'
 
 describe('currentSeason', () => {
   it('July and later belongs to the new season', () => {
@@ -10,6 +10,13 @@ describe('currentSeason', () => {
   it('before July belongs to the running season', () => {
     expect(currentSeason(new Date('2026-06-06'))).toBe('2025/2026')
     expect(currentSeason(new Date('2026-01-15'))).toBe('2025/2026')
+  })
+})
+
+describe('previousSeason', () => {
+  it('steps one season back', () => {
+    expect(previousSeason('2026/2027')).toBe('2025/2026')
+    expect(previousSeason('2025/2026')).toBe('2024/2025')
   })
 })
 
