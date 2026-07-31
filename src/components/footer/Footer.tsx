@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
 import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
-import { navigationItems } from '@/data/navigation';
+import { navigationItems, secondaryItems } from '@/data/navigation';
 import { contactInfo } from '@/data/contact';
 import type { SocialLink } from '@/types';
 
@@ -33,7 +33,7 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-bold text-white mb-3">Brzi linkovi</h3>
             <ul className="space-y-2">
-              {navigationItems.map((item) => (
+              {[...navigationItems, ...secondaryItems].map((item) => (
                 <li key={item.path}>
                   <Link
                     to={item.path}
