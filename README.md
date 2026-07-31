@@ -1,73 +1,71 @@
-# React + TypeScript + Vite
+# NK Veli Vrh — službena web stranica
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Web stranica nogometnog kluba Veli Vrh iz Pule (osnovan 1975., Stadion Tivoli).
+Rezultati, ljestvice, statistike i sastavi povlače se automatski s
+[HNS Semafora](https://semafor.hns.family/klubovi/1546/nk-veli-vrh/), a novosti s
+klupske Facebook stranice.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Frontend:** Vite + React 19 + TypeScript + Tailwind CSS 4 + Motion
+- **Hosting:** Vercel (SPA + serverless funkcije u `api/`)
+- **Baza:** Supabase (Postgres, besplatni plan)
+- **Scraping:** Cheerio nad HNS Semaforom (server-rendered HTML)
+- **Testovi:** Vitest (parseri se testiraju na stvarnim HTML fixture-ima)
 
-## React Compiler
+## Pokretanje
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+cp .env.example .env   # upiši Supabase ključeve
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Bez `.env`-a frontend radi sa statičkim fallback podacima.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Arhitektura podataka
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. **Discovery** (`lib/hns/discovery.ts`): javni Semafor JSON handleri vraćaju
+   kategorije kluba i ID-eve natjecanja za tekuću sezonu — nova sezona radi bez
+   ručnog ažuriranja.
+2. **Scrape** (`lib/hns/sync-core.ts` + `lib/hns/parsers.ts`): za svako natjecanje
+   povlači se stranica natjecanja (ljestvica s formom, sva kola, top strijelci),
+   klupska stranica (roster sa statistikama) i do 5 detalja odigranih utakmica
+   po pokretanju (sastavi, golovi, kartoni, gledatelji).
+3. **Spremanje:** Supabase tablice `competitions`, `standings`, `matches`,
+   `players`, `scorers`, `match_details`, `match_lineups`, `match_events`.
+   Pisanje je "guarded" — postojeći podaci se brišu tek kad novi postoje.
+4. **Serviranje:** `api/standings`, `api/matches`, `api/players`, `api/scorers`,
+   `api/match?id=`, `api/news` (CDN cache 5 min).
+
+### Raspored synca
+
+- Vercel cron: 1×/dan (`vercel.json`) — limit Hobby plana
+- GitHub Actions (`.github/workflows/hns-sync.yml`): radnim danom 2×/dan,
+  vikendom svaki sat poslijepodne. Traži `CRON_SECRET` repo secret
+  (isti kao u Vercel env) i opcionalno `SYNC_URL` repo varijablu.
+
+### Ručni sync
+
+```bash
+npm run sync:local
 ```
+
+## Testovi
+
+```bash
+npm test
+```
+
+Fixture-i u `tests/fixtures/hns/` su stvarne Semafor stranice (srpanj 2026.).
+Ako se struktura Semafora promijeni, skini nove fixture-e i prilagodi parsere.
+
+## Deploy
+
+Push na `main` → Vercel automatski deploya. Migracije baze se pokreću ručno
+u Supabase SQL Editoru (`supabase/migrations/`).
+
+## Dokumentacija
+
+- Veliki plan unaprjeđenja: `docs/superpowers/specs/2026-07-30-website-max-upgrade-plan.md`
+- Implementacijski planovi: `docs/superpowers/plans/`
