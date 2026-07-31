@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import { supabase } from '../lib/supabase.js'
-import { currentSeason } from '../lib/hns/discovery.js'
+import { activeSeason } from '../lib/hns/active-season.js'
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   res.setHeader('Access-Control-Allow-Origin', '*')
@@ -11,7 +11,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   const category = typeof req.query.category === 'string' ? req.query.category : 'seniori'
-  const season = typeof req.query.season === 'string' ? req.query.season : currentSeason(new Date())
+  const season = typeof req.query.season === 'string' ? req.query.season : await activeSeason(supabase)
   const limitRaw = parseInt(String(req.query.limit ?? '10'))
   const limit = Math.min(Number.isFinite(limitRaw) && limitRaw > 0 ? limitRaw : 10, 50)
 

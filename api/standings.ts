@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import { supabase } from '../lib/supabase.js'
-import { currentSeason } from '../lib/hns/discovery.js'
+import { activeSeason } from '../lib/hns/active-season.js'
 
 const VELI_VRH_CLUB_ID = 1546
 
@@ -13,7 +13,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   const category = typeof req.query.category === 'string' ? req.query.category : 'seniori'
-  const season = typeof req.query.season === 'string' ? req.query.season : currentSeason(new Date())
+  const season = typeof req.query.season === 'string' ? req.query.season : await activeSeason(supabase)
 
   const { data, error } = await supabase
     .from('standings')
