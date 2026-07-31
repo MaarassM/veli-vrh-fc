@@ -1,4 +1,6 @@
-// Edge funkcija: auto-generirana grafika rezultata (1200×630) za dijeljenje
+// Edge funkcija: auto-generirana grafika rezultata (1200×630) za dijeljenje.
+// Bez JSX-a — satori prihvaća obična objektna stabla (Vercel build izvan
+// Next okruženja ne kompajlira .tsx u api/).
 import { ImageResponse } from '@vercel/og'
 
 export const config = { runtime: 'edge' }
@@ -11,6 +13,19 @@ interface MatchDetailRow {
   away_score: number | null
   kickoff_at: string | null
   venue: string | null
+}
+
+type Node = {
+  type: string
+  props: Record<string, unknown> & { children?: unknown }
+}
+
+function el(
+  type: string,
+  style: Record<string, unknown>,
+  children?: unknown,
+): Node {
+  return { type, props: { style, children } }
 }
 
 async function fetchMatch(id: string): Promise<MatchDetailRow | null> {
@@ -47,63 +62,63 @@ export default async function handler(req: Request) {
   }
 
   const played = match.home_score !== null && match.away_score !== null
+  const metaText = [formatDate(match.kickoff_at), match.venue]
+    .filter(Boolean)
+    .join(' · ')
 
-  return new ImageResponse(
-    (
-      <div
-        style={{
-          width: '100%',
-          height: '100%',
+  const tree = el(
+    'div',
+    {
+      width: '100%',
+      height: '100%',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: '#111827',
+      color: 'white',
+      fontFamily: 'sans-serif',
+    },
+    [
+      el(
+        'div',
+        {
           display: 'flex',
-          flexDirection: 'column',
+          color: '#f97316',
+          fontSize: 28,
+          fontWeight: 700,
+          letterSpacing: 6,
+          textTransform: 'uppercase',
+          marginBottom: 40,
+        },
+        'NK VELI VRH · REZULTAT',
+      ),
+      el(
+        'div',
+        {
+          display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundColor: '#111827',
-          color: 'white',
-          fontFamily: 'sans-serif',
-        }}
-      >
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 8,
-            color: '#f97316',
-            fontSize: 28,
-            fontWeight: 700,
-            letterSpacing: 6,
-            textTransform: 'uppercase',
-            marginBottom: 40,
-          }}
-        >
-          NK Veli Vrh · Rezultat
-        </div>
-
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: 50,
-            width: '100%',
-            padding: '0 60px',
-          }}
-        >
-          <div
-            style={{
+          gap: 50,
+          width: '100%',
+          padding: '0 60px',
+        },
+        [
+          el(
+            'div',
+            {
               display: 'flex',
               flex: 1,
               justifyContent: 'flex-end',
               fontSize: 52,
               fontWeight: 800,
               textAlign: 'right',
-            }}
-          >
-            {match.home_team}
-          </div>
-
-          <div
-            style={{
+            },
+            match.home_team,
+          ),
+          el(
+            'div',
+            {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -112,45 +127,41 @@ export default async function handler(req: Request) {
               padding: '20px 40px',
               fontSize: 88,
               fontWeight: 900,
-            }}
-          >
-            {played ? `${match.home_score}:${match.away_score}` : 'VS'}
-          </div>
-
-          <div
-            style={{
+            },
+            played ? `${match.home_score}:${match.away_score}` : 'VS',
+          ),
+          el(
+            'div',
+            {
               display: 'flex',
               flex: 1,
               justifyContent: 'flex-start',
               fontSize: 52,
               fontWeight: 800,
               textAlign: 'left',
-            }}
-          >
-            {match.away_team}
-          </div>
-        </div>
-
-        <div
-          style={{
-            display: 'flex',
-            gap: 30,
-            marginTop: 50,
-            fontSize: 26,
-            color: '#9ca3af',
-          }}
-        >
-          <span>{formatDate(match.kickoff_at)}</span>
-          {match.venue ? <span>· {match.venue}</span> : null}
-        </div>
-      </div>
-    ),
-    {
-      width: 1200,
-      height: 630,
-      headers: {
-        'Cache-Control': 'public, s-maxage=86400, stale-while-revalidate=604800',
-      },
-    },
+            },
+            match.away_team,
+          ),
+        ],
+      ),
+      el(
+        'div',
+        {
+          display: 'flex',
+          marginTop: 50,
+          fontSize: 26,
+          color: '#9ca3af',
+        },
+        metaText,
+      ),
+    ],
   )
+
+  return new ImageResponse(tree as never, {
+    width: 1200,
+    height: 630,
+    headers: {
+      'Cache-Control': 'public, s-maxage=86400, stale-while-revalidate=604800',
+    },
+  })
 }
