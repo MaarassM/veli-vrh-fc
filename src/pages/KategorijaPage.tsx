@@ -1,6 +1,10 @@
-import { useState } from 'react'
+import { useMemo } from 'react'
+import { Link, useNavigate, useParams } from 'react-router'
 import { motion } from 'motion/react'
 import { useKategorija } from '@/hooks/useKategorija'
+import { useMatchList } from '@/hooks/useMatchList'
+import { nextMatch } from '@/lib/matches'
+import MatchCard from '@/components/utakmice/MatchCard'
 import StandingsTable from '@/components/kategorija/StandingsTable'
 import PlayersList from '@/components/kategorija/PlayersList'
 import SEO from '@/components/seo/SEO'
@@ -16,15 +20,35 @@ const TABS = [
 ]
 
 export default function KategorijaPage() {
-  const [activeTab, setActiveTab] = useState('seniori')
+  const { kat } = useParams()
+  const navigate = useNavigate()
+  const activeTab = TABS.some(t => t.key === kat) ? (kat as string) : 'seniori'
+  const activeLabel = TABS.find(t => t.key === activeTab)?.label ?? 'Seniori'
   const { standings, players, loading, error } = useKategorija(activeTab)
+  const { matches } = useMatchList(activeTab, 'sve', false)
+
+  const recentAndUpcoming = useMemo(() => {
+    const played = matches
+      .filter(m => m.status === 'played')
+      .sort((a, b) => b.date.localeCompare(a.date))
+      .slice(0, 3)
+      .reverse()
+    const upcoming = nextMatch(matches)
+    const upcomingList = upcoming
+      ? matches
+          .filter(m => m.status === 'upcoming')
+          .sort((a, b) => a.date.localeCompare(b.date))
+          .slice(0, 3)
+      : []
+    return [...played, ...upcomingList]
+  }, [matches])
 
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4">
       <SEO
-        title="Kategorije | NK Veli Vrh"
-        description="Ljestvice, rezultati i statistike svih kategorija NK Veli Vrh — seniori, juniori, pioniri i mlađi uzrasti."
-        canonicalPath="/kategorije"
+        title={kat ? `${activeLabel} | NK Veli Vrh` : 'Kategorije | NK Veli Vrh'}
+        description={`Ljestvica, utakmice i igrači — ${activeLabel} NK Veli Vrh. Podaci s HNS Semafora.`}
+        canonicalPath={kat ? `/kategorije/${activeTab}` : '/kategorije'}
       />
       <div className="mx-auto max-w-7xl">
         {/* Header */}
@@ -50,7 +74,7 @@ export default function KategorijaPage() {
           {TABS.map(tab => (
             <button
               key={tab.key}
-              onClick={() => setActiveTab(tab.key)}
+              onClick={() => navigate(`/kategorije/${tab.key}`)}
               className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
                 activeTab === tab.key
                   ? 'bg-orange-500 text-white shadow-md'
@@ -87,6 +111,30 @@ export default function KategorijaPage() {
               </h2>
               <StandingsTable standings={standings} />
             </div>
+
+            {recentAndUpcoming.length > 0 && (
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <h2
+                    className="text-xl font-bold text-gray-800"
+                    style={{ fontFamily: 'var(--font-display)' }}
+                  >
+                    Utakmice
+                  </h2>
+                  <Link
+                    to="/utakmice"
+                    className="text-sm font-semibold text-orange-500 hover:text-orange-600 transition-colors"
+                  >
+                    Sve utakmice →
+                  </Link>
+                </div>
+                <div className="space-y-2">
+                  {recentAndUpcoming.map(match => (
+                    <MatchCard key={match.id} match={match} />
+                  ))}
+                </div>
+              </div>
+            )}
 
             <div>
               <h2

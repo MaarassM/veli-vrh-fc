@@ -11,4 +11,14 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  server: {
+    // Vite dev nema Vercel funkcije — API zahtjevi idu na produkciju
+    proxy: {
+      '/api': {
+        target: 'https://veli-vrh-fc.vercel.app',
+        changeOrigin: true,
+      },
+    },
+  },
 })
+

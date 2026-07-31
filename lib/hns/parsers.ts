@@ -154,11 +154,11 @@ export function parseClubRoster(html: string): ParsedRosterPlayer[] {
 
     const appearances = parseInt($row.find('.apps').text().trim()) || 0
 
-    // vratari imaju primljene golove (span.conceded) umjesto zabijenih
-    const $goalsSpan = $row.find('.goals span')
-    const goals = $goalsSpan.hasClass('conceded')
+    // vratari imaju primljene golove (span.conceded); igrači u polju goli broj bez spana
+    const $goals = $row.find('.goals')
+    const goals = $goals.find('span.conceded').length > 0
       ? 0
-      : parseInt($goalsSpan.text().trim()) || 0
+      : parseInt($goals.text().trim()) || 0
 
     const cardsParts = $row.find('.cards').text().trim().split('/')
     const yellowCards = parseInt(cardsParts[0]?.trim()) || 0
