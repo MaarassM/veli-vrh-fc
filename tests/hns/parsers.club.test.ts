@@ -21,4 +21,11 @@ describe('parseClubRoster', () => {
     expect(roster.every(p => Number.isInteger(p.appearances))).toBe(true)
     expect(roster.every(p => Number.isInteger(p.goals))).toBe(true)
   })
+
+  it('parses outfield goals (div without span) and treats conceded as 0', () => {
+    const beviakva = roster.find(p => p.lastName.includes('Beviakva'))
+    expect(beviakva?.goals).toBe(12)
+    const goalkeeper = roster.find(p => p.position === 'Vratar' && p.appearances > 0)
+    expect(goalkeeper?.goals).toBe(0)
+  })
 })
