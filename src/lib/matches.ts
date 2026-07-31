@@ -13,6 +13,7 @@ export interface MatchItem {
   status: 'played' | 'upcoming' | 'postponed'
   venue: 'home' | 'away'
   isVeliVrh: boolean
+  part?: string
 }
 
 export interface RoundGroup {
@@ -37,6 +38,30 @@ export function groupByRound(matches: MatchItem[]): RoundGroup[] {
     round,
     matches: (byRound.get(round) ?? []).sort((a, b) => a.date.localeCompare(b.date)),
   }))
+}
+
+export interface PartGroup {
+  part: string
+  groups: RoundGroup[]
+}
+
+// Liga u više dijelova (1.DIO, TREĆI DIO...) broji kola ispočetka —
+// dijelovi se razdvajaju i sortiraju po najranijem datumu utakmice.
+export function groupByPart(matches: MatchItem[]): PartGroup[] {
+  const byPart = new Map<string, MatchItem[]>()
+  for (const match of matches) {
+    const key = match.part ?? ''
+    const list = byPart.get(key) ?? []
+    list.push(match)
+    byPart.set(key, list)
+  }
+  const parts = [...byPart.entries()].map(([part, list]) => ({
+    part,
+    earliest: list.reduce((min, m) => (m.date < min ? m.date : min), list[0].date),
+    groups: groupByRound(list),
+  }))
+  parts.sort((a, b) => a.earliest.localeCompare(b.earliest))
+  return parts.map(({ part, groups }) => ({ part, groups }))
 }
 
 export function nextMatch(matches: MatchItem[]): MatchItem | null {

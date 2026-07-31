@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { groupByRound, nextMatch, lastPlayed, type MatchItem } from '../../src/lib/matches'
+import { groupByRound, groupByPart, nextMatch, lastPlayed, type MatchItem } from '../../src/lib/matches'
 
 function m(over: Partial<MatchItem>): MatchItem {
   return {
@@ -32,6 +32,26 @@ describe('groupByRound', () => {
     const groups = groupByRound(fixture)
     expect(groups.map(g => g.round)).toEqual([1, 2, 3, null])
     expect(groups[0].matches[0].id).toBe('b')
+  })
+})
+
+describe('groupByPart', () => {
+  it('splits matches into league parts ordered by earliest date, rounds within', () => {
+    const withParts: MatchItem[] = [
+      m({ id: 'p2', part: 'TREĆI DIO', round: 1, date: '2026-04-12' }),
+      m({ id: 'p1', part: '1.DIO', round: 1, date: '2025-09-07' }),
+      m({ id: 'p3', part: '1.DIO', round: 2, date: '2025-09-13' }),
+    ]
+    const parts = groupByPart(withParts)
+    expect(parts.map(p => p.part)).toEqual(['1.DIO', 'TREĆI DIO'])
+    expect(parts[0].groups.map(g => g.round)).toEqual([1, 2])
+    expect(parts[1].groups[0].matches[0].id).toBe('p2')
+  })
+
+  it('single unnamed part keeps everything together', () => {
+    const parts = groupByPart(fixture)
+    expect(parts).toHaveLength(1)
+    expect(parts[0].part).toBe('')
   })
 })
 
