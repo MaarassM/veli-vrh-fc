@@ -9,7 +9,7 @@ export default function HeroSection() {
       <div
         className="absolute inset-0 bg-cover bg-no-repeat"
         style={{
-          backgroundImage: "url('/images/irinoa.JPG')",
+          backgroundImage: "url('/images/hero.webp')",
           backgroundPosition: "center 30%",
         }}
       />
