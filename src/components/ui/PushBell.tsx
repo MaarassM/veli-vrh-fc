@@ -310,7 +310,7 @@ export default function PushBell() {
         await reg.showNotification(
           firstTime ? 'Obavijesti su uključene! 🟠' : 'Postavke su spremljene',
           {
-            body: 'Ovako će ti stizati rezultati NK Veli Vrh. Vidimo se na Tivoliju!',
+            body: 'Ovako će ti stizati obavijesti o utakmicama NK Veli Vrh. Idemo, narančasti!',
             icon: '/images/icon-192.png',
             badge: '/images/icon-192.png',
             data: { url: '/utakmice' },

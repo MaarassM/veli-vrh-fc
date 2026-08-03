@@ -86,8 +86,15 @@ async function deliver(subs: StoredSub[], payload: string): Promise<number> {
 
 function titleFor(category: string, kind: NotificationKind): string {
   const label = CATEGORY_LABELS[category] ?? category
-  const base = kind === 'result' ? 'Kraj utakmice' : 'Danas igramo'
-  return category === 'seniori' ? base : `${label} — ${base.toLowerCase()}`
+  if (kind === 'result') {
+    return category === 'seniori' ? 'Kraj utakmice' : `${label} — kraj utakmice`
+  }
+  return category === 'seniori' ? 'Danas igra Veli Vrh!' : `Danas igraju ${label.toLowerCase()}!`
+}
+
+// Protivnik iz perspektive Velog Vrha — poruka je ista doma i u gostima
+function opponentOf(homeTeam: string, awayTeam: string): string {
+  return /veli vrh/i.test(homeTeam) ? awayTeam : homeTeam
 }
 
 export async function sendResultNotifications(results: ResultNotification[]): Promise<number> {
@@ -121,9 +128,10 @@ export async function sendReminderNotifications(reminders: ReminderNotification[
     const targets = recipientsFor(subs, reminder.category, 'reminder')
     if (targets.length === 0) continue
     const timePart = reminder.time ? ` u ${reminder.time}` : ''
+    const opponent = opponentOf(reminder.homeTeam, reminder.awayTeam)
     const payload = JSON.stringify({
       title: titleFor(reminder.category, 'reminder'),
-      body: `${reminder.homeTeam} - ${reminder.awayTeam}${timePart}`,
+      body: `Podrži naše narančaste u utakmici protiv ${opponent}${timePart}.`,
       url: '/utakmice',
     })
     sent += await deliver(targets, payload)
