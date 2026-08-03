@@ -30,6 +30,8 @@ interface Standing {
   goalsAgainst: number
   goalDifference: number
   points: number
+  form?: string
+  logoUrl?: string
 }
 
 interface Match {
@@ -105,6 +107,7 @@ export function usePlayerStats() {
  */
 export function useStandings() {
   const [data, setData] = useState<Standing[]>([])
+  const [part, setPart] = useState<string>('')
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
@@ -115,8 +118,9 @@ export function useStandings() {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`)
         }
-        const result: APIResponse<Standing[]> = await response.json()
+        const result: APIResponse<Standing[]> & { part?: string } = await response.json()
         setData(result.data)
+        setPart(result.part ?? '')
         setError(null)
       } catch (err) {
         // Fallback to static data in development
@@ -131,7 +135,7 @@ export function useStandings() {
     fetchData()
   }, [])
 
-  return { data, loading, error }
+  return { data, part, loading, error }
 }
 
 /**

@@ -1,8 +1,31 @@
 import { motion } from "motion/react";
+import { Link } from "react-router";
 import { useStandings } from "@/hooks/useHNSData";
 
+function FormBadges({ form }: { form?: string }) {
+  if (!form) return null;
+  const styles: Record<string, string> = {
+    W: "bg-green-500",
+    D: "bg-gray-400",
+    L: "bg-red-500",
+  };
+  const labels: Record<string, string> = { W: "P", D: "N", L: "I" };
+  return (
+    <span className="inline-flex gap-1">
+      {form.split("").map((r, i) => (
+        <span
+          key={i}
+          className={`inline-flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-bold text-white ${styles[r] ?? "bg-gray-300"}`}
+        >
+          {labels[r] ?? r}
+        </span>
+      ))}
+    </span>
+  );
+}
+
 export default function LeagueTable() {
-  const { data: standings, loading, error } = useStandings();
+  const { data: standings, part, loading, error } = useStandings();
 
   if (loading) {
     return (
@@ -45,7 +68,7 @@ export default function LeagueTable() {
           <h2 className="font-display text-3xl sm:text-4xl font-bold text-gray-900 mb-2">
             Trenutna ljestvica seniora
           </h2>{" "}
-          <p className="text-lg text-gray-600">ELITNA LIGA NSŽI 25/26</p>
+          <p className="text-lg text-gray-600">{part || "ELITNA LIGA NSŽI"}</p>
         </motion.div>
 
         <motion.div
@@ -87,6 +110,9 @@ export default function LeagueTable() {
                   <th className="px-4 py-3 text-center text-sm font-semibold">
                     B
                   </th>
+                  <th className="px-4 py-3 text-center text-sm font-semibold">
+                    Forma
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -104,7 +130,19 @@ export default function LeagueTable() {
                     }`}
                   >
                     <td className="px-4 py-4 text-gray-900">{team.position}</td>
-                    <td className="px-4 py-4 text-gray-900">{team.team}</td>
+                    <td className="px-4 py-4 text-gray-900">
+                      <span className="inline-flex items-center gap-2">
+                        {team.logoUrl && (
+                          <img
+                            src={team.logoUrl}
+                            alt=""
+                            className="h-6 w-6 object-contain shrink-0"
+                            loading="lazy"
+                          />
+                        )}
+                        {team.team}
+                      </span>
+                    </td>
                     <td className="px-4 py-4 text-center text-gray-600">
                       {team.played}
                     </td>
@@ -134,6 +172,9 @@ export default function LeagueTable() {
                     </td>
                     <td className="px-4 py-4 text-center font-bold text-gray-900">
                       {team.points}
+                    </td>
+                    <td className="px-4 py-4 text-center">
+                      <FormBadges form={team.form} />
                     </td>
                   </motion.tr>
                 ))}
@@ -225,6 +266,20 @@ export default function LeagueTable() {
             U - Utakmice | P - Pobjede | N - Neriješeno | I - Izgubljeno | GD -
             Dani golovi | GR - Gol razlika | B - Bodovi
           </p>
+          <div className="mt-4 flex items-center justify-center gap-6">
+            <Link
+              to="/utakmice"
+              className="font-semibold text-orange-500 hover:text-orange-600 transition-colors"
+            >
+              Raspored i rezultati →
+            </Link>
+            <Link
+              to="/statistika"
+              className="font-semibold text-orange-500 hover:text-orange-600 transition-colors"
+            >
+              Statistika →
+            </Link>
+          </div>
         </motion.div>
       </div>
     </section>

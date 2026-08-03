@@ -5,6 +5,7 @@ import LeagueTable from "@/components/home/LeagueTable";
 import ClubValues from "@/components/home/ClubValues";
 import NewsSection from "@/components/home/NewsSection";
 import SponsorsStrip from "@/components/home/SponsorsStrip";
+import TopScorersHome from "@/components/home/TopScorersHome";
 import SEO from "@/components/seo/SEO";
 
 export default function HomePage() {
@@ -19,6 +20,7 @@ export default function HomePage() {
       <NextMatchBanner />
       <IntroSection />
       <LeagueTable />
+      <TopScorersHome />
       <ClubValues />
       <NewsSection />
       <SponsorsStrip />
