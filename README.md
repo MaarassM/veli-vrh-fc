@@ -69,3 +69,5 @@ u Supabase SQL Editoru (`supabase/migrations/`).
 
 - Veliki plan unaprjeđenja: `docs/superpowers/specs/2026-07-30-website-max-upgrade-plan.md`
 - Implementacijski planovi: `docs/superpowers/plans/`
+
+<!-- deploy: pickup VAPID env vars -->
