@@ -4,8 +4,8 @@ import { supabaseAdmin } from '../supabase.js'
 import { SEMAFOR_BASE, fetchHtml, sleep } from './fetch.js'
 import { currentSeason, previousSeason, discoverCompetitions } from './discovery.js'
 import { parseCompetitionPage, parseClubRoster, parseMatchDetail } from './parsers.js'
-import { newlyPlayed } from '../push-detect.js'
-import { sendResultNotifications, type ResultNotification } from '../push.js'
+import { newlyPlayed, todayInZagreb } from '../push-detect.js'
+import { sendResultNotifications, sendReminderNotifications, type ResultNotification } from '../push.js'
 import type { CompetitionInfo } from './types.js'
 
 const CLUB_ID = 1546
@@ -134,6 +134,7 @@ async function syncCompetition(
       for (const { row } of fresh) {
         if (row.home_score !== null && row.away_score !== null) {
           notifications.push({
+            category: comp.category,
             homeTeam: row.home_team,
             awayTeam: row.away_team,
             homeScore: row.home_score,
@@ -341,8 +342,7 @@ export async function runSync(): Promise<SyncResult> {
     try {
       await sleep(REQUEST_DELAY_MS)
       console.log(`[sync] competition ${comp.cid} (${comp.name})`)
-      // Push obavijesti šaljemo samo za seniore
-      await syncCompetition(comp, counts, comp.category === 'seniori' ? notifications : undefined)
+      await syncCompetition(comp, counts, notifications)
     } catch (err) {
       errors.push(`${comp.name}: ${err instanceof Error ? err.message : String(err)}`)
     }
@@ -353,6 +353,36 @@ export async function runSync(): Promise<SyncResult> {
     if (sent > 0) console.log(`[sync] sent ${sent} push notifications for ${notifications.length} new results`)
   } catch (err) {
     console.error('[sync] push notifications failed:', err instanceof Error ? err.message : err)
+  }
+
+  // Podsjetnici na dan utakmice (jednom po utakmici — marker reminder_sent)
+  try {
+    const today = todayInZagreb(new Date())
+    const { data: todays } = await supabaseAdmin
+      .from('matches')
+      .select('id, home_team, away_team, time, category')
+      .eq('date', today)
+      .eq('status', 'upcoming')
+      .eq('is_veli_vrh', true)
+      .eq('reminder_sent', false)
+
+    if (todays && todays.length > 0) {
+      const sent = await sendReminderNotifications(
+        todays.map(m => ({
+          category: m.category,
+          homeTeam: m.home_team,
+          awayTeam: m.away_team,
+          time: m.time ?? null,
+        })),
+      )
+      await supabaseAdmin
+        .from('matches')
+        .update({ reminder_sent: true })
+        .in('id', todays.map(m => m.id))
+      if (sent > 0) console.log(`[sync] sent ${sent} match-day reminders`)
+    }
+  } catch (err) {
+    console.error('[sync] reminders failed:', err instanceof Error ? err.message : err)
   }
 
   // Roster po kategoriji — kup preskačemo (ista klupska stranica kao liga)
