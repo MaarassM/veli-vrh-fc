@@ -254,6 +254,19 @@ export default function PushBell() {
       .catch(() => setMode('hidden'))
   }, [])
 
+  // Hero gumb "Prati rezultate" otvara panel odavde (custom event);
+  // ako smo skriveni/blokirani, event ostaje neobrađen pa hero vodi na /obavijesti
+  useEffect(() => {
+    function onOpenRequest(e: Event) {
+      if (mode === 'ready' || mode === 'ios-install') {
+        e.preventDefault()
+        setOpen(mode === 'ios-install' ? 'ios' : 'settings')
+      }
+    }
+    window.addEventListener('nkvv:open-push', onOpenRequest)
+    return () => window.removeEventListener('nkvv:open-push', onOpenRequest)
+  }, [mode])
+
   async function save(next: Prefs) {
     setBusy(true)
     try {
@@ -288,8 +301,24 @@ export default function PushBell() {
 
       localStorage.setItem(PREFS_KEY, JSON.stringify(next))
       setPrefs(next)
+      const firstTime = !subscribed
       setSubscribed(true)
       setOpen(false)
+
+      // Testna obavijest odmah — korisnik vidi da sve radi
+      try {
+        await reg.showNotification(
+          firstTime ? 'Obavijesti su uključene! 🟠' : 'Postavke su spremljene',
+          {
+            body: 'Ovako će ti stizati rezultati NK Veli Vrh. Vidimo se na Tivoliju!',
+            icon: '/images/icon-192.png',
+            badge: '/images/icon-192.png',
+            data: { url: '/utakmice' },
+          },
+        )
+      } catch {
+        /* nije kritično */
+      }
     } catch (err) {
       console.error('[push] save failed:', err)
     } finally {
@@ -337,13 +366,19 @@ export default function PushBell() {
         disabled={mode === 'denied'}
         title={title}
         aria-label={title}
-        className={`fixed bottom-5 right-5 z-40 rounded-full p-3 shadow-lg transition-all cursor-pointer ${
+        className={`fixed bottom-5 right-5 z-40 inline-flex items-center gap-2 rounded-full px-4 py-3.5 shadow-xl transition-all cursor-pointer ${
           subscribed
             ? 'bg-orange-500 text-white hover:bg-orange-600'
-            : 'bg-white text-gray-500 border border-gray-200 hover:text-orange-500 hover:border-orange-300'
+            : 'bg-gray-900 text-white hover:bg-orange-500 ring-2 ring-white/30'
         } ${mode === 'denied' ? 'opacity-40 cursor-not-allowed' : ''}`}
       >
-        {subscribed ? <Bell className="h-5 w-5" /> : <BellOff className="h-5 w-5" />}
+        {subscribed ? <Bell className="h-6 w-6" /> : <BellOff className="h-6 w-6" />}
+        <span
+          className="hidden sm:inline text-sm font-black italic uppercase tracking-wider"
+          style={{ fontFamily: 'var(--font-barlow-condensed)' }}
+        >
+          Obavijesti
+        </span>
       </button>
 
       {open === 'ios' && <IosInstallGuide onClose={() => setOpen(false)} />}
