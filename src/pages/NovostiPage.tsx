@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { ExternalLink } from "lucide-react";
 import { useNews } from "@/hooks/useHNSData";
+import PageHeader from "@/components/ui/PageHeader";
 import SEO from "@/components/seo/SEO";
 
 function formatDate(isoString: string): string {
@@ -15,26 +16,14 @@ export default function NovostiPage() {
   const { data: posts, loading, error } = useNews(10);
 
   return (
-    <section className="py-16 md:py-20">
+    <section className="min-h-screen bg-gray-50 py-12 px-4">
       <SEO
         title="Novosti | NK Veli Vrh"
         description="Najnovije vijesti, izvještaji s utakmica i obavijesti NK Veli Vrh Pula, Istra."
         canonicalPath="/novosti"
       />
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
-        >
-          <h1 className="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-3">
-            Novosti iz kluba
-          </h1>
-          <p className="text-lg text-gray-500">
-            Najnovije s naših Facebook stranica
-          </p>
-        </motion.div>
+      <div className="mx-auto max-w-7xl">
+        <PageHeader title="Novosti" subtitle="Najnovije s naših Facebook stranica" />
 
         {error && !loading && (
           <p className="text-center text-gray-500">

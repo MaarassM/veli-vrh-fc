@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
-import { motion } from 'motion/react'
 import { useScorers } from '@/hooks/useScorers'
+import PageHeader from '@/components/ui/PageHeader'
 import { useMatchList } from '@/hooks/useMatchList'
 import { homeAwayRecord, biggestWin, formString } from '@/lib/stats'
 import SEO from '@/components/seo/SEO'
@@ -68,20 +68,7 @@ export default function StatistikaPage() {
         canonicalPath="/statistika"
       />
       <div className="mx-auto max-w-4xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-10"
-        >
-          <h1
-            className="text-4xl sm:text-5xl font-bold text-gray-900 mb-3"
-            style={{ fontFamily: 'var(--font-display)' }}
-          >
-            Statistika
-          </h1>
-          <p className="text-gray-500 text-lg">Seniori — Elitna liga NSŽI</p>
-        </motion.div>
+        <PageHeader title="Statistika" subtitle="Seniori — Elitna liga NSŽI" />
 
         {loading ? (
           <div className="space-y-6">

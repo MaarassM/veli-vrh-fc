@@ -1,6 +1,7 @@
 import { motion } from 'motion/react'
 import { Mail, Phone, MapPin } from 'lucide-react'
 import { contactInfo } from '@/data/contact'
+import PageHeader from '@/components/ui/PageHeader'
 import SEO from '@/components/seo/SEO'
 
 // TODO-korisnik: provjeri termine treninga, uzraste i telefonski broj
@@ -34,23 +35,10 @@ export default function PostaniClanPage() {
         canonicalPath="/postani-clan"
       />
       <div className="mx-auto max-w-4xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
-        >
-          <h1
-            className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4"
-            style={{ fontFamily: 'var(--font-display)' }}
-          >
-            Postani dio kluba
-          </h1>
-          <p className="text-gray-500 text-lg max-w-2xl mx-auto">
-            Od prvih koraka s loptom do seniorskog dresa — NK Veli Vrh otvoren je
-            za sve generacije. Dođi na trening i uvjeri se!
-          </p>
-        </motion.div>
+        <PageHeader
+          title="Postani dio kluba"
+          subtitle="Od prvih koraka s loptom do seniorskog dresa — NK Veli Vrh otvoren je za sve generacije. Dođi na trening i uvjeri se!"
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           {groups.map((group, i) => (

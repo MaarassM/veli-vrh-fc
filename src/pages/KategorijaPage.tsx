@@ -6,6 +6,7 @@ import { useMatchList } from '@/hooks/useMatchList'
 import { nextMatch } from '@/lib/matches'
 import MatchCard from '@/components/utakmice/MatchCard'
 import StandingsTable from '@/components/kategorija/StandingsTable'
+import PageHeader from '@/components/ui/PageHeader'
 import PlayersList from '@/components/kategorija/PlayersList'
 import SEO from '@/components/seo/SEO'
 
@@ -52,22 +53,10 @@ export default function KategorijaPage() {
       />
       <div className="mx-auto max-w-7xl">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-10"
-        >
-          <h1
-            className="text-4xl sm:text-5xl font-bold text-gray-900 mb-3"
-            style={{ fontFamily: 'var(--font-display)' }}
-          >
-            Sve kategorije
-          </h1>
-          <p className="text-gray-500 text-lg">
-            Ljestvice i igrači po uzrastu — NK Veli Vrh
-          </p>
-        </motion.div>
+        <PageHeader
+          title={kat ? activeLabel : 'Sve kategorije'}
+          subtitle="Ljestvice, utakmice i igrači po uzrastu — NK Veli Vrh"
+        />
 
         {/* Tab strip */}
         <div className="flex flex-wrap gap-2 justify-center mb-10">

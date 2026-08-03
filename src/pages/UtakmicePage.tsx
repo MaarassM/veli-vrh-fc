@@ -1,8 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { motion } from 'motion/react'
+import { CalendarPlus } from 'lucide-react'
 import { useMatchList, type CompetitionFilter } from '@/hooks/useMatchList'
 import { groupByPart, nextMatch } from '@/lib/matches'
 import RoundSection from '@/components/utakmice/RoundSection'
+import PageHeader from '@/components/ui/PageHeader'
 import SEO from '@/components/seo/SEO'
 
 const TABS = [
@@ -50,26 +51,14 @@ export default function UtakmicePage() {
         canonicalPath="/utakmice"
       />
       <div className="mx-auto max-w-3xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-8"
-        >
-          <h1
-            className="text-4xl sm:text-5xl font-bold text-gray-900 mb-3"
-            style={{ fontFamily: 'var(--font-display)' }}
-          >
-            Utakmice
-          </h1>
-          <p className="text-gray-500 text-lg">Raspored i rezultati — NK Veli Vrh</p>
+        <PageHeader title="Utakmice" subtitle="Raspored i rezultati — NK Veli Vrh">
           <a
             href={`/kalendar.ics?category=${category}`}
             className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-orange-500 hover:text-orange-600 transition-colors"
           >
-            📅 Dodaj raspored u svoj kalendar
+            <CalendarPlus className="h-4 w-4" /> Dodaj raspored u svoj kalendar
           </a>
-        </motion.div>
+        </PageHeader>
 
         {/* Kategorije */}
         <div className="flex flex-wrap gap-2 justify-center mb-4">

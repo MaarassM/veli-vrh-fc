@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
-import { motion } from 'motion/react'
 import { usePlayerStats } from '@/hooks/useHNSData'
+import PageHeader from '@/components/ui/PageHeader'
 import PlayerStatCard from '@/components/momcad/PlayerStatCard'
 import StaffSection from '@/components/team/StaffSection'
 import SEO from '@/components/seo/SEO'
@@ -25,20 +25,7 @@ export default function MomcadPage() {
         canonicalPath="/momcad"
       />
       <div className="mx-auto max-w-7xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-10"
-        >
-          <h1
-            className="text-4xl sm:text-5xl font-bold text-gray-900 mb-3"
-            style={{ fontFamily: 'var(--font-display)' }}
-          >
-            Momčad
-          </h1>
-          <p className="text-gray-500 text-lg">Seniori — NK Veli Vrh</p>
-        </motion.div>
+        <PageHeader title="Momčad" subtitle="Seniori — NK Veli Vrh" />
 
         {loading ? (
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
