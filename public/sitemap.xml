@@ -56,6 +56,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://nkvelivrh.com/obavijesti</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://nkvelivrh.com/kategorije/juniori</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>

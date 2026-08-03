@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router'
 import { Bell, BellOff, X, Share, SquarePlus, Loader2 } from 'lucide-react'
 
 type BellMode = 'hidden' | 'ready' | 'denied' | 'ios-install'
@@ -88,6 +89,13 @@ function IosInstallGuide({ onClose }: { onClose: () => void }) {
             <span>Otvori <strong>NK Veli Vrh</strong> s početnog zaslona i dotakni zvonce</span>
           </li>
         </ol>
+        <Link
+          to="/obavijesti"
+          onClick={onClose}
+          className="mt-4 inline-block text-sm font-semibold text-orange-500 hover:text-orange-600 transition-colors"
+        >
+          Detaljne upute →
+        </Link>
       </div>
     </div>
   )
@@ -195,6 +203,13 @@ function SettingsPanel({ subscribed, prefs, busy, onSave, onDisable, onClose }: 
         {!canSave && (
           <p className="mt-2 text-xs text-red-500">Odaberi barem jednu kategoriju i vrstu obavijesti.</p>
         )}
+        <Link
+          to="/obavijesti"
+          onClick={onClose}
+          className="mt-3 inline-block text-xs text-gray-400 hover:text-orange-500 transition-colors"
+        >
+          Kako rade obavijesti i instalacija na mobitel? →
+        </Link>
       </div>
     </div>
   )

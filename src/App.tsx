@@ -12,6 +12,7 @@ import UtakmicaDetaljPage from '@/pages/UtakmicaDetaljPage'
 import MomcadPage from '@/pages/MomcadPage'
 import StatistikaPage from '@/pages/StatistikaPage'
 import PostaniClanPage from '@/pages/PostaniClanPage'
+import ObavijestiPage from '@/pages/ObavijestiPage'
 import GalleryPage from '@/pages/GalleryPage'
 
 const router = createBrowserRouter([
@@ -31,6 +32,7 @@ const router = createBrowserRouter([
       { path: 'statistika', element: <StatistikaPage /> },
       { path: 'galerija', element: <GalleryPage /> },
       { path: 'postani-clan', element: <PostaniClanPage /> },
+      { path: 'obavijesti', element: <ObavijestiPage /> },
       { path: '*', element: <NotFoundPage /> },
     ],
   },
