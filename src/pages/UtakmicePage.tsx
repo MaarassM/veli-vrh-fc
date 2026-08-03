@@ -56,7 +56,8 @@ export default function UtakmicePage() {
             href={`/kalendar.ics?category=${category}`}
             className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-orange-500 hover:text-orange-600 transition-colors"
           >
-            <CalendarPlus className="h-4 w-4" /> Dodaj raspored u svoj kalendar
+            <CalendarPlus className="h-4 w-4" /> Dodaj raspored u kalendar (
+            {TABS.find(t => t.key === category)?.label ?? 'Seniori'})
           </a>
         </PageHeader>
 
