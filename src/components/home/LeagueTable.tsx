@@ -65,7 +65,7 @@ export default function LeagueTable() {
           transition={{ duration: 0.6 }}
           className="text-center mb-8"
         >
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-gray-900 mb-2">
+          <h2 className="heading-club text-3xl sm:text-4xl text-gray-900 mb-2">
             Trenutna ljestvica seniora
           </h2>{" "}
           <p className="text-lg text-gray-600">{part || "ELITNA LIGA NSŽI"}</p>

@@ -63,3 +63,12 @@
     @apply outline-2 outline-offset-2 outline-orange-500;
   }
 }
+
+/* Klupska tipografija za naslove — jedinstvena kroz sve stranice */
+.heading-club {
+  font-family: var(--font-barlow-condensed);
+  font-style: italic;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}

@@ -1,5 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import { supabase } from '../lib/supabase.js'
+import { activeSeason } from '../lib/hns/active-season.js'
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   res.setHeader('Access-Control-Allow-Origin', '*')
@@ -10,11 +11,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   const category = typeof req.query.category === 'string' ? req.query.category : 'seniori'
+  const season = typeof req.query.season === 'string' ? req.query.season : await activeSeason(supabase)
 
   const { data, error } = await supabase
     .from('players')
     .select('*')
     .eq('category', category)
+    .eq('season', season)
     .order('number', { ascending: true })
 
   if (error) {

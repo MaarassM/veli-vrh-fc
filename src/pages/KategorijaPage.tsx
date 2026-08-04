@@ -92,10 +92,7 @@ export default function KategorijaPage() {
             className="space-y-8"
           >
             <div>
-              <h2
-                className="text-xl font-bold text-gray-800 mb-4"
-                style={{ fontFamily: 'var(--font-display)' }}
-              >
+              <h2 className="heading-club text-2xl text-gray-900 mb-4">
                 Ljestvica
               </h2>
               <StandingsTable standings={standings} />
@@ -104,10 +101,7 @@ export default function KategorijaPage() {
             {recentAndUpcoming.length > 0 && (
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <h2
-                    className="text-xl font-bold text-gray-800"
-                    style={{ fontFamily: 'var(--font-display)' }}
-                  >
+                  <h2 className="heading-club text-2xl text-gray-900">
                     Utakmice
                   </h2>
                   <Link
@@ -126,10 +120,7 @@ export default function KategorijaPage() {
             )}
 
             <div>
-              <h2
-                className="text-xl font-bold text-gray-800 mb-4"
-                style={{ fontFamily: 'var(--font-display)' }}
-              >
+              <h2 className="heading-club text-2xl text-gray-900 mb-4">
                 Igrači
               </h2>
               <PlayersList players={players} />

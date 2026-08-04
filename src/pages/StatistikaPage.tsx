@@ -117,10 +117,7 @@ export default function StatistikaPage() {
 
             {/* Dom / gosti */}
             <section>
-              <h2
-                className="text-xl font-bold text-gray-800 mb-4"
-                style={{ fontFamily: 'var(--font-display)' }}
-              >
+              <h2 className="heading-club text-2xl text-gray-900 mb-4">
                 Učinak — dom i gosti
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -131,10 +128,7 @@ export default function StatistikaPage() {
 
             {/* Ligaški strijelci */}
             <section>
-              <h2
-                className="text-xl font-bold text-gray-800 mb-4"
-                style={{ fontFamily: 'var(--font-display)' }}
-              >
+              <h2 className="heading-club text-2xl text-gray-900 mb-4">
                 Ligaški strijelci
               </h2>
               {scorers.length === 0 ? (

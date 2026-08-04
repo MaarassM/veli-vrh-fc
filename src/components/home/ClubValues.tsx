@@ -30,7 +30,7 @@ export default function ClubValues() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-gray-900 mb-2">
+          <h2 className="heading-club text-3xl sm:text-4xl text-gray-900 mb-2">
             Naše vrijednosti
           </h2>
           <p className="text-lg text-gray-500">Što NK Veli Vrh čini posebnim</p>

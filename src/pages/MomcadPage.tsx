@@ -40,10 +40,7 @@ export default function MomcadPage() {
             {/* Top strijelci */}
             {topScorers.length > 0 && (
               <section>
-                <h2
-                  className="text-xl font-bold text-gray-800 mb-4"
-                  style={{ fontFamily: 'var(--font-display)' }}
-                >
+                <h2 className="heading-club text-2xl text-gray-900 mb-4">
                   Najbolji strijelci
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -80,10 +77,7 @@ export default function MomcadPage() {
             {/* Vratari */}
             {goalkeepers.length > 0 && (
               <section>
-                <h2
-                  className="text-xl font-bold text-gray-800 mb-4"
-                  style={{ fontFamily: 'var(--font-display)' }}
-                >
+                <h2 className="heading-club text-2xl text-gray-900 mb-4">
                   Vratari
                 </h2>
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
@@ -96,10 +90,7 @@ export default function MomcadPage() {
 
             {/* Igrači */}
             <section>
-              <h2
-                className="text-xl font-bold text-gray-800 mb-4"
-                style={{ fontFamily: 'var(--font-display)' }}
-              >
+              <h2 className="heading-club text-2xl text-gray-900 mb-4">
                 Igrači
               </h2>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">

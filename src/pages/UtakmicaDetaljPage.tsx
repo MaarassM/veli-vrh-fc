@@ -103,10 +103,7 @@ export default function UtakmicaDetaljPage() {
 
             {/* Događaji */}
             <section className="bg-white rounded-2xl border border-gray-100 p-6">
-              <h2
-                className="text-xl font-bold text-gray-800 mb-4 text-center"
-                style={{ fontFamily: 'var(--font-display)' }}
-              >
+              <h2 className="heading-club text-2xl text-gray-900 mb-4 text-center">
                 Tijek utakmice
               </h2>
               <MatchEvents events={match.events} />
@@ -114,10 +111,7 @@ export default function UtakmicaDetaljPage() {
 
             {/* Sastavi */}
             <section className="bg-white rounded-2xl border border-gray-100 p-6">
-              <h2
-                className="text-xl font-bold text-gray-800 mb-4 text-center"
-                style={{ fontFamily: 'var(--font-display)' }}
-              >
+              <h2 className="heading-club text-2xl text-gray-900 mb-4 text-center">
                 Sastavi
               </h2>
               <MatchLineups lineups={match.lineups} />

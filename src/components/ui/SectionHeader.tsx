@@ -15,7 +15,7 @@ export default function SectionHeader({ title, subtitle, align = 'center' }: Sec
       transition={{ duration: 0.5 }}
       className={`mb-12 ${align === 'center' ? 'text-center' : 'text-left'}`}
     >
-      <h2 className="font-display text-3xl sm:text-4xl font-bold text-gray-900">
+      <h2 className="heading-club text-3xl sm:text-4xl text-gray-900">
         {title}
       </h2>
       {subtitle && (
