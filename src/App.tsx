@@ -13,6 +13,7 @@ import MomcadPage from '@/pages/MomcadPage'
 import StatistikaPage from '@/pages/StatistikaPage'
 import PostaniClanPage from '@/pages/PostaniClanPage'
 import ObavijestiPage from '@/pages/ObavijestiPage'
+import AdminPage from '@/pages/AdminPage'
 import GalleryPage from '@/pages/GalleryPage'
 
 const router = createBrowserRouter([
@@ -33,6 +34,7 @@ const router = createBrowserRouter([
       { path: 'galerija', element: <GalleryPage /> },
       { path: 'postani-clan', element: <PostaniClanPage /> },
       { path: 'obavijesti', element: <ObavijestiPage /> },
+      { path: 'admin', element: <AdminPage /> },
       { path: '*', element: <NotFoundPage /> },
     ],
   },

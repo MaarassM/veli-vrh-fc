@@ -14,6 +14,7 @@ interface SEOProps {
   canonicalPath?: string;
   ogImage?: string;
   keywords?: string;
+  noindex?: boolean;
 }
 
 export default function SEO({
@@ -22,6 +23,7 @@ export default function SEO({
   canonicalPath,
   ogImage = DEFAULT_OG_IMAGE,
   keywords = DEFAULT_KEYWORDS,
+  noindex = false,
 }: SEOProps) {
   const canonicalUrl = canonicalPath ? `${BASE_URL}${canonicalPath}` : undefined;
 
@@ -30,7 +32,7 @@ export default function SEO({
       <title>{title}</title>
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
-      <meta name="robots" content="index, follow" />
+      <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow"} />
       {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
 
       {/* Open Graph */}
