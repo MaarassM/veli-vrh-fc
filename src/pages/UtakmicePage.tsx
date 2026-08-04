@@ -61,12 +61,14 @@ export default function UtakmicePage() {
               <CalendarPlus className="h-4 w-4" /> Dodaj raspored u kalendar (
               {TABS.find(t => t.key === category)?.label ?? 'Seniori'})
             </a>
-            <Link
-              to="/statistika"
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-orange-500 hover:text-orange-600 transition-colors"
-            >
-              <ChartNoAxesColumn className="h-4 w-4" /> Statistika
-            </Link>
+            {category === 'seniori' && (
+              <Link
+                to="/statistika"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-orange-500 hover:text-orange-600 transition-colors"
+              >
+                <ChartNoAxesColumn className="h-4 w-4" /> Statistika
+              </Link>
+            )}
           </div>
         </PageHeader>
 
