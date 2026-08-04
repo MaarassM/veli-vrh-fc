@@ -9,13 +9,15 @@ export interface Scorer {
   photoUrl: string | null
 }
 
-export function useScorers(limit = 20) {
+export function useScorers(limit = 20, season?: string) {
   const [scorers, setScorers] = useState<Scorer[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    fetch(`/api/scorers?limit=${limit}`)
+    setLoading(true)
+    const seasonPart = season ? `&season=${encodeURIComponent(season)}` : ''
+    fetch(`/api/scorers?limit=${limit}${seasonPart}`)
       .then(r => {
         if (!r.ok) throw new Error(`HTTP ${r.status}`)
         return r.json()
@@ -23,7 +25,7 @@ export function useScorers(limit = 20) {
       .then(result => setScorers(result.data ?? []))
       .catch(err => setError(err instanceof Error ? err.message : 'Greška pri učitavanju strijelaca'))
       .finally(() => setLoading(false))
-  }, [limit])
+  }, [limit, season])
 
   return { scorers, loading, error }
 }

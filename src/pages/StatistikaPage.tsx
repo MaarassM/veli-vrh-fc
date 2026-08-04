@@ -1,9 +1,20 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useScorers } from '@/hooks/useScorers'
 import PageHeader from '@/components/ui/PageHeader'
 import { useMatchList } from '@/hooks/useMatchList'
 import { homeAwayRecord, biggestWin, formString } from '@/lib/stats'
 import SEO from '@/components/seo/SEO'
+
+function useSeasons() {
+  const [seasons, setSeasons] = useState<string[]>([])
+  useEffect(() => {
+    fetch('/api/seasons')
+      .then(r => (r.ok ? r.json() : { data: [] }))
+      .then(result => setSeasons(result.data ?? []))
+      .catch(() => setSeasons([]))
+  }, [])
+  return seasons
+}
 
 function FormBadge({ result }: { result: string }) {
   const styles: Record<string, string> = {
@@ -51,8 +62,11 @@ function VenueCard({ title, record }: { title: string; record: { wins: number; d
 }
 
 export default function StatistikaPage() {
-  const { scorers, loading: scorersLoading } = useScorers(20)
-  const { matches, loading: matchesLoading } = useMatchList('seniori', 'liga', false)
+  const seasons = useSeasons()
+  // undefined = aktivna (najnovija) sezona — API sam odabere
+  const [season, setSeason] = useState<string | undefined>(undefined)
+  const { scorers, loading: scorersLoading } = useScorers(20, season)
+  const { matches, loading: matchesLoading } = useMatchList('seniori', 'liga', false, season)
 
   const record = useMemo(() => homeAwayRecord(matches), [matches])
   const bestWin = useMemo(() => biggestWin(matches), [matches])
@@ -68,7 +82,28 @@ export default function StatistikaPage() {
         canonicalPath="/statistika"
       />
       <div className="mx-auto max-w-4xl">
-        <PageHeader title="Statistika" subtitle="Seniori — Elitna liga NSŽI" />
+        <PageHeader title="Statistika" subtitle="Seniori — Elitna liga NSŽI">
+          {seasons.length > 1 && (
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
+              {seasons.map(s => {
+                const active = season === s || (season === undefined && s === seasons[0])
+                return (
+                  <button
+                    key={s}
+                    onClick={() => setSeason(s === seasons[0] ? undefined : s)}
+                    className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-colors cursor-pointer ${
+                      active
+                        ? 'bg-gray-900 text-white'
+                        : 'bg-white text-gray-600 border border-gray-200 hover:border-orange-300 hover:text-orange-500'
+                    }`}
+                  >
+                    {s}
+                  </button>
+                )
+              })}
+            </div>
+          )}
+        </PageHeader>
 
         {loading ? (
           <div className="space-y-6">

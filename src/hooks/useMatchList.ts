@@ -49,7 +49,7 @@ export function mapApiMatch(m: ApiMatch): MatchItem & { homeLogoUrl: string; awa
   }
 }
 
-export function useMatchList(category: string, competition: CompetitionFilter, all: boolean) {
+export function useMatchList(category: string, competition: CompetitionFilter, all: boolean, season?: string) {
   const [matches, setMatches] = useState<ReturnType<typeof mapApiMatch>[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -61,6 +61,7 @@ export function useMatchList(category: string, competition: CompetitionFilter, a
     const params = new URLSearchParams({ category })
     if (all) params.set('all', '1')
     if (competition !== 'sve') params.set('competition', competition)
+    if (season) params.set('season', season)
 
     fetch(`/api/matches?${params}`)
       .then(r => {
@@ -70,7 +71,7 @@ export function useMatchList(category: string, competition: CompetitionFilter, a
       .then(result => setMatches((result.data ?? []).map(mapApiMatch)))
       .catch(err => setError(err instanceof Error ? err.message : 'Greška pri učitavanju utakmica'))
       .finally(() => setLoading(false))
-  }, [category, competition, all])
+  }, [category, competition, all, season])
 
   return { matches, loading, error }
 }

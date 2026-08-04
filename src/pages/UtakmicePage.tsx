@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { CalendarPlus } from 'lucide-react'
+import { Link } from 'react-router'
+import { CalendarPlus, ChartNoAxesColumn } from 'lucide-react'
 import { useMatchList, type CompetitionFilter } from '@/hooks/useMatchList'
 import { groupByPart, nextMatch } from '@/lib/matches'
 import RoundSection from '@/components/utakmice/RoundSection'
@@ -52,13 +53,21 @@ export default function UtakmicePage() {
       />
       <div className="mx-auto max-w-3xl">
         <PageHeader title="Utakmice" subtitle="Raspored i rezultati — NK Veli Vrh">
-          <a
-            href={`/kalendar.ics?category=${category}`}
-            className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-orange-500 hover:text-orange-600 transition-colors"
-          >
-            <CalendarPlus className="h-4 w-4" /> Dodaj raspored u kalendar (
-            {TABS.find(t => t.key === category)?.label ?? 'Seniori'})
-          </a>
+          <div className="mt-3 flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+            <a
+              href={`/kalendar.ics?category=${category}`}
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-orange-500 hover:text-orange-600 transition-colors"
+            >
+              <CalendarPlus className="h-4 w-4" /> Dodaj raspored u kalendar (
+              {TABS.find(t => t.key === category)?.label ?? 'Seniori'})
+            </a>
+            <Link
+              to="/statistika"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-orange-500 hover:text-orange-600 transition-colors"
+            >
+              <ChartNoAxesColumn className="h-4 w-4" /> Statistika
+            </Link>
+          </div>
         </PageHeader>
 
         {/* Kategorije */}
