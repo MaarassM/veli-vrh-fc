@@ -251,7 +251,7 @@ export default function PushBell() {
         setSubscribed(true)
         // Preferencije sa servera su istina — localStorage je samo cache
         try {
-          const res = await fetch(`/api/push/subscribe?endpoint=${encodeURIComponent(sub.endpoint)}`)
+          const res = await fetch(`/api/push?action=prefs&endpoint=${encodeURIComponent(sub.endpoint)}`)
           if (res.ok) {
             const server = await res.json()
             setPrefs({ ...DEFAULT_PREFS, ...server })
@@ -285,7 +285,7 @@ export default function PushBell() {
         if (permission === 'denied') setMode('denied')
         return
       }
-      const keyRes = await fetch('/api/push/key')
+      const keyRes = await fetch('/api/push?action=key')
       if (!keyRes.ok) throw new Error('push not configured')
       const { key } = await keyRes.json()
 
@@ -297,7 +297,7 @@ export default function PushBell() {
           applicationServerKey: urlBase64ToUint8Array(key),
         }))
 
-      const res = await fetch('/api/push/subscribe', {
+      const res = await fetch('/api/push?action=subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -314,7 +314,7 @@ export default function PushBell() {
       setSubscribed(true)
 
       // Prava probna obavijest kroz push kanal — testira cijeli lanac do uređaja
-      fetch('/api/push/welcome', {
+      fetch('/api/push?action=welcome', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ endpoint: sub.endpoint }),
@@ -333,7 +333,7 @@ export default function PushBell() {
       const reg = await navigator.serviceWorker.ready
       const sub = await reg.pushManager.getSubscription()
       if (sub) {
-        await fetch('/api/push/subscribe', {
+        await fetch('/api/push?action=subscribe', {
           method: 'DELETE',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ endpoint: sub.endpoint }),
