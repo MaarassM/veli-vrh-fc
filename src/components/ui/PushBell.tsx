@@ -108,9 +108,10 @@ interface PanelProps {
   onSave: (prefs: Prefs) => void
   onDisable: () => void
   onClose: () => void
+  saved: boolean
 }
 
-function SettingsPanel({ subscribed, prefs, busy, onSave, onDisable, onClose }: PanelProps) {
+function SettingsPanel({ subscribed, prefs, busy, onSave, onDisable, onClose, saved }: PanelProps) {
   const [draft, setDraft] = useState<Prefs>(prefs)
 
   function toggleCategory(key: string) {
@@ -203,6 +204,13 @@ function SettingsPanel({ subscribed, prefs, busy, onSave, onDisable, onClose }: 
         {!canSave && (
           <p className="mt-2 text-xs text-red-500">Odaberi barem jednu kategoriju i vrstu obavijesti.</p>
         )}
+        {saved && (
+          <div className="mt-3 rounded-lg bg-green-50 border border-green-200 px-3 py-2 text-xs text-green-700 leading-relaxed">
+            <strong>Spremljeno!</strong> Poslali smo probnu obavijest na ovaj uređaj — trebala bi
+            stići za koju sekundu. Na iPhoneu se možda neće prikazati dok je aplikacija otvorena —
+            zaključaj ekran ili izađi iz aplikacije pa provjeri.
+          </div>
+        )}
         <Link
           to="/obavijesti"
           onClick={onClose}
@@ -220,6 +228,7 @@ export default function PushBell() {
   const [subscribed, setSubscribed] = useState(false)
   const [prefs, setPrefs] = useState<Prefs>(DEFAULT_PREFS)
   const [busy, setBusy] = useState(false)
+  const [saved, setSaved] = useState(false)
   const [open, setOpen] = useState<false | 'settings' | 'ios'>(false)
 
   useEffect(() => {
@@ -260,6 +269,7 @@ export default function PushBell() {
     function onOpenRequest(e: Event) {
       if (mode === 'ready' || mode === 'ios-install') {
         e.preventDefault()
+        setSaved(false)
         setOpen(mode === 'ios-install' ? 'ios' : 'settings')
       }
     }
@@ -301,24 +311,15 @@ export default function PushBell() {
 
       localStorage.setItem(PREFS_KEY, JSON.stringify(next))
       setPrefs(next)
-      const firstTime = !subscribed
       setSubscribed(true)
-      setOpen(false)
 
-      // Testna obavijest odmah — korisnik vidi da sve radi
-      try {
-        await reg.showNotification(
-          firstTime ? 'Obavijesti su uključene! 🟠' : 'Postavke su spremljene',
-          {
-            body: 'Ovako će ti stizati obavijesti o utakmicama NK Veli Vrh. Idemo, narančasti!',
-            icon: '/images/icon-192.png',
-            badge: '/images/icon-192.png',
-            data: { url: '/utakmice' },
-          },
-        )
-      } catch {
-        /* nije kritično */
-      }
+      // Prava probna obavijest kroz push kanal — testira cijeli lanac do uređaja
+      fetch('/api/push/welcome', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ endpoint: sub.endpoint }),
+      }).catch(() => {})
+      setSaved(true)
     } catch (err) {
       console.error('[push] save failed:', err)
     } finally {
@@ -362,7 +363,10 @@ export default function PushBell() {
   return (
     <>
       <button
-        onClick={() => setOpen(mode === 'ios-install' ? 'ios' : 'settings')}
+        onClick={() => {
+          setSaved(false)
+          setOpen(mode === 'ios-install' ? 'ios' : 'settings')
+        }}
         disabled={mode === 'denied'}
         title={title}
         aria-label={title}
@@ -387,6 +391,7 @@ export default function PushBell() {
           subscribed={subscribed}
           prefs={prefs}
           busy={busy}
+          saved={saved}
           onSave={save}
           onDisable={disable}
           onClose={() => setOpen(false)}

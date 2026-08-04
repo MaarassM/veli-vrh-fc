@@ -112,6 +112,37 @@ export default function GalleryAdmin() {
     await loadItems(albumId)
   }
 
+  async function removeAlbum() {
+    const album = albums.find(a => a.id === albumId)
+    if (!album) return
+    const message =
+      items.length > 0
+        ? `Obrisati album "${album.title}" i svih ${items.length} fotografija u njemu? Ovo se ne može poništiti.`
+        : `Obrisati prazan album "${album.title}"?`
+    if (!confirm(message)) return
+    setBusy(true)
+    setError(null)
+    try {
+      // Prvo storage datoteke, pa retci, pa album
+      const paths = items
+        .filter(i => i.src.startsWith(MEDIA_URL_PREFIX))
+        .map(i => i.src.slice(MEDIA_URL_PREFIX.length))
+      if (paths.length > 0) await supabase.storage.from('media').remove(paths)
+      const { error: itemsError } = await supabase.from('gallery_items').delete().eq('album_id', albumId)
+      if (itemsError) throw new Error(itemsError.message)
+      const { error: albumError } = await supabase.from('albums').delete().eq('id', albumId)
+      if (albumError) throw new Error(albumError.message)
+      setAlbumId('')
+      const { data } = await supabase.from('albums').select('id, title, description, sort_order').order('sort_order')
+      setAlbums(data ?? [])
+      setAlbumId(data?.[0]?.id ?? '')
+    } catch (err) {
+      setError(`Brisanje albuma nije uspjelo: ${err instanceof Error ? err.message : err}`)
+    } finally {
+      setBusy(false)
+    }
+  }
+
   async function removeItem(item: ItemRow) {
     if (!confirm('Obrisati ovu fotografiju?')) return
     setBusy(true)
@@ -181,11 +212,11 @@ export default function GalleryAdmin() {
           </form>
         </div>
 
-        {/* Upload */}
-        <div>
+        {/* Upload + brisanje albuma */}
+        <div className="flex flex-wrap items-center gap-3">
           <label
             htmlFor="photo-upload"
-            className={`inline-flex items-center gap-2 rounded-full bg-orange-500 px-5 py-2.5 text-sm font-bold text-white hover:bg-orange-600 transition-colors cursor-pointer ${busy ? 'opacity-50 pointer-events-none' : ''}`}
+            className={`inline-flex items-center gap-2 rounded-full bg-orange-500 px-5 py-3 text-sm font-bold text-white hover:bg-orange-600 transition-colors cursor-pointer ${busy || !albumId ? 'opacity-50 pointer-events-none' : ''}`}
           >
             {busy && progress ? <Loader2 className="h-4 w-4 animate-spin" /> : <Upload className="h-4 w-4" />}
             {progress ?? 'Dodaj fotografije'}
@@ -201,8 +232,20 @@ export default function GalleryAdmin() {
               e.target.value = ''
             }}
           />
-          <p className="mt-2 text-xs text-gray-400">Možeš odabrati više fotografija odjednom — idu u odabrani album.</p>
+          {albumId && (
+            <button
+              onClick={removeAlbum}
+              disabled={busy}
+              className="inline-flex items-center gap-1.5 rounded-full border border-gray-200 px-4 py-3 text-sm font-semibold text-gray-500 hover:text-red-500 hover:border-red-300 transition-colors cursor-pointer disabled:opacity-50"
+            >
+              <Trash2 className="h-4 w-4" /> Obriši album
+            </button>
+          )}
         </div>
+        <p className="text-xs text-gray-400">
+          Možeš odabrati više fotografija odjednom — idu u odabrani album. Fotografiju brišeš
+          dodirom na kanticu u kutu slike.
+        </p>
       </div>
 
       {/* Fotke u albumu */}
@@ -217,9 +260,9 @@ export default function GalleryAdmin() {
                 onClick={() => removeItem(item)}
                 disabled={busy}
                 aria-label="Obriši fotografiju"
-                className="absolute top-2 right-2 rounded-full bg-black/60 p-2 text-white opacity-0 group-hover:opacity-100 focus-visible:opacity-100 transition-opacity hover:bg-red-500 cursor-pointer"
+                className="absolute top-2 right-2 rounded-full bg-black/60 p-2.5 text-white sm:opacity-0 sm:group-hover:opacity-100 focus-visible:opacity-100 transition-opacity hover:bg-red-500 cursor-pointer"
               >
-                <Trash2 className="h-4 w-4" />
+                <Trash2 className="h-5 w-5" />
               </button>
             </div>
           ))}

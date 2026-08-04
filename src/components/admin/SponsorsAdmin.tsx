@@ -125,7 +125,7 @@ export default function SponsorsAdmin() {
                 onClick={() => move(sponsor, -1)}
                 disabled={busy || i === 0}
                 aria-label="Pomakni gore"
-                className="p-2 text-gray-400 hover:text-gray-700 disabled:opacity-30 cursor-pointer"
+                className="p-2.5 text-gray-400 hover:text-gray-700 disabled:opacity-30 cursor-pointer"
               >
                 ↑
               </button>
@@ -133,7 +133,7 @@ export default function SponsorsAdmin() {
                 onClick={() => move(sponsor, 1)}
                 disabled={busy || i === sponsors.length - 1}
                 aria-label="Pomakni dolje"
-                className="p-2 text-gray-400 hover:text-gray-700 disabled:opacity-30 cursor-pointer"
+                className="p-2.5 text-gray-400 hover:text-gray-700 disabled:opacity-30 cursor-pointer"
               >
                 ↓
               </button>
@@ -141,7 +141,7 @@ export default function SponsorsAdmin() {
                 onClick={() => removeSponsor(sponsor)}
                 disabled={busy}
                 aria-label="Obriši"
-                className="p-2 text-gray-400 hover:text-red-500 cursor-pointer"
+                className="p-2.5 text-gray-400 hover:text-red-500 cursor-pointer"
               >
                 <Trash2 className="h-4 w-4" />
               </button>
