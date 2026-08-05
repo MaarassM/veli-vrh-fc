@@ -109,9 +109,10 @@ interface PanelProps {
   onDisable: () => void
   onClose: () => void
   saved: boolean
+  saveError: string | null
 }
 
-function SettingsPanel({ subscribed, prefs, busy, onSave, onDisable, onClose, saved }: PanelProps) {
+function SettingsPanel({ subscribed, prefs, busy, onSave, onDisable, onClose, saved, saveError }: PanelProps) {
   const [draft, setDraft] = useState<Prefs>(prefs)
 
   function toggleCategory(key: string) {
@@ -211,6 +212,11 @@ function SettingsPanel({ subscribed, prefs, busy, onSave, onDisable, onClose, sa
             zaključaj ekran ili izađi iz aplikacije pa provjeri.
           </div>
         )}
+        {saveError && (
+          <div className="mt-3 rounded-lg bg-red-50 border border-red-200 px-3 py-2 text-xs text-red-600 leading-relaxed">
+            {saveError}
+          </div>
+        )}
         <Link
           to="/obavijesti"
           onClick={onClose}
@@ -229,6 +235,7 @@ export default function PushBell() {
   const [prefs, setPrefs] = useState<Prefs>(DEFAULT_PREFS)
   const [busy, setBusy] = useState(false)
   const [saved, setSaved] = useState(false)
+  const [saveError, setSaveError] = useState<string | null>(null)
   const [open, setOpen] = useState<false | 'settings' | 'ios'>(false)
 
   useEffect(() => {
@@ -270,6 +277,7 @@ export default function PushBell() {
       if (mode === 'ready' || mode === 'ios-install') {
         e.preventDefault()
         setSaved(false)
+        setSaveError(null)
         setOpen(mode === 'ios-install' ? 'ios' : 'settings')
       }
     }
@@ -279,14 +287,22 @@ export default function PushBell() {
 
   async function save(next: Prefs) {
     setBusy(true)
+    setSaveError(null)
     try {
       const permission = await Notification.requestPermission()
       if (permission !== 'granted') {
-        if (permission === 'denied') setMode('denied')
+        if (permission === 'denied') {
+          setMode('denied')
+          setSaveError(
+            'Obavijesti su blokirane za ovu stranicu. Odblokiraj ih u postavkama preglednika (ikona pored adrese → Obavijesti → Dopusti) pa pokušaj ponovno.',
+          )
+        } else {
+          setSaveError('Nisi dopustio obavijesti — pokušaj ponovno i u dijalogu odaberi "Dopusti".')
+        }
         return
       }
       const keyRes = await fetch('/api/push?action=key')
-      if (!keyRes.ok) throw new Error('push not configured')
+      if (!keyRes.ok) throw new Error(`server ključ (HTTP ${keyRes.status})`)
       const { key } = await keyRes.json()
 
       const reg = await navigator.serviceWorker.ready
@@ -307,7 +323,7 @@ export default function PushBell() {
           notifyReminders: next.notifyReminders,
         }),
       })
-      if (!res.ok) throw new Error('save failed')
+      if (!res.ok) throw new Error(`spremanje na server (HTTP ${res.status})`)
 
       localStorage.setItem(PREFS_KEY, JSON.stringify(next))
       setPrefs(next)
@@ -322,6 +338,9 @@ export default function PushBell() {
       setSaved(true)
     } catch (err) {
       console.error('[push] save failed:', err)
+      setSaveError(
+        `Uključivanje nije uspjelo: ${err instanceof Error ? err.message : String(err)}. Pošalji nam ovu poruku da lakše pomognemo.`,
+      )
     } finally {
       setBusy(false)
     }
@@ -365,6 +384,8 @@ export default function PushBell() {
       <button
         onClick={() => {
           setSaved(false)
+          setSaveError(null)
+        setSaveError(null)
           setOpen(mode === 'ios-install' ? 'ios' : 'settings')
         }}
         disabled={mode === 'denied'}
@@ -392,6 +413,7 @@ export default function PushBell() {
           prefs={prefs}
           busy={busy}
           saved={saved}
+          saveError={saveError}
           onSave={save}
           onDisable={disable}
           onClose={() => setOpen(false)}
