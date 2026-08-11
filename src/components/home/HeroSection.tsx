@@ -16,13 +16,10 @@ export default function HeroSection() {
   return (
     <section className="relative overflow-hidden min-h-[600px] md:min-h-[80vh] lg:min-h-[90vh] flex flex-col">
 
-      {/* Background photo — positioned slightly higher on larger screens */}
+      {/* Background photo — landscape 3:2, so narrow screens focus the left side (corner flag + ball) */}
       <div
-        className="absolute inset-0 bg-cover bg-no-repeat"
-        style={{
-          backgroundImage: "url('/images/hero.webp')",
-          backgroundPosition: "center 30%",
-        }}
+        className="absolute inset-0 bg-cover bg-no-repeat bg-[position:20%_center] md:bg-[position:center_65%]"
+        style={{ backgroundImage: "url('/images/hero.webp')" }}
       />
 
       {/* Dark overlay */}
