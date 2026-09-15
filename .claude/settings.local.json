@@ -19,7 +19,8 @@
       "Bash(curl:*)",
       "Bash(npx tsx:*)",
       "Bash(/Users/mihaelmaras/VeliVrhWorkspace/veli-vrh-fc/.env << 'EOF'\n\n# Supabase - klijentske varijable \\(dostupne u React aplikaciji\\)\nVITE_SUPABASE_URL=https://lsvgqsikuvtcuntpxhco.supabase.co\nVITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imxzdmdxc2lrdXZ0Y3VudHB4aGNvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA5NzM4NDcsImV4cCI6MjA4NjU0OTg0N30.ssV3keazqky6tm0IzRIpK2vtnTOzOSdMf41gl822m7o\nEOF)",
-      "Bash(git reset:*)"
+      "Bash(git reset:*)",
+      "Bash(gh run *)"
     ]
   }
 }

@@ -42,3 +42,20 @@ describe('parseMatchDetail', () => {
     expect(d.events.some(e => e.type === 'substitutionOut')).toBe(true)
   })
 })
+
+const dupHtml = readFileSync('tests/fixtures/hns/match-dup-person.html', 'utf-8')
+
+describe('parseMatchDetail — igrač koji je ujedno i trener', () => {
+  const d = parseMatchDetail(dupHtml)
+
+  it('vraća svakog person_id samo jednom (PK je match_id+person_id)', () => {
+    const ids = d.lineups.map(l => l.personId)
+    expect(new Set(ids).size).toBe(ids.length)
+  })
+
+  it('zadržava igračku ulogu umjesto trenerske', () => {
+    const marić = d.lineups.filter(l => l.personId === 92814)
+    expect(marić).toHaveLength(1)
+    expect(marić[0].position).toBe('Igrač')
+  })
+})

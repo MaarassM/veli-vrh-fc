@@ -264,7 +264,24 @@ export function parseMatchDetail(html: string): ParsedMatchDetail {
     kickoffAt,
     attendance,
     referees: $('.referees').first().text().trim(),
-    lineups,
+    lineups: dedupeLineups(lineups),
     events,
   }
+}
+
+// Igrač-trener je na Semaforu naveden dvaput (kao igrač i kao trener) s istim
+// personId; baza drži jedan red po osobi i utakmici, pa zadržavamo igračku ulogu.
+function dedupeLineups(lineups: ParsedLineupPlayer[]): ParsedLineupPlayer[] {
+  const byPerson = new Map<number, ParsedLineupPlayer>()
+  for (const entry of lineups) {
+    const existing = byPerson.get(entry.personId)
+    if (!existing) {
+      byPerson.set(entry.personId, entry)
+      continue
+    }
+    if (/trener/i.test(existing.position) && !/trener/i.test(entry.position)) {
+      byPerson.set(entry.personId, entry)
+    }
+  }
+  return [...byPerson.values()]
 }
