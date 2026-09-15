@@ -239,12 +239,14 @@ export function parseMatchDetail(html: string): ParsedMatchDetail {
         const $ev = $(evEl)
         const type = ($ev.attr('class') || '').trim()
         const label = $ev.find('.icon').attr('title') || ''
-        const minuteMatch = $ev.text().match(/(\d+)\s*'/)
+        // "90+1'" → minuta 90 + nadoknada 1; bez zahvata za + uhvatili bismo samo "1"
+        const minuteMatch = $ev.text().match(/(\d+)(?:\s*\+\s*(\d+))?\s*'/)
         events.push({
           personId,
           playerName: name,
           team,
           minute: minuteMatch ? parseInt(minuteMatch[1]) : null,
+          minuteExtra: minuteMatch?.[2] ? parseInt(minuteMatch[2]) : null,
           type,
           label,
         })

@@ -29,6 +29,7 @@ export interface MatchEvent {
   playerName: string
   team: 'home' | 'away'
   minute: number | null
+  minuteExtra: number | null
   type: string
   label: string | null
 }

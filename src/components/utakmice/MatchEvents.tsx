@@ -34,7 +34,9 @@ function typeSuffix(event: MatchEvent): string | null {
 
 export default function MatchEvents({ events }: Props) {
   // Izmjene "ušao" prikazujemo uz "izašao" vizualno kroz redoslijed minuta — bez parova
-  const sorted = [...events].sort((a, b) => (a.minute ?? 0) - (b.minute ?? 0))
+  const sorted = [...events].sort(
+    (a, b) => (a.minute ?? 0) - (b.minute ?? 0) || (a.minuteExtra ?? 0) - (b.minuteExtra ?? 0),
+  )
 
   if (sorted.length === 0) {
     return <p className="text-center text-sm text-gray-400 py-6">Nema zabilježenih događaja.</p>
@@ -55,7 +57,9 @@ export default function MatchEvents({ events }: Props) {
           <li key={i} className="grid grid-cols-[1fr_auto_1fr] items-center gap-3 py-1">
             <div className="flex justify-end">{event.team === 'home' ? row : null}</div>
             <div className="text-xs font-bold text-gray-400 tabular-nums w-8 text-center">
-              {event.minute !== null ? `${event.minute}'` : ''}
+              {event.minute !== null
+                ? `${event.minute}${event.minuteExtra ? `+${event.minuteExtra}` : ''}'`
+                : ''}
             </div>
             <div className="flex justify-start">{event.team === 'away' ? row : null}</div>
           </li>

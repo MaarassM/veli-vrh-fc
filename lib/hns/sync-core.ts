@@ -236,6 +236,7 @@ async function syncMatchDetails(
             player_name: e.playerName,
             team: e.team,
             minute: e.minute,
+            minute_extra: e.minuteExtra,
             type: e.type,
             label: e.label,
           }))

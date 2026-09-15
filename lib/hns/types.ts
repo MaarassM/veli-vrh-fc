@@ -66,6 +66,7 @@ export interface ParsedMatchEvent {
   playerName: string
   team: 'home' | 'away'
   minute: number | null
+  minuteExtra: number | null   // sudačka nadoknada: 90+1 → minute 90, minuteExtra 1
   type: string            // css klasa: 'goal' | 'substitutionIn' | 'substitutionOut' | 'yellowCard' | ...
   label: string           // hrvatska oznaka iz title atributa: 'Gol', 'Izmjena', ...
 }

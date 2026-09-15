@@ -59,3 +59,25 @@ describe('parseMatchDetail — igrač koji je ujedno i trener', () => {
     expect(marić[0].position).toBe('Igrač')
   })
 })
+
+describe('parseMatchDetail — sudačka nadoknada', () => {
+  const d = parseMatchDetail(dupHtml)
+
+  it('razdvaja 90+1 na minutu i nadoknadu', () => {
+    const late = d.events.filter(e => e.minute === 90)
+    expect(late.length).toBeGreaterThan(0)
+    expect(late.some(e => e.minuteExtra === 1)).toBe(true)
+    expect(late.some(e => e.minuteExtra === 3)).toBe(true)
+  })
+
+  it('Ćosićev gol je u 90+1, ne u 1. minuti', () => {
+    const cosic = d.events.find(e => e.playerName.includes('Ćosić') && e.type === 'goal')!
+    expect(cosic.minute).toBe(90)
+    expect(cosic.minuteExtra).toBe(1)
+  })
+
+  it('obična minuta nema nadoknadu', () => {
+    const regular = d.events.find(e => e.minute === 13)!
+    expect(regular.minuteExtra).toBeNull()
+  })
+})

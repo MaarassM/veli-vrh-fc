@@ -18,7 +18,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const [detailRes, lineupsRes, eventsRes] = await Promise.all([
     supabase.from('match_details').select('*').eq('match_id', matchId).maybeSingle(),
     supabase.from('match_lineups').select('*').eq('match_id', matchId).order('number', { ascending: true }),
-    supabase.from('match_events').select('*').eq('match_id', matchId).order('minute', { ascending: true }),
+    supabase.from('match_events').select('*').eq('match_id', matchId).order('minute', { ascending: true }).order('minute_extra', { ascending: true, nullsFirst: true }),
   ])
 
   if (detailRes.error || lineupsRes.error || eventsRes.error) {
@@ -61,6 +61,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     playerName: e.player_name,
     team: e.team,
     minute: e.minute,
+    minuteExtra: e.minute_extra ?? null,
     type: e.type,
     label: e.label
   }))
