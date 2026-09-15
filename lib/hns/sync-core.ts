@@ -209,24 +209,6 @@ async function syncMatchDetails(
       const html = await fetchHtml(`${SEMAFOR_BASE}/utakmice/${matchId}/x/`)
       const d = parseMatchDetail(html)
 
-      const { error: dErr } = await supabaseAdmin.from('match_details').upsert(
-        {
-          match_id: matchId,
-          home_team: d.homeTeam,
-          away_team: d.awayTeam,
-          home_score: d.homeScore,
-          away_score: d.awayScore,
-          status: d.status,
-          venue: d.venue,
-          kickoff_at: d.kickoffAt,
-          attendance: d.attendance,
-          referees: d.referees,
-          scraped_at: new Date().toISOString(),
-        },
-        { onConflict: 'match_id' }
-      )
-      if (dErr) throw new Error(`match_details upsert: ${dErr.message}`)
-
       if (d.lineups.length > 0) {
         await supabaseAdmin.from('match_lineups').delete().eq('match_id', matchId)
         const { error } = await supabaseAdmin.from('match_lineups').insert(
@@ -260,6 +242,26 @@ async function syncMatchDetails(
         )
         if (error) throw new Error(`match_events insert: ${error.message}`)
       }
+
+      // Zadnje: match_details je ujedno oznaka "utakmica obrađena", pa se upisuje
+      // tek kad sastavi i događaji uspiju — inače bi pad ostavio trajno praznu utakmicu.
+      const { error: dErr } = await supabaseAdmin.from('match_details').upsert(
+        {
+          match_id: matchId,
+          home_team: d.homeTeam,
+          away_team: d.awayTeam,
+          home_score: d.homeScore,
+          away_score: d.awayScore,
+          status: d.status,
+          venue: d.venue,
+          kickoff_at: d.kickoffAt,
+          attendance: d.attendance,
+          referees: d.referees,
+          scraped_at: new Date().toISOString(),
+        },
+        { onConflict: 'match_id' }
+      )
+      if (dErr) throw new Error(`match_details upsert: ${dErr.message}`)
 
       counts.matchDetails += 1
     } catch (err) {
