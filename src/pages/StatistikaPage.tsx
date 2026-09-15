@@ -181,11 +181,6 @@ export default function StatistikaPage() {
                           <span className="w-6 text-right text-sm font-bold text-gray-400 tabular-nums shrink-0">
                             {s.position}.
                           </span>
-                          {s.photoUrl ? (
-                            <img src={s.photoUrl} alt="" className="h-9 w-9 rounded-full object-cover object-top bg-gray-100 shrink-0" loading="lazy" />
-                          ) : (
-                            <span className="h-9 w-9 rounded-full bg-gray-100 shrink-0" />
-                          )}
                           <div className="min-w-0 flex-1">
                             <div className={`text-sm truncate ${isVeliVrh ? 'font-bold text-gray-900' : 'text-gray-700'}`}>
                               {s.name}

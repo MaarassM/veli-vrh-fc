@@ -19,16 +19,6 @@ function TeamColumn({ entries, teamName }: { entries: LineupEntry[]; teamName: s
             <span className="w-6 text-right text-xs font-bold text-gray-400 tabular-nums shrink-0">
               {p.number ?? ''}
             </span>
-            {p.photoUrl ? (
-              <img
-                src={p.photoUrl}
-                alt=""
-                className="h-8 w-8 rounded-full object-cover bg-gray-100 shrink-0"
-                loading="lazy"
-              />
-            ) : (
-              <span className="h-8 w-8 rounded-full bg-gray-100 shrink-0" />
-            )}
             <span className="text-sm text-gray-800 truncate">
               {p.name}
               {p.isCaptain && <span className="ml-1 text-xs font-bold text-orange-500">(C)</span>}

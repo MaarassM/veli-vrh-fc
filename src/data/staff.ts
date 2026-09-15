@@ -11,7 +11,7 @@ export const staffMembers: StaffMember[] = [
   },
   {
     id: "staff-1",
-    firstName: "Daibor",
+    firstName: "Dalibor",
     lastName: "Božac",
     role: "Head Coach",
     image: "/images/dalibor-bozac.png",
