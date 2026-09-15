@@ -11,9 +11,9 @@ const stats = [
   },
   {
     icon: Heart,
-    value: "50",
+    value: "50+",
     label: "Godina",
-    description: "Tradicije i strasti",
+    description: "Od 1975. do danas",
   },
 ];
 
@@ -36,23 +36,23 @@ export default function ClubOverview() {
             className="space-y-6"
           >
             <p className="text-lg text-gray-700 leading-relaxed">
-              <strong className="text-orange-500">NK Veli Vrh</strong> je
-              nogometni klub osnovan 1975. godine u pulskom naselju Veli Vrh.
-              Sada već više od pola stoljeća dijelimo strast prema nogometu,
-              stvarajući zajednicu i gradeći tradiciju kroz generacije.
+              <strong className="text-orange-500">NK Veli Vrh</strong> osnovan je
+              21. ožujka 1975. u istoimenom pulskom naselju. Do tada na Velom Vrhu
+              nije bilo pravog sportskog terena — igralo se na improviziranom
+              igralištu na Monte Lešu i betonskoj ploči u Valamarinu, a klub je
+              svoje igralište podigao na mjestu bivšeg kamenoloma.
             </p>
             <p className="text-gray-600 leading-relaxed">
-              Naš klub je ponos lokalne zajednice — mjesto gdje se generacije
-              susreću, gdje se mladi igrači razvijaju u sportiste i ljude
-              karaktera.
+              Prvu utakmicu odigrali smo 14. rujna 1975. i pobijedili NK Šišan
+              1:0. Kroz pola stoljeća prošli smo put od međuopćinske lige do
+              saveznog ranga, a najveći uspjeh ostvarili smo sezone 2022./23.
+              trećim mjestom u 4. NL NS Rijeka.
             </p>
             <p className="text-gray-600 leading-relaxed">
-              Danas natječemo u{" "}
-              <strong>
-                Elitnoj županijskoj nogometnoj ligi Istarske županije
-              </strong>
-              , s ambicijom daljnjeg razvoja kroz ulaganje u omladinsku školu i
-              modernizaciju infrastrukture.
+              Danas se natječemo u{" "}
+              <strong>Elitnoj ligi NSŽI</strong>, najvišem rangu županijskog
+              nogometa, s momčadima u svim uzrastima — od škole nogometa do
+              veterana. Igralište Tivoli u obnovi je vrijednoj 830.000 eura.
             </p>
           </motion.div>
 

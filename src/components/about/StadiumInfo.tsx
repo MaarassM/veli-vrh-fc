@@ -24,12 +24,14 @@ const stadiumFeatures = [
   },
 ];
 
+// Obnova 2026.: nova umjetna trava, navodnjavanje, tribine, ograda i klupe
+// (830.000 €, Ministarstvo turizma i sporta + Grad Pula). TODO-korisnik: ažuriraj po završetku.
 const facilities = [
-  "Glavni teren s prirodnim travnjakom",
+  "Glavni teren — u obnovi, nova umjetna trava i navodnjavanje",
+  "Nove tribine pristupačne osobama s invaliditetom",
   "Dva pomoćna terena 40×20 m s umjetnom travom",
   "Svlačionice za domaće i gostujuće ekipe",
   "Prostor za suce i delegata",
-  "Skladište opreme",
 ];
 
 export default function StadiumInfo() {
