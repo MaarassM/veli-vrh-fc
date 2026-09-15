@@ -5,7 +5,6 @@ export const navigationItems: NavItem[] = [
   { label: 'Utakmice', path: '/utakmice' },
   { label: 'Momčad', path: '/momcad' },
   { label: 'Kategorije', path: '/kategorije' },
-  { label: 'Novosti', path: '/novosti' },
   { label: 'Galerija', path: '/galerija' },
   { label: 'O klubu', path: '/o-klubu' },
   { label: 'Kontakt', path: '/kontakt' },

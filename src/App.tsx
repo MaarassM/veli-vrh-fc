@@ -5,7 +5,6 @@ import AboutPage from '@/pages/AboutPage'
 import TeamPage from '@/pages/TeamPage'
 import KategorijaPage from '@/pages/KategorijaPage'
 import ContactPage from '@/pages/ContactPage'
-import NovostiPage from '@/pages/NovostiPage'
 import NotFoundPage from '@/pages/NotFoundPage'
 import UtakmicePage from '@/pages/UtakmicePage'
 import UtakmicaDetaljPage from '@/pages/UtakmicaDetaljPage'
@@ -25,7 +24,6 @@ const router = createBrowserRouter([
       { path: 'strucni-stozer', element: <TeamPage /> },
       { path: 'kategorije/:kat?', element: <KategorijaPage /> },
       { path: 'kontakt', element: <ContactPage /> },
-      { path: 'novosti', element: <NovostiPage /> },
       { path: 'utakmice', element: <UtakmicePage /> },
       { path: 'utakmice/:id', element: <UtakmicaDetaljPage /> },
       { path: 'momcad', element: <MomcadPage /> },

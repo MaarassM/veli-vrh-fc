@@ -60,8 +60,8 @@ export default function HeroSection() {
           <Button href="/utakmice" variant="primary" size="md">
             Utakmice
           </Button>
-          <Button href="/novosti" variant="outline-white" size="md">
-            Novosti
+          <Button href="/momcad" variant="outline-white" size="md">
+            Momčad
           </Button>
         </motion.div>
       </div>

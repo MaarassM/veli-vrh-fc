@@ -3,7 +3,6 @@ import NextMatchBanner from "@/components/home/NextMatchBanner";
 import IntroSection from "@/components/home/IntroSection";
 import LeagueTable from "@/components/home/LeagueTable";
 import ClubValues from "@/components/home/ClubValues";
-import NewsSection from "@/components/home/NewsSection";
 import SponsorsStrip from "@/components/home/SponsorsStrip";
 import TopScorersHome from "@/components/home/TopScorersHome";
 import SEO from "@/components/seo/SEO";
@@ -22,7 +21,6 @@ export default function HomePage() {
       <LeagueTable />
       <TopScorersHome />
       <ClubValues />
-      <NewsSection />
       <SponsorsStrip />
     </>
   );

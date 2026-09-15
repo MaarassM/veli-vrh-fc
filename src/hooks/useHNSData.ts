@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react'
 import { players as staticPlayers } from '@/data/players'
 import { leagueStandings as staticStandings } from '@/data/standings'
-import { staticNewsPosts } from '@/data/news'
 
 const API_BASE_URL = '/api'
 
@@ -183,42 +182,4 @@ export function useTopScorers(limit: number = 5) {
     .slice(0, limit)
 
   return { data: topScorers, loading, error }
-}
-
-interface NewsPost {
-  id: string
-  message: string | null
-  full_picture: string | null
-  created_time: string
-  permalink_url: string
-}
-
-export function useNews(limit: number = 6) {
-  const [data, setData] = useState<NewsPost[]>([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await fetch(`${API_BASE_URL}/news?limit=${limit}`)
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`)
-        }
-        const result: APIResponse<NewsPost[]> = await response.json()
-        setData(result.data)
-        setError(null)
-      } catch (err) {
-        console.log('Using static news data as fallback')
-        setData(staticNewsPosts.slice(0, limit))
-        setError(null)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchData()
-  }, [limit])
-
-  return { data, loading, error }
 }
