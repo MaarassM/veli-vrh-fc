@@ -1,18 +1,7 @@
 import { motion } from "motion/react";
-import { useNavigate } from "react-router";
-import { Bell } from "lucide-react";
 import Button from "@/components/ui/Button";
 
 export default function HeroSection() {
-  const navigate = useNavigate();
-
-  // Otvori panel obavijesti (PushBell sluša); fallback na stranicu s uputama
-  function openNotifications() {
-    const event = new CustomEvent("nkvv:open-push", { cancelable: true });
-    window.dispatchEvent(event);
-    if (!event.defaultPrevented) navigate("/obavijesti");
-  }
-
   return (
     <section className="relative overflow-hidden min-h-[600px] md:min-h-[80vh] lg:min-h-[90vh] flex flex-col">
 
@@ -68,10 +57,7 @@ export default function HeroSection() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.35 }}
         >
-          <Button onClick={openNotifications} variant="primary" size="md" icon={Bell}>
-            Prati rezultate
-          </Button>
-          <Button href="/utakmice" variant="outline-white" size="md">
+          <Button href="/utakmice" variant="primary" size="md">
             Utakmice
           </Button>
           <Button href="/novosti" variant="outline-white" size="md">

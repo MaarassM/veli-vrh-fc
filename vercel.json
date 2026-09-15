@@ -17,7 +17,6 @@
     }
   ],
   "rewrites": [
-    { "source": "/kalendar.ics", "destination": "/api/calendar-ics" },
     { "source": "/((?!api|@|node_modules).*)", "destination": "/index.html" }
   ],
   "headers": [

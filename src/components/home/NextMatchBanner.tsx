@@ -1,5 +1,4 @@
 import { motion } from "motion/react";
-import { CalendarPlus } from "lucide-react";
 import { useMatches } from "@/hooks/useHNSData";
 
 function formatMatchDate(isoDate: string): string {
@@ -42,13 +41,6 @@ export default function NextMatchBanner() {
               Raspored nove sezone objavljujemo čim ga HNS potvrdi.
             </p>
           </div>
-          <a
-            href="/kalendar.ics"
-            className="inline-flex items-center gap-2 self-start md:self-auto text-xs font-bold uppercase tracking-widest px-4 py-2 border border-orange-500/60 text-orange-400 hover:bg-orange-500 hover:text-white transition-colors"
-            style={{ fontFamily: "var(--font-barlow-condensed)" }}
-          >
-            <CalendarPlus className="h-4 w-4" /> Pretplati se na raspored
-          </a>
         </div>
       </section>
     );

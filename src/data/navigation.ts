@@ -16,5 +16,4 @@ export const secondaryItems: NavItem[] = [
   { label: 'Statistika', path: '/statistika' },
   { label: 'Stručni stožer', path: '/strucni-stozer' },
   { label: 'Postani član', path: '/postani-clan' },
-  { label: 'Obavijesti i aplikacija', path: '/obavijesti' },
 ];
