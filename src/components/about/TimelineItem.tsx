@@ -14,13 +14,6 @@ const categoryLabels = {
   infrastructure: 'Infrastruktura',
 }
 
-const categoryColors = {
-  founding: 'bg-orange-500',
-  achievement: 'bg-green-500',
-  milestone: 'bg-blue-500',
-  infrastructure: 'bg-purple-500',
-}
-
 export default function TimelineItem({ event, index }: TimelineItemProps) {
   const isEven = index % 2 === 0
 
@@ -60,10 +53,6 @@ export default function TimelineItem({ event, index }: TimelineItemProps) {
           <p className="text-gray-600 leading-relaxed">
             {event.description}
           </p>
-          {/* Decorative dot */}
-          <div
-            className={`absolute left-[4.5rem] md:left-[5.5rem] top-1/2 -translate-y-1/2 w-3 h-3 rounded-full ${categoryColors[event.category]} ring-4 ring-white`}
-          />
         </motion.div>
       </div>
     </motion.div>
