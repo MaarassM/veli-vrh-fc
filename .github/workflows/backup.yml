@@ -1,0 +1,45 @@
+name: Backup baze
+
+# Supabase free nema automatske kopije — dnevno spremamo podatke u granu "backups",
+# pa git povijest služi kao vremenska mašina. Grana se ne deploya.
+on:
+  schedule:
+    - cron: '0 2 * * *'   # 02:00 UTC, prije jutarnjeg synca
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - run: npm ci
+
+      - name: Izvoz podataka
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+        run: npx tsx scripts/backup.ts backups/data
+
+      - name: Spremi u granu backups
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git stash push -- backups/data
+          git switch backups 2>/dev/null || git switch --orphan backups
+          git rm -rq . 2>/dev/null || true
+          git stash pop
+          git add -A backups/data
+          if git diff --cached --quiet; then
+            echo "Nema promjena u podacima."
+            exit 0
+          fi
+          git commit -m "backup: $(date -u +%Y-%m-%d)"
+          git push origin backups

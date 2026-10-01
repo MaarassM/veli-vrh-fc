@@ -71,3 +71,28 @@ u Supabase SQL Editoru (`supabase/migrations/`).
 - Implementacijski planovi: `docs/superpowers/plans/`
 
 <!-- deploy: pickup VAPID env vars -->
+
+## Sigurnost podataka
+
+Supabase na besplatnom planu **nema automatske kopije**, pa ih radimo sami.
+
+**Dnevna kopija.** GitHub Action `backup.yml` svaki dan u 02:00 UTC izvozi sve
+tablice u JSON i sprema ih u granu `backups`. Git povijest te grane je vremenska
+mašina — svaki dan je jedan commit, pa se može vidjeti što se i kad promijenilo.
+Ručno pokretanje: `gh workflow run backup.yml`.
+
+Ne spremamo `sync_log` (samo dijagnostika) ni `push_subscriptions` (osobni podaci).
+Slike u Supabase Storageu (galerija, logotipi sponzora) **nisu** u kopiji — one
+postoje samo na Supabaseu.
+
+**Vraćanje podataka.** Dohvati kopiju i pokreni restore:
+
+```bash
+git fetch origin backups
+git checkout origin/backups -- backups/data
+npx tsx scripts/restore.ts sve            # ili npx tsx scripts/restore.ts gallery_items
+```
+
+Skripta traži potvrdu i prepisuje postojeće redove istog ključa.
+Za kopiju od određenog datuma: `git log origin/backups` pa
+`git checkout <commit> -- backups/data`.
