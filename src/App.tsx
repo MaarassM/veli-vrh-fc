@@ -12,12 +12,14 @@ import MomcadPage from '@/pages/MomcadPage'
 import StatistikaPage from '@/pages/StatistikaPage'
 import PostaniClanPage from '@/pages/PostaniClanPage'
 import AdminPage from '@/pages/AdminPage'
+import ErrorPage from '@/pages/ErrorPage'
 import GalleryPage from '@/pages/GalleryPage'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <MainLayout />,
+    errorElement: <ErrorPage />,
     children: [
       { index: true, element: <HomePage /> },
       { path: 'o-klubu', element: <AboutPage /> },
