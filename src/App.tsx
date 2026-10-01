@@ -13,6 +13,7 @@ import StatistikaPage from '@/pages/StatistikaPage'
 import PostaniClanPage from '@/pages/PostaniClanPage'
 import AdminPage from '@/pages/AdminPage'
 import ErrorPage from '@/pages/ErrorPage'
+import PrivatnostPage from '@/pages/PrivatnostPage'
 import GalleryPage from '@/pages/GalleryPage'
 
 const router = createBrowserRouter([
@@ -32,6 +33,7 @@ const router = createBrowserRouter([
       { path: 'statistika', element: <StatistikaPage /> },
       { path: 'galerija', element: <GalleryPage /> },
       { path: 'postani-clan', element: <PostaniClanPage /> },
+      { path: 'privatnost', element: <PrivatnostPage /> },
       { path: 'admin', element: <AdminPage /> },
       { path: '*', element: <NotFoundPage /> },
     ],
