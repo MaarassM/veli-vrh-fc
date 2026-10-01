@@ -26,16 +26,18 @@ jobs:
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
-        run: npx tsx scripts/backup.ts backups/data
+        # izvan repozitorija, da prebacivanje grane ne dira izvezene datoteke
+        run: npx tsx scripts/backup.ts "$RUNNER_TEMP/backup"
 
       - name: Spremi u granu backups
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git stash push -- backups/data
-          git switch backups 2>/dev/null || git switch --orphan backups
-          git rm -rq . 2>/dev/null || true
-          git stash pop
+          git fetch origin backups 2>/dev/null && git switch backups \
+            || git switch --orphan backups
+          rm -rf backups/data
+          mkdir -p backups/data
+          cp "$RUNNER_TEMP"/backup/*.json backups/data/
           git add -A backups/data
           if git diff --cached --quiet; then
             echo "Nema promjena u podacima."
