@@ -1,0 +1,146 @@
+[
+  {
+    "acat": "Juniors",
+    "category": "juniori",
+    "id": 100949387,
+    "is_cup": false,
+    "name": "ŽNLI JUNIORI A 25/26",
+    "season": "2025/2026",
+    "updated_at": "2026-08-06T07:39:45.213+00:00"
+  },
+  {
+    "acat": "Juniors",
+    "category": "juniori",
+    "id": 115006487,
+    "is_cup": false,
+    "name": "ŽNLI JUNIORI A 26/27",
+    "season": "2026/2027",
+    "updated_at": "2026-10-01T08:23:23.879+00:00"
+  },
+  {
+    "acat": "Pioneers",
+    "category": "mladi-pioniri",
+    "id": 115000999,
+    "is_cup": false,
+    "name": "ŽNLI MLAĐI PIONIRI  (8+1) 26/27",
+    "season": "2026/2027",
+    "updated_at": "2026-10-01T08:23:23.879+00:00"
+  },
+  {
+    "acat": "Pioneers",
+    "category": "pioniri",
+    "id": 112161359,
+    "is_cup": false,
+    "name": "ŽNLI PIONIRI 2026",
+    "season": "2025/2026",
+    "updated_at": "2026-08-06T07:39:45.213+00:00"
+  },
+  {
+    "acat": "Pioneers",
+    "category": "pioniri",
+    "id": 115008754,
+    "is_cup": false,
+    "name": "ŽNLI PIONIRI 26/27",
+    "season": "2026/2027",
+    "updated_at": "2026-10-01T08:23:23.879+00:00"
+  },
+  {
+    "acat": "Pre-beginners",
+    "category": "u-9",
+    "id": 102049500,
+    "is_cup": false,
+    "name": "ŽNLI  U - 9 25/26",
+    "season": "2025/2026",
+    "updated_at": "2026-08-06T07:39:45.213+00:00"
+  },
+  {
+    "acat": "Pre-beginners",
+    "category": "u-9",
+    "id": 117277691,
+    "is_cup": false,
+    "name": "ŽNLI  U - 9 26/27 TURNIRSKI",
+    "season": "2026/2027",
+    "updated_at": "2026-10-01T08:23:23.879+00:00"
+  },
+  {
+    "acat": "Seniors",
+    "category": "seniori",
+    "id": 100586758,
+    "is_cup": true,
+    "name": "KUP NSŽI 25/26",
+    "season": "2025/2026",
+    "updated_at": "2026-08-06T07:39:45.213+00:00"
+  },
+  {
+    "acat": "Seniors",
+    "category": "seniori",
+    "id": 100703751,
+    "is_cup": false,
+    "name": "ELITNA LIGA NSŽI 25/26",
+    "season": "2025/2026",
+    "updated_at": "2026-08-06T07:39:45.213+00:00"
+  },
+  {
+    "acat": "Seniors",
+    "category": "seniori",
+    "id": 114697681,
+    "is_cup": true,
+    "name": "KUP NSŽI 26/27",
+    "season": "2026/2027",
+    "updated_at": "2026-10-01T08:23:23.879+00:00"
+  },
+  {
+    "acat": "Seniors",
+    "category": "seniori",
+    "id": 114701073,
+    "is_cup": false,
+    "name": "ELITNA LIGA NSŽI 26/27",
+    "season": "2026/2027",
+    "updated_at": "2026-10-01T08:23:23.879+00:00"
+  },
+  {
+    "acat": "Veterans",
+    "category": "veterani",
+    "id": 102383368,
+    "is_cup": false,
+    "name": "Veterani JUG 25/26",
+    "season": "2025/2026",
+    "updated_at": "2026-08-06T07:39:45.213+00:00"
+  },
+  {
+    "acat": "Veterans",
+    "category": "veterani",
+    "id": 115055236,
+    "is_cup": false,
+    "name": "VETERANI JUG 26/27",
+    "season": "2026/2027",
+    "updated_at": "2026-10-01T08:23:23.879+00:00"
+  },
+  {
+    "acat": "Young pioneers (mix)",
+    "category": "u-11",
+    "id": 102600299,
+    "is_cup": false,
+    "name": "U - 11 JUG 2 25/26",
+    "season": "2025/2026",
+    "updated_at": "2026-08-06T07:39:45.213+00:00"
+  },
+  {
+    "acat": "Young pioneers (mix)",
+    "category": "u-11",
+    "id": 115070928,
+    "is_cup": false,
+    "name": "U - 11 JUG 26/27",
+    "season": "2026/2027",
+    "updated_at": "2026-10-01T08:23:23.879+00:00"
+  },
+  {
+    "acat": "Young pioneers",
+    "category": "mladi-pioniri",
+    "id": 100968848,
+    "is_cup": false,
+    "name": "ŽNLI MLAĐI PIONIRI 8+1 25/26",
+    "season": "2025/2026",
+    "updated_at": "2026-08-06T07:39:45.213+00:00"
+  }
+]
