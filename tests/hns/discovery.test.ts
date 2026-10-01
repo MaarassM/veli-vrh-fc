@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { readFileSync } from 'node:fs'
-import { currentSeason, previousSeason, discoverCompetitions } from '../../lib/hns/discovery.js'
+import { currentSeason, previousSeason, discoverCompetitions, categoryFor } from '../../lib/hns/discovery.js'
 
 describe('currentSeason', () => {
   it('July and later belongs to the new season', () => {
@@ -41,5 +41,22 @@ describe('discoverCompetitions', () => {
     expect(kup.category).toBe('seniori')
     expect(kup.isCup).toBe(true)
     expect(kup.name).toContain('KUP')
+  })
+})
+
+describe('categoryFor — naziv natjecanja nadjačava dobnu kategoriju', () => {
+  it('MLAĐI PIONIRI pod acat Pioneers ide u mladi-pioniri', () => {
+    expect(categoryFor('Pioneers', 'ŽNLI MLAĐI PIONIRI  (8+1) 26/27')).toBe('mladi-pioniri')
+    expect(categoryFor('Pioneers', 'ŽNLI MLADJI PIONIRI 8+1')).toBe('mladi-pioniri')
+  })
+
+  it('obični PIONIRI ostaju pioniri', () => {
+    expect(categoryFor('Pioneers', 'ŽNLI PIONIRI 26/27')).toBe('pioniri')
+  })
+
+  it('ostale kategorije idu po dobnoj kategoriji', () => {
+    expect(categoryFor('Seniors', 'ELITNA LIGA NSŽI 26/27')).toBe('seniori')
+    expect(categoryFor('Veterans', 'VETERANI JUG 26/27')).toBe('veterani')
+    expect(categoryFor('Nepoznato', 'NEŠTO')).toBeNull()
   })
 })

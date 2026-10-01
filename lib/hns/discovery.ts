@@ -13,6 +13,13 @@ export const ACAT_TO_CATEGORY: Record<string, string> = {
   'Veterans': 'veterani',
 }
 
+// HNS ponekad obje pionirske lige vodi pod acat "Pioneers" (npr. 26/27), pa bi
+// mlađi pioniri završili u istoj kategoriji kao pioniri. Naziv natjecanja je točniji.
+export function categoryFor(acat: string, name: string): string | null {
+  if (/MLA(Đ|DJ|D)I\s+PIONIRI/i.test(name)) return 'mladi-pioniri'
+  return ACAT_TO_CATEGORY[acat] ?? null
+}
+
 // Sezona počinje u srpnju: 2026-07 → "2026/2027"
 export function currentSeason(now: Date): string {
   const y = now.getFullYear()
@@ -37,12 +44,13 @@ export async function discoverCompetitions(
   )
   const out: CompetitionInfo[] = []
   for (const { id: acat } of agecats) {
-    const category = ACAT_TO_CATEGORY[acat]
-    if (!category) continue
+    if (!ACAT_TO_CATEGORY[acat]) continue
     const comps = await fetchJsonImpl<Array<{ id: number; value: string }>>(
       `${SEMAFOR_BASE}/handlers/getCompetitions/?season=${seasonEnc}&acat=${encodeURIComponent(acat)}&t=${ts}&lang=hr&clubID=${clubId}&linkType=club_profile&linkConstructor=/x`
     )
     for (const c of comps) {
+      const category = categoryFor(acat, c.value)
+      if (!category) continue
       out.push({
         cid: c.id,
         name: c.value,
