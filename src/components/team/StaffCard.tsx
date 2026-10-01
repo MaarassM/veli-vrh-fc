@@ -7,12 +7,6 @@ interface StaffCardProps {
   index: number
 }
 
-const roleLabels: Record<string, string> = {
-  'President': 'Predsjednik',
-  'Head Coach': 'Glavni trener',
-  'Uprava kluba': 'Uprava kluba',
-}
-
 export default function StaffCard({ member, index }: StaffCardProps) {
   return (
     <motion.div
@@ -25,18 +19,27 @@ export default function StaffCard({ member, index }: StaffCardProps) {
     >
       {/* Image */}
       <div className="relative aspect-square bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
-        <img
-          src={member.image}
-          alt={`${member.firstName} ${member.lastName}`}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-        />
+        {member.image ? (
+          <img
+            src={member.image}
+            alt={`${member.firstName} ${member.lastName}`}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center font-display text-5xl font-bold text-gray-400">
+            {member.firstName[0]}
+            {member.lastName[0]}
+          </div>
+        )}
         {/* Overlay on hover */}
         <div className="absolute inset-0 bg-gradient-to-t from-orange-500/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
           <div className="text-white">
-            <div className="flex items-center gap-2 text-sm font-medium">
-              <Calendar className="w-4 h-4" />
-              <span>U klubu od {member.since}</span>
-            </div>
+            {member.since && (
+              <div className="flex items-center gap-2 text-sm font-medium">
+                <Calendar className="w-4 h-4" />
+                <span>U klubu od {member.since}</span>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -47,7 +50,7 @@ export default function StaffCard({ member, index }: StaffCardProps) {
           {member.firstName} {member.lastName}
         </h3>
         <p className="text-orange-500 font-medium">
-          {roleLabels[member.role]}
+          {member.role}
         </p>
       </div>
     </motion.div>

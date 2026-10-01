@@ -1,40 +1,12 @@
 import { motion } from "motion/react";
 import { MapPin, Users, Maximize } from "lucide-react";
 import SectionHeader from "@/components/ui/SectionHeader";
+import { useSiteContent } from "@/hooks/useSiteContent";
 
-// TODO-korisnik: provjeri podatke o stadionu (dimenzije, sadržaji)
-const stadiumFeatures = [
-  {
-    icon: MapPin,
-    label: "Lokacija",
-    value: "Stadion Tivoli",
-    description: "Veli Vrh, Pula — na mjestu bivšeg kamenoloma",
-  },
-  {
-    icon: Maximize,
-    label: "Dimenzije",
-    value: "100m × 64m",
-    description: "Glavni teren",
-  },
-  {
-    icon: Users,
-    label: "Kapacitet",
-    value: "200 gledatelja",
-    description: "Sjedeća mjesta",
-  },
-];
-
-// Obnova 2026.: nova umjetna trava, navodnjavanje, tribine, ograda i klupe
-// (830.000 €, Ministarstvo turizma i sporta + Grad Pula). TODO-korisnik: ažuriraj po završetku.
-const facilities = [
-  "Glavni teren — u obnovi, nova umjetna trava i navodnjavanje",
-  "Nove tribine pristupačne osobama s invaliditetom",
-  "Dva pomoćna terena 40×20 m s umjetnom travom",
-  "Svlačionice za domaće i gostujuće ekipe",
-  "Prostor za suce i delegata",
-];
+const icons = [MapPin, Maximize, Users];
 
 export default function StadiumInfo() {
+  const { features: stadiumFeatures, facilities } = useSiteContent("stadium");
   return (
     <section className="py-16 md:py-24 bg-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -43,9 +15,11 @@ export default function StadiumInfo() {
         <div className="mt-12 md:mt-16 space-y-12">
           {/* Stadium features grid */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {stadiumFeatures.map((feature, index) => (
+            {stadiumFeatures.map((feature, index) => {
+              const Icon = icons[index % icons.length];
+              return (
               <motion.div
-                key={feature.label}
+                key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -53,7 +27,7 @@ export default function StadiumInfo() {
                 whileHover={{ y: -4 }}
                 className="bg-gray-50 border border-gray-200 rounded-xl p-6"
               >
-                <feature.icon
+                <Icon
                   className="w-10 h-10 text-orange-500 mb-4"
                   strokeWidth={1.5}
                 />
@@ -67,7 +41,8 @@ export default function StadiumInfo() {
                   {feature.description}
                 </div>
               </motion.div>
-            ))}
+              );
+            })}
           </div>
 
           {/* Facilities list */}

@@ -1,8 +1,9 @@
 import SectionHeader from '@/components/ui/SectionHeader'
 import StaffCard from './StaffCard'
-import { staffMembers } from '@/data/staff'
+import { useStaff } from '@/hooks/useStaff'
 
 export default function StaffSection() {
+  const staffMembers = useStaff()
   return (
     <section className="py-16 md:py-24 bg-gray-50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

@@ -1,9 +1,10 @@
 import { motion } from "motion/react";
 import SectionHeader from "@/components/ui/SectionHeader";
 import TimelineItem from "./TimelineItem";
-import { timelineEvents } from "@/data/timeline";
+import { useTimeline } from "@/hooks/useTimeline";
 
 export default function HistoryTimeline() {
+  const timelineEvents = useTimeline();
   return (
     <section className="py-16 md:py-24 bg-gray-50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

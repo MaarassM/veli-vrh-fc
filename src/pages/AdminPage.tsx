@@ -4,8 +4,21 @@ import { LogOut, Loader2 } from 'lucide-react'
 import { supabase } from '@/lib/supabase'
 import SponsorsAdmin from '@/components/admin/SponsorsAdmin'
 import GalleryAdmin from '@/components/admin/GalleryAdmin'
+import StaffAdmin from '@/components/admin/StaffAdmin'
+import TimelineAdmin from '@/components/admin/TimelineAdmin'
+import ContentAdmin from '@/components/admin/ContentAdmin'
 import PageHeader from '@/components/ui/PageHeader'
 import SEO from '@/components/seo/SEO'
+
+const tabs = {
+  sponzori: { label: 'Sponzori', Component: SponsorsAdmin },
+  galerija: { label: 'Galerija', Component: GalleryAdmin },
+  stozer: { label: 'Stožer', Component: StaffAdmin },
+  povijest: { label: 'Povijest', Component: TimelineAdmin },
+  tekstovi: { label: 'Tekstovi', Component: ContentAdmin },
+}
+
+type TabKey = keyof typeof tabs
 
 function LoginForm() {
   const [email, setEmail] = useState('')
@@ -72,7 +85,7 @@ function LoginForm() {
 export default function AdminPage() {
   const [session, setSession] = useState<Session | null>(null)
   const [checked, setChecked] = useState(false)
-  const [tab, setTab] = useState<'sponzori' | 'galerija'>('sponzori')
+  const [tab, setTab] = useState<TabKey>('sponzori')
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => {
@@ -103,7 +116,7 @@ export default function AdminPage() {
         ) : (
           <>
             <div className="flex flex-wrap items-center justify-center gap-2 mb-8">
-              {(['sponzori', 'galerija'] as const).map(key => (
+              {(Object.keys(tabs) as TabKey[]).map(key => (
                 <button
                   key={key}
                   onClick={() => setTab(key)}
@@ -113,7 +126,7 @@ export default function AdminPage() {
                       : 'bg-white text-gray-600 border border-gray-200 hover:border-orange-300 hover:text-orange-500'
                   }`}
                 >
-                  {key === 'sponzori' ? 'Sponzori' : 'Galerija'}
+                  {tabs[key].label}
                 </button>
               ))}
               <button
@@ -124,7 +137,10 @@ export default function AdminPage() {
               </button>
             </div>
 
-            {tab === 'sponzori' ? <SponsorsAdmin /> : <GalleryAdmin />}
+            {(() => {
+              const { Component } = tabs[tab]
+              return <Component />
+            })()}
           </>
         )}
       </div>

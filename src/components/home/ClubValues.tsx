@@ -1,25 +1,11 @@
 import { motion } from "motion/react";
 import { Heart, Users, Star } from "lucide-react";
+import { useSiteContent } from "@/hooks/useSiteContent";
 
-const values = [
-  {
-    Icon: Heart,
-    title: "Tradicija",
-    body: "Klub ukorijenjen u pulskoj četvrti Veli Vrh, čuvar lokalne nogometne kulture kroz desetljeća.",
-  },
-  {
-    Icon: Users,
-    title: "Zajednica",
-    body: "Više od kluba — mjesto gdje se susreću generacije, obitelji i susjedi oko zajedničke strasti.",
-  },
-  {
-    Icon: Star,
-    title: "Mladi naraštaji",
-    body: "Ulaganje u razvoj mladih igrača, jer budućnost kluba počinje na omladinskim treninzima.",
-  },
-];
+const icons = [Heart, Users, Star];
 
 export default function ClubValues() {
+  const { items } = useSiteContent("club_values");
   return (
     <section className="py-16 md:py-20 bg-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -37,9 +23,11 @@ export default function ClubValues() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {values.map(({ Icon, title, body }, i) => (
+          {items.map(({ title, body }, i) => {
+            const Icon = icons[i % icons.length];
+            return (
             <motion.div
-              key={title}
+              key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -54,7 +42,8 @@ export default function ClubValues() {
               </h3>
               <p className="text-gray-500 leading-relaxed">{body}</p>
             </motion.div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
