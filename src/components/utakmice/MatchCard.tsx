@@ -5,7 +5,8 @@ interface Props {
   match: MatchItem & { homeLogoUrl?: string; awayLogoUrl?: string }
 }
 
-function formatDate(iso: string): string {
+function formatDate(iso: string | null): string {
+  if (!iso) return 'Termin nije objavljen'
   const d = new Date(iso)
   if (isNaN(d.getTime())) return iso
   return d.toLocaleDateString('hr-HR', { day: 'numeric', month: 'numeric', year: 'numeric' })
@@ -66,7 +67,7 @@ export default function MatchCard({ match }: Props) {
               played ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-400'
             }`}
           >
-            {played ? `${match.homeScore}:${match.awayScore}` : (match.time ?? '-:-')}
+            {played ? `${match.homeScore}:${match.awayScore}` : '-:-'}
           </div>
 
           <div className="flex items-center gap-2 min-w-0">

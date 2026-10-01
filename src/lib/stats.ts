@@ -1,5 +1,5 @@
 // Statistike Velog Vrha izvedene iz liste utakmica — čisto, bez fetcha
-import type { MatchItem } from './matches'
+import { compareByDate, type MatchItem } from './matches'
 
 interface VenueRecord {
   wins: number
@@ -62,7 +62,7 @@ export function biggestWin(matches: MatchItem[]): MatchItem | null {
 export function formString(matches: MatchItem[], n = 5): string {
   const played = matches
     .filter(match => perspective(match) !== null)
-    .sort((a, b) => b.date.localeCompare(a.date))
+    .sort((a, b) => compareByDate(b.date, a.date))
     .slice(0, n)
 
   return played

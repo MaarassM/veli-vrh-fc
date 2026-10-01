@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router'
 import { motion } from 'motion/react'
 import { useKategorija } from '@/hooks/useKategorija'
 import { useMatchList } from '@/hooks/useMatchList'
-import { nextMatch } from '@/lib/matches'
+import { compareByDate, nextMatch } from '@/lib/matches'
 import MatchCard from '@/components/utakmice/MatchCard'
 import StandingsTable from '@/components/kategorija/StandingsTable'
 import PageHeader from '@/components/ui/PageHeader'
@@ -31,14 +31,14 @@ export default function KategorijaPage() {
   const recentAndUpcoming = useMemo(() => {
     const played = matches
       .filter(m => m.status === 'played')
-      .sort((a, b) => b.date.localeCompare(a.date))
+      .sort((a, b) => compareByDate(b.date, a.date))
       .slice(0, 3)
       .reverse()
     const upcoming = nextMatch(matches)
     const upcomingList = upcoming
       ? matches
           .filter(m => m.status === 'upcoming')
-          .sort((a, b) => a.date.localeCompare(b.date))
+          .sort((a, b) => compareByDate(a.date, b.date))
           .slice(0, 3)
       : []
     return [...played, ...upcomingList]
@@ -91,12 +91,15 @@ export default function KategorijaPage() {
             transition={{ duration: 0.3 }}
             className="space-y-8"
           >
-            <div>
-              <h2 className="heading-club text-2xl text-gray-900 mb-4">
-                Ljestvica
-              </h2>
-              <StandingsTable standings={standings} />
-            </div>
+            {/* Najmlađi uzrasti igraju turnirski — HNS za njih ne vodi ljestvicu */}
+            {standings.length > 0 && (
+              <div>
+                <h2 className="heading-club text-2xl text-gray-900 mb-4">
+                  Ljestvica
+                </h2>
+                <StandingsTable standings={standings} />
+              </div>
+            )}
 
             {recentAndUpcoming.length > 0 && (
               <div>

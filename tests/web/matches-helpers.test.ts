@@ -72,3 +72,43 @@ describe('lastPlayed', () => {
     expect(lastPlayed(fixture.filter(x => x.status === 'upcoming'))).toBeNull()
   })
 })
+
+describe('utakmice bez datuma (HNS još nije objavio termin)', () => {
+  const bezDatuma = m({ id: 'bezDatuma', date: null as unknown as string, round: 2, status: 'upcoming' })
+  const imaDatum = m({ id: 'imaDatum', date: '2026-10-05', round: 2, status: 'upcoming' })
+  const kasnije = m({ id: 'kasnije', date: '2026-10-12', round: 2, status: 'upcoming' })
+  const odigrana = m({ id: 'odigrana', date: '2026-09-20', round: 1, status: 'played', homeScore: 1, awayScore: 0 })
+
+  // Sort poziva komparator s argumentima u raznim redoslijedima, pa null mora
+  // biti siguran na obje strane — zato provjeravamo sve permutacije.
+  const permutacije: MatchItem[][] = [
+    [bezDatuma, imaDatum, kasnije, odigrana],
+    [imaDatum, bezDatuma, kasnije, odigrana],
+    [imaDatum, kasnije, bezDatuma, odigrana],
+    [odigrana, kasnije, imaDatum, bezDatuma],
+  ]
+
+  it('nijedan helper ne puca ni u jednom redoslijedu', () => {
+    for (const lista of permutacije) {
+      expect(() => groupByRound(lista)).not.toThrow()
+      expect(() => groupByPart(lista)).not.toThrow()
+      expect(() => nextMatch(lista)).not.toThrow()
+      expect(() => lastPlayed(lista)).not.toThrow()
+    }
+  })
+
+  it('utakmice bez datuma idu na kraj kola', () => {
+    for (const lista of permutacije) {
+      const round2 = groupByRound(lista).find(g => g.round === 2)!
+      expect(round2.matches.map(x => x.id)).toEqual(['imaDatum', 'kasnije', 'bezDatuma'])
+    }
+  })
+
+  it('nextMatch bira prvu s objavljenim terminom', () => {
+    for (const lista of permutacije) expect(nextMatch(lista)?.id).toBe('imaDatum')
+  })
+
+  it('lastPlayed i dalje radi', () => {
+    for (const lista of permutacije) expect(lastPlayed(lista)?.id).toBe('odigrana')
+  })
+})
