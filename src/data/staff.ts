@@ -6,7 +6,6 @@ export const staffMembers: StaffMember[] = [
     firstName: "Ilija",
     lastName: "Lovrić",
     role: "Predsjednik",
-    image: "/images/ilija-lovric.png",
     since: "2021",
   },
   {
@@ -14,7 +13,6 @@ export const staffMembers: StaffMember[] = [
     firstName: "Dalibor",
     lastName: "Božac",
     role: "Glavni trener",
-    image: "/images/dalibor-bozac.png",
     since: "2025",
   },
   {
@@ -22,7 +20,6 @@ export const staffMembers: StaffMember[] = [
     firstName: "Alen",
     lastName: "Žagrić",
     role: "Uprava kluba",
-    image: "/images/alen-zagric.png",
     since: "2020",
   },
   {
@@ -30,7 +27,6 @@ export const staffMembers: StaffMember[] = [
     firstName: "Marino",
     lastName: "Brgić",
     role: "Uprava kluba",
-    image: "/images/marino-brgic.png",
     since: "2023",
   },
   {
@@ -38,7 +34,6 @@ export const staffMembers: StaffMember[] = [
     firstName: "Bruno",
     lastName: "Bucci",
     role: "Uprava kluba",
-    image: "/images/bruno-bucci.png",
     since: "2019",
   },
 ];

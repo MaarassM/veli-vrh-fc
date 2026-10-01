@@ -3,6 +3,7 @@ export interface StaffMember {
   firstName: string;
   lastName: string;
   role: string;
-  image: string | null;
+  /** Fotografije stožera se više ne prikazuju; polje ostaje zbog zapisa u bazi. */
+  image?: string | null;
   since: string | null;
 }

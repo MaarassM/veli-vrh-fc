@@ -19,18 +19,10 @@ export default function StaffCard({ member, index }: StaffCardProps) {
     >
       {/* Image */}
       <div className="relative aspect-square bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
-        {member.image ? (
-          <img
-            src={member.image}
-            alt={`${member.firstName} ${member.lastName}`}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-          />
-        ) : (
-          <div className="w-full h-full flex items-center justify-center font-display text-5xl font-bold text-gray-400">
-            {member.firstName[0]}
-            {member.lastName[0]}
-          </div>
-        )}
+        <div className="w-full h-full flex items-center justify-center heading-club text-5xl text-gray-400">
+          {member.firstName[0]}
+          {member.lastName[0]}
+        </div>
         {/* Overlay on hover */}
         <div className="absolute inset-0 bg-gradient-to-t from-orange-500/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
           <div className="text-white">

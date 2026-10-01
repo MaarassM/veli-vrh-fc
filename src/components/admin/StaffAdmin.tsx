@@ -14,7 +14,6 @@ export default function StaffAdmin() {
 
   const [editing, setEditing] = useState<StaffRow | null>(null)
   const [form, setForm] = useState(emptyForm)
-  const [imageFile, setImageFile] = useState<File | null>(null)
 
   async function load() {
     const { data, error: loadError } = await supabase
@@ -38,13 +37,11 @@ export default function StaffAdmin() {
       role: member.role,
       since: member.since ?? '',
     })
-    setImageFile(null)
   }
 
   function resetForm() {
     setEditing(null)
     setForm(emptyForm)
-    setImageFile(null)
   }
 
   async function save(e: React.FormEvent) {
@@ -52,13 +49,8 @@ export default function StaffAdmin() {
     setBusy(true)
     setError(null)
     try {
-      let image_url = editing?.image_url ?? null
-      if (imageFile) {
-        const path = `staff/${Date.now()}-${imageFile.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`
-        const { error: uploadError } = await supabase.storage.from('media').upload(path, imageFile)
-        if (uploadError) throw new Error(`upload slike: ${uploadError.message}`)
-        image_url = MEDIA_URL_PREFIX + path
-      }
+      // Fotografije stožera se ne prikazuju — zadržavamo postojeću vrijednost u bazi
+      const image_url = editing?.image_url ?? null
       const fields = {
         first_name: form.first_name.trim(),
         last_name: form.last_name.trim(),
@@ -69,9 +61,6 @@ export default function StaffAdmin() {
       if (editing) {
         const { error: updateError } = await supabase.from('staff').update(fields).eq('id', editing.id)
         if (updateError) throw new Error(updateError.message)
-        if (imageFile && editing.image_url?.startsWith(MEDIA_URL_PREFIX)) {
-          await supabase.storage.from('media').remove([editing.image_url.slice(MEDIA_URL_PREFIX.length)])
-        }
       } else {
         const maxOrder = staff.reduce((m, s) => Math.max(m, s.sort_order), 0)
         const { error: insertError } = await supabase.from('staff').insert({ ...fields, sort_order: maxOrder + 1 })
@@ -132,11 +121,9 @@ export default function StaffAdmin() {
         )}
         {staff.map((member, i) => (
           <div key={member.id} className="flex items-center gap-3 p-4">
-            {member.image_url ? (
-              <img src={member.image_url} alt="" className="h-12 w-12 rounded-full object-cover shrink-0" />
-            ) : (
-              <span className="h-12 w-12 shrink-0 rounded-full bg-gray-100" />
-            )}
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gray-100 text-sm font-bold text-gray-400">
+              {member.first_name[0]}{member.last_name[0]}
+            </span>
             <div className="min-w-0 flex-1">
               <div className="font-semibold text-gray-900 truncate">
                 {member.first_name} {member.last_name}
@@ -204,15 +191,6 @@ export default function StaffAdmin() {
             <input id="st-since" placeholder="npr. 2021" value={form.since} onChange={e => setForm({ ...form, since: e.target.value })} className={inputClass} />
           </Field>
         </div>
-        <Field id="st-image" label={editing?.image_url ? 'Nova slika (ostavi prazno za postojeću)' : 'Slika (opcionalno)'}>
-          <input
-            id="st-image"
-            type="file"
-            accept="image/*"
-            onChange={e => setImageFile(e.target.files?.[0] ?? null)}
-            className="w-full text-sm text-gray-500 file:mr-3 file:rounded-full file:border-0 file:bg-orange-50 file:px-4 file:py-1.5 file:text-sm file:font-semibold file:text-orange-600 file:cursor-pointer"
-          />
-        </Field>
         <button type="submit" disabled={busy || !form.first_name.trim() || !form.last_name.trim() || !form.role.trim()} className={primaryButtonClass}>
           {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : editing ? <Pencil className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
           {editing ? 'Spremi promjene' : 'Dodaj osobu'}
