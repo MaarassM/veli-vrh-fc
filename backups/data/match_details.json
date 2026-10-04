@@ -26,6 +26,19 @@
     "venue": "Kunfin, Rovinjsko Selo"
   },
   {
+    "attendance": 100,
+    "away_score": 1,
+    "away_team": "NK Veli Vrh",
+    "home_score": 3,
+    "home_team": "NK Vodnjan",
+    "kickoff_at": "2026-10-03T15:30",
+    "match_id": 114701651,
+    "referees": "Suci: Karlo Terković, Jasenko Mujić, Stefano Ristić.",
+    "scraped_at": "2026-10-03T17:01:03.701+00:00",
+    "status": "Završeno",
+    "venue": "Stadion Guido Vodopia, Vodnjan"
+  },
+  {
     "attendance": 15,
     "away_score": 1,
     "away_team": "NK Novigrad 1947 II",
@@ -128,6 +141,19 @@
     "scraped_at": "2026-07-31T08:39:45.964+00:00",
     "status": "Završeno",
     "venue": "Pineta, Višnjan"
+  },
+  {
+    "attendance": 27,
+    "away_score": 4,
+    "away_team": "NK Veli Vrh",
+    "home_score": 2,
+    "home_team": "NK Vrsar",
+    "kickoff_at": "2026-10-03T09:30",
+    "match_id": 115010505,
+    "referees": "Suci: Leonid Manojlovski.",
+    "scraped_at": "2026-10-03T17:01:00.281+00:00",
+    "status": "Završeno",
+    "venue": "NK \"Vrsar\", Vrsar"
   },
   {
     "attendance": 30,
@@ -661,6 +687,19 @@
     "scraped_at": "2026-08-01T14:27:11.669+00:00",
     "status": "Završeno",
     "venue": "Aldo Drosina - umjetna trava 1, Pula"
+  },
+  {
+    "attendance": null,
+    "away_score": 1,
+    "away_team": "NK Veli Vrh",
+    "home_score": 4,
+    "home_team": "NK Raša 1938",
+    "kickoff_at": "2026-10-03T11:00",
+    "match_id": 115001276,
+    "referees": "Suci: Stefano Ristić.",
+    "scraped_at": "2026-10-03T17:01:02.353+00:00",
+    "status": "Završeno",
+    "venue": "Gradski stadion, Raša"
   },
   {
     "attendance": null,
