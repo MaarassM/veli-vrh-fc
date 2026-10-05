@@ -872,6 +872,19 @@
   },
   {
     "attendance": null,
+    "away_score": 3,
+    "away_team": "NK Veli Vrh",
+    "home_score": 3,
+    "home_team": "NK Štinjan",
+    "kickoff_at": "2026-10-04T10:00",
+    "match_id": 115072406,
+    "referees": "Suci: Patrik Beniković.",
+    "scraped_at": "2026-10-04T17:19:43.752+00:00",
+    "status": "Završeno",
+    "venue": "Fortin, Štinjan"
+  },
+  {
+    "attendance": null,
     "away_score": 4,
     "away_team": "NK Veli Vrh",
     "home_score": 1,
