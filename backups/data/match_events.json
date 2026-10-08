@@ -5995,6 +5995,50 @@
     "type": "substitutionIn"
   },
   {
+    "id": 606,
+    "label": "Crveni karton",
+    "match_id": 115007621,
+    "minute": 11,
+    "minute_extra": null,
+    "person_id": 402558,
+    "player_name": "Matej Barbaro",
+    "team": "home",
+    "type": "red"
+  },
+  {
+    "id": 607,
+    "label": "Gol",
+    "match_id": 115007621,
+    "minute": 9,
+    "minute_extra": null,
+    "person_id": 446767,
+    "player_name": "Nino Radetić",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 608,
+    "label": "Gol",
+    "match_id": 115007621,
+    "minute": 89,
+    "minute_extra": null,
+    "person_id": 463434,
+    "player_name": "Dominik Marić",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 609,
+    "label": "Žuti karton",
+    "match_id": 115007621,
+    "minute": 29,
+    "minute_extra": null,
+    "person_id": 453845,
+    "player_name": "Gabriel Borula",
+    "team": "home",
+    "type": "yellow"
+  },
+  {
     "id": 61,
     "label": "Izmjena",
     "match_id": 110171951,
@@ -6004,6 +6048,28 @@
     "player_name": "Đuro Takač",
     "team": "away",
     "type": "substitutionIn"
+  },
+  {
+    "id": 610,
+    "label": "Gol",
+    "match_id": 115007621,
+    "minute": 45,
+    "minute_extra": null,
+    "person_id": 423377,
+    "player_name": "Matija Buršić",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 611,
+    "label": "Neiskorišten jedanaesterac",
+    "match_id": 115007621,
+    "minute": 53,
+    "minute_extra": null,
+    "person_id": 423377,
+    "player_name": "Matija Buršić",
+    "team": "home",
+    "type": "penalty_failed"
   },
   {
     "id": 62,

@@ -183,6 +183,19 @@
   },
   {
     "attendance": 30,
+    "away_score": 0,
+    "away_team": "NK Veli Vrh",
+    "home_score": 3,
+    "home_team": "NK Smoljanci Sloboda",
+    "kickoff_at": "2026-10-07T18:00",
+    "match_id": 115007621,
+    "referees": "Suci: Patrik Beniković, Petar Pejkunović, Ivan Kuftić.",
+    "scraped_at": "2026-10-07T22:34:42.607+00:00",
+    "status": "Završeno",
+    "venue": "Suhača, Svetvinčenat"
+  },
+  {
+    "attendance": 30,
     "away_score": 1,
     "away_team": "NK Muntić",
     "home_score": 2,
@@ -947,6 +960,19 @@
     "scraped_at": "2026-08-01T14:27:10.384+00:00",
     "status": "Završeno",
     "venue": "Stadion Guido Vodopia, Vodnjan"
+  },
+  {
+    "attendance": null,
+    "away_score": 5,
+    "away_team": "NK Veli Vrh",
+    "home_score": 4,
+    "home_team": "ŽNK Arena Pula",
+    "kickoff_at": "2026-10-07T19:00",
+    "match_id": 115072409,
+    "referees": "Suci: Saša Mikša.",
+    "scraped_at": "2026-10-07T22:34:44.235+00:00",
+    "status": "Završeno",
+    "venue": "Aldo Drosina - umjetna trava 1, Pula"
   },
   {
     "attendance": null,
