@@ -1,12 +1,12 @@
 import { Helmet } from 'react-helmet-async';
 
-const SITE_NAME = 'NK Veli Vrh';
-const BASE_URL = 'https://nkvelivrh.com';
-const DEFAULT_DESCRIPTION =
-  'NK Veli Vrh je hrvatska nogometna udruga iz Pule, Istra. Pratite rezultate, vijesti i raspored utakmica.';
-const DEFAULT_KEYWORDS =
-  'NK Veli Vrh, veli vrh, pula nogomet, Istra, HNS, 5. liga Istra, nk veli vrh, istrasport, nogomet pula';
-const DEFAULT_OG_IMAGE = `${BASE_URL}/images/team-celebration.jpg`;
+import {
+  SITE_NAME,
+  SITE_URL as BASE_URL,
+  DEFAULT_DESCRIPTION,
+  DEFAULT_KEYWORDS,
+  DEFAULT_OG_IMAGE,
+} from '@/lib/seo-routes';
 
 interface SEOProps {
   title: string;

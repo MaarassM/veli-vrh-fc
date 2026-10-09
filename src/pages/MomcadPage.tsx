@@ -4,6 +4,7 @@ import PageHeader from '@/components/ui/PageHeader'
 import PlayerStatCard from '@/components/momcad/PlayerStatCard'
 import StaffSection from '@/components/team/StaffSection'
 import SEO from '@/components/seo/SEO'
+import { seoProps } from '@/lib/seo-routes'
 
 export default function MomcadPage() {
   const { data: players, loading } = usePlayerStats()
@@ -19,11 +20,7 @@ export default function MomcadPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4">
-      <SEO
-        title="Momčad | NK Veli Vrh"
-        description="Seniorska momčad NK Veli Vrh — igrači, statistike i stručni stožer. Podaci s HNS Semafora."
-        canonicalPath="/momcad"
-      />
+      <SEO {...seoProps('/momcad')} />
       <div className="mx-auto max-w-7xl">
         <PageHeader title="Momčad" subtitle="Seniori — NK Veli Vrh" />
 

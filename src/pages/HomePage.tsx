@@ -6,15 +6,12 @@ import ClubValues from "@/components/home/ClubValues";
 import SponsorsStrip from "@/components/home/SponsorsStrip";
 import TopScorersHome from "@/components/home/TopScorersHome";
 import SEO from "@/components/seo/SEO";
+import { seoProps } from "@/lib/seo-routes";
 
 export default function HomePage() {
   return (
     <>
-      <SEO
-        title="NK Veli Vrh | Nogometni klub iz Pule, Istra"
-        description="NK Veli Vrh je hrvatska nogometna udruga iz Pule, Istra. Pratite rezultate, vijesti i raspored utakmica."
-        canonicalPath="/"
-      />
+      <SEO {...seoProps('/')} />
       <HeroSection />
       <NextMatchBanner />
       <IntroSection />

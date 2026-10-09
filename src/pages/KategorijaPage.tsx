@@ -9,16 +9,9 @@ import StandingsTable from '@/components/kategorija/StandingsTable'
 import PageHeader from '@/components/ui/PageHeader'
 import PlayersList from '@/components/kategorija/PlayersList'
 import SEO from '@/components/seo/SEO'
+import { CATEGORY_TABS as TABS } from '@/lib/categories'
+import { seoProps } from '@/lib/seo-routes'
 
-const TABS = [
-  { key: 'seniori',       label: 'Seniori' },
-  { key: 'juniori',       label: 'Juniori' },
-  { key: 'pioniri',       label: 'Pioniri' },
-  { key: 'mladi-pioniri', label: 'Mlađi pioniri' },
-  { key: 'u-11',          label: 'U-11' },
-  { key: 'u-9',           label: 'U-9' },
-  { key: 'veterani',      label: 'Veterani' },
-]
 
 export default function KategorijaPage() {
   const { kat } = useParams()
@@ -46,11 +39,7 @@ export default function KategorijaPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4">
-      <SEO
-        title={kat ? `${activeLabel} | NK Veli Vrh` : 'Kategorije | NK Veli Vrh'}
-        description={`Ljestvica, utakmice i igrači — ${activeLabel} NK Veli Vrh. Podaci s HNS Semafora.`}
-        canonicalPath={kat ? `/kategorije/${activeTab}` : '/kategorije'}
-      />
+      <SEO {...seoProps(kat ? `/kategorije/${activeTab}` : '/kategorije')} />
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <PageHeader

@@ -6,6 +6,7 @@ import { groupByPart, nextMatch } from '@/lib/matches'
 import RoundSection from '@/components/utakmice/RoundSection'
 import PageHeader from '@/components/ui/PageHeader'
 import SEO from '@/components/seo/SEO'
+import { seoProps } from '@/lib/seo-routes'
 
 const TABS = [
   { key: 'seniori', label: 'Seniori' },
@@ -46,11 +47,7 @@ export default function UtakmicePage() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4">
-      <SEO
-        title="Utakmice | NK Veli Vrh"
-        description="Raspored i rezultati utakmica NK Veli Vrh — liga, kup i sve kategorije. Podaci s HNS Semafora."
-        canonicalPath="/utakmice"
-      />
+      <SEO {...seoProps('/utakmice')} />
       <div className="mx-auto max-w-3xl">
         <PageHeader title="Utakmice" subtitle="Raspored i rezultati — NK Veli Vrh">
           {category === 'seniori' && (

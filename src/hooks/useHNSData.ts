@@ -72,7 +72,7 @@ export function usePlayerStats() {
         const result: APIResponse<PlayerStats[]> = await response.json()
         setData(result.data)
         setError(null)
-      } catch (err) {
+      } catch {
         // Fallback to static data in development
         console.log('Using static player data as fallback')
         const fallbackData = staticPlayers.map(p => ({
@@ -121,7 +121,7 @@ export function useStandings() {
         setData(result.data)
         setPart(result.part ?? '')
         setError(null)
-      } catch (err) {
+      } catch {
         // Fallback to static data in development
         console.log('Using static standings data as fallback')
         setData(staticStandings)

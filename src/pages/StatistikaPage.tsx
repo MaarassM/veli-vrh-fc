@@ -4,6 +4,7 @@ import PageHeader from '@/components/ui/PageHeader'
 import { useMatchList } from '@/hooks/useMatchList'
 import { homeAwayRecord, biggestWin, formString } from '@/lib/stats'
 import SEO from '@/components/seo/SEO'
+import { seoProps } from '@/lib/seo-routes'
 
 function useSeasons() {
   const [seasons, setSeasons] = useState<string[]>([])
@@ -76,11 +77,7 @@ export default function StatistikaPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4">
-      <SEO
-        title="Statistika | NK Veli Vrh"
-        description="Statistika NK Veli Vrh — ligaški strijelci, forma, učinak kod kuće i u gostima. Podaci s HNS Semafora."
-        canonicalPath="/statistika"
-      />
+      <SEO {...seoProps('/statistika')} />
       <div className="mx-auto max-w-4xl">
         <PageHeader title="Statistika" subtitle="Seniori — Elitna liga NSŽI">
           {seasons.length > 1 && (

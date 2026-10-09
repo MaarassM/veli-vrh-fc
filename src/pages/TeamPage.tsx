@@ -1,14 +1,11 @@
 import StaffSection from '@/components/team/StaffSection'
 import SEO from '@/components/seo/SEO'
+import { seoProps } from '@/lib/seo-routes'
 
 export default function TeamPage() {
   return (
     <>
-      <SEO
-        title="Stručni stožer | NK Veli Vrh Pula"
-        description="Upoznajte stručni stožer i igrače NK Veli Vrh iz Pule, Istra."
-        canonicalPath="/strucni-stozer"
-      />
+      <SEO {...seoProps('/strucni-stozer')} />
       <StaffSection />
     </>
   )

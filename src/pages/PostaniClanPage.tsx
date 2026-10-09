@@ -3,6 +3,7 @@ import { Mail, Phone, MapPin } from 'lucide-react'
 import { contactInfo } from '@/data/contact'
 import PageHeader from '@/components/ui/PageHeader'
 import SEO from '@/components/seo/SEO'
+import { seoProps } from '@/lib/seo-routes'
 
 // TODO-korisnik: provjeri termine treninga, uzraste i telefonski broj
 const groups = [
@@ -29,11 +30,7 @@ const groups = [
 export default function PostaniClanPage() {
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4">
-      <SEO
-        title="Postani član | NK Veli Vrh"
-        description="Upiši se u školu nogometa NK Veli Vrh ili se priključi seniorima. Treniramo na stadionu Tivoli u Puli."
-        canonicalPath="/postani-clan"
-      />
+      <SEO {...seoProps('/postani-clan')} />
       <div className="mx-auto max-w-4xl">
         <PageHeader
           title="Postani dio kluba"

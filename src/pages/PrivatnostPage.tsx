@@ -1,5 +1,6 @@
 import PageHeader from '@/components/ui/PageHeader'
 import SEO from '@/components/seo/SEO'
+import { seoProps } from '@/lib/seo-routes'
 import { contactInfo } from '@/data/contact'
 
 // TODO-korisnik: prije objave neka netko iz uprave potvrdi podatke udruge
@@ -19,11 +20,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 export default function PrivatnostPage() {
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4">
-      <SEO
-        title="Privatnost i uvjeti | NK Veli Vrh"
-        description="Kako NK Veli Vrh postupa s osobnim podacima, fotografijama i kolačićima na ovoj stranici."
-        canonicalPath="/privatnost"
-      />
+      <SEO {...seoProps('/privatnost')} />
       <div className="mx-auto max-w-3xl">
         <PageHeader
           title="Privatnost i uvjeti"

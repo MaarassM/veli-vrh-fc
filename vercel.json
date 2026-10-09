@@ -1,5 +1,6 @@
 {
   "outputDirectory": "dist",
+  "cleanUrls": true,
   "functions": {
     "api/**/*.ts": {
       "memory": 1024,
@@ -13,7 +14,10 @@
     }
   ],
   "rewrites": [
-    { "source": "/((?!api|@|node_modules).*)", "destination": "/index.html" }
+    {
+      "source": "/((?!api|@|node_modules).*)",
+      "destination": "/index.html"
+    }
   ],
   "headers": [
     {

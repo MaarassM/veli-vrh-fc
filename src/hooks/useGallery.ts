@@ -2,6 +2,14 @@ import { useState, useEffect } from 'react'
 import { supabase } from '@/lib/supabase'
 import type { Album, GalleryItem } from '@/types'
 
+interface AlbumRow {
+  id: string
+  title: string
+  description: string | null
+  cover_image_url: string | null
+  gallery_items: { count: number }[] | null
+}
+
 interface GalleryItemRow {
   id: string
   album_id: string
@@ -34,7 +42,7 @@ export function useAlbums() {
         return
       }
 
-      const mapped: Album[] = (data as any[]).map(row => ({
+      const mapped: Album[] = (data as AlbumRow[]).map(row => ({
         id: row.id,
         title: row.title,
         description: row.description ?? '',

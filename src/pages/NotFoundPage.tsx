@@ -10,6 +10,7 @@ export default function NotFoundPage() {
       <SEO
         title="Stranica nije pronađena | NK Veli Vrh"
         description="Stranica koju tražite ne postoji ili je premještena. Povratak na NK Veli Vrh."
+        noindex
       />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
