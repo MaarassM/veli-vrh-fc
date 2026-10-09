@@ -14,6 +14,6 @@ export interface Album {
   id: string;
   title: string;
   description: string;
-  coverImage: string;
+  coverImage: string | null;
   itemCount: number;
 }

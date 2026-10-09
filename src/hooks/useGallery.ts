@@ -42,11 +42,23 @@ export function useAlbums() {
         return
       }
 
+      // Većina albuma nema postavljenu naslovnicu — uzmi prvu fotografiju iz albuma.
+      const { data: firstPhotos } = await supabase
+        .from('gallery_items')
+        .select('album_id, src')
+        .eq('type', 'image')
+        .order('sort_order', { ascending: true })
+
+      const coverByAlbum = new Map<string, string>()
+      for (const photo of (firstPhotos ?? []) as { album_id: string; src: string }[]) {
+        if (!coverByAlbum.has(photo.album_id)) coverByAlbum.set(photo.album_id, photo.src)
+      }
+
       const mapped: Album[] = (data as AlbumRow[]).map(row => ({
         id: row.id,
         title: row.title,
         description: row.description ?? '',
-        coverImage: row.cover_image_url ?? '/images/placeholder.jpg',
+        coverImage: row.cover_image_url ?? coverByAlbum.get(row.id) ?? null,
         itemCount: row.gallery_items?.[0]?.count ?? 0
       }))
 
