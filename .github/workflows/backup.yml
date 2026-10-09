@@ -43,5 +43,5 @@ jobs:
             echo "Nema promjena u podacima."
             exit 0
           fi
-          git commit -m "backup: $(date -u +%Y-%m-%d)"
+          git commit -m "backup: $(date -u +%Y-%m-%d) [skip ci]"
           git push origin backups
