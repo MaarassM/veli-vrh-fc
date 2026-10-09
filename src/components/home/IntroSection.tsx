@@ -1,5 +1,4 @@
 import { motion } from "motion/react";
-import Button from "../ui/Button";
 import { useSiteContent } from "@/hooks/useSiteContent";
 
 export default function IntroSection() {
@@ -17,9 +16,6 @@ export default function IntroSection() {
           <p className="text-lg text-gray-600 leading-relaxed">
             {text}
           </p>
-          <Button href="/team" variant="primary" size="lg" className="mt-8">
-            Upoznaj ekipu
-          </Button>
         </motion.div>
       </div>
     </section>
