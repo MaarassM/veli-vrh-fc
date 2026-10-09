@@ -68,8 +68,10 @@ function pageHtml(title: string, description: string, url: string): string {
 }
 
 function writePage(path: string, html: string) {
-  // "/" ostaje index.html, "/kategorije/juniori" postaje kategorije/juniori.html
-  const file = path === '/' ? join(dist, 'index.html') : join(dist, `${path.slice(1)}.html`)
+  // Svaka ruta dobiva vlastiti direktorij s index.html ("/utakmice" -> "utakmice/index.html").
+  // Tako Vercel servira datoteku na čistom URL-u, a nepoznate putanje i dalje
+  // padaju na SPA fallback iz vercel.json — što bi "cleanUrls" pokvario.
+  const file = path === '/' ? join(dist, 'index.html') : join(dist, path.slice(1), 'index.html')
   mkdirSync(dirname(file), { recursive: true })
   writeFileSync(file, html)
 }
