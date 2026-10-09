@@ -6072,6 +6072,94 @@
     "type": "penalty_failed"
   },
   {
+    "id": 612,
+    "label": "Gol",
+    "match_id": 115001293,
+    "minute": 46,
+    "minute_extra": null,
+    "person_id": 1180872,
+    "player_name": "Masimo Stojšić",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 613,
+    "label": "Gol",
+    "match_id": 115001293,
+    "minute": 62,
+    "minute_extra": null,
+    "person_id": 1182963,
+    "player_name": "Ivano Kovačević",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 614,
+    "label": "Gol",
+    "match_id": 115001293,
+    "minute": 9,
+    "minute_extra": null,
+    "person_id": 1181007,
+    "player_name": "Dominik Cerin",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 615,
+    "label": "Gol",
+    "match_id": 115001293,
+    "minute": 19,
+    "minute_extra": null,
+    "person_id": 1181007,
+    "player_name": "Dominik Cerin",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 616,
+    "label": "Gol",
+    "match_id": 115001293,
+    "minute": 70,
+    "minute_extra": null,
+    "person_id": 1181007,
+    "player_name": "Dominik Cerin",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 617,
+    "label": "Gol",
+    "match_id": 115001293,
+    "minute": 38,
+    "minute_extra": null,
+    "person_id": 1168157,
+    "player_name": "Gabriel Malagić",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 618,
+    "label": "Gol",
+    "match_id": 115001293,
+    "minute": 55,
+    "minute_extra": null,
+    "person_id": 1168157,
+    "player_name": "Gabriel Malagić",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 619,
+    "label": "Gol",
+    "match_id": 115001293,
+    "minute": 65,
+    "minute_extra": null,
+    "person_id": 1192603,
+    "player_name": "Gino Bužleta",
+    "team": "home",
+    "type": "goal"
+  },
+  {
     "id": 62,
     "label": "Žuti karton",
     "match_id": 110171951,
