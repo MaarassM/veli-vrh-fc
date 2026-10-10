@@ -1,5 +1,5 @@
 {
-  "createdAt": "2026-10-09T08:29:21.539Z",
+  "createdAt": "2026-10-10T08:06:28.370Z",
   "counts": {
     "competitions": 16,
     "standings": 159,
@@ -9,8 +9,8 @@
     "match_details": 81,
     "match_lineups": 2359,
     "match_events": 601,
-    "sponsors": 0,
-    "albums": 6,
+    "sponsors": 3,
+    "albums": 5,
     "gallery_items": 44
   }
 }

@@ -1,27 +1,19 @@
 [
   {
-    "cover_image_url": "https://lsvgqsikuvtcuntpxhco.supabase.co/storage/v1/object/public/gallery/events/team-celebration.jpg",
-    "created_at": "2026-02-13T10:19:51.655176+00:00",
-    "description": "Posebni događaji, proslave i klupska druženja",
-    "id": "events",
-    "sort_order": 1,
-    "title": "Događaji i slavlja"
-  },
-  {
-    "cover_image_url": null,
-    "created_at": "2026-02-13T10:19:51.655176+00:00",
-    "description": "Dodjele nagrada i posebna priznanja",
-    "id": "awards",
-    "sort_order": 5,
-    "title": "Nagrade i priznanja"
-  },
-  {
     "cover_image_url": null,
     "created_at": "2026-02-13T10:19:51.655176+00:00",
     "description": "Fotografije s utakmica i službenih susreta",
     "id": "matches",
     "sort_order": 2,
     "title": "Utakmice"
+  },
+  {
+    "cover_image_url": null,
+    "created_at": "2026-02-13T10:19:51.655176+00:00",
+    "description": "Posebni događaji, proslave i klupska druženja",
+    "id": "events",
+    "sort_order": 1,
+    "title": "Događaji i slavlja"
   },
   {
     "cover_image_url": null,
