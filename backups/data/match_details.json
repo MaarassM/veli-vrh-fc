@@ -130,6 +130,19 @@
     "venue": "Tivoli, Veli vrh"
   },
   {
+    "attendance": 20,
+    "away_score": 8,
+    "away_team": "NK Veli Vrh",
+    "home_score": 2,
+    "home_team": "NK Istra Tar",
+    "kickoff_at": "2026-10-10T09:30",
+    "match_id": 115010514,
+    "referees": "Suci: Karlo Jelčić.",
+    "scraped_at": "2026-10-10T17:40:20.563+00:00",
+    "status": "Završeno",
+    "venue": "NK Istra Tar, Tar"
+  },
+  {
     "attendance": 25,
     "away_score": 1,
     "away_team": "NK Veli Vrh",
@@ -310,6 +323,19 @@
     "scraped_at": "2026-08-01T20:10:32.639+00:00",
     "status": "Završeno",
     "venue": "Tivoli, Pula"
+  },
+  {
+    "attendance": 40,
+    "away_score": 5,
+    "away_team": "NK Dajla",
+    "home_score": 2,
+    "home_team": "NK Veli Vrh",
+    "kickoff_at": "2026-10-10T16:00",
+    "match_id": 114701658,
+    "referees": "Suci: Karlo Terković, Dalibor Šekuljica, Florian Belavić.",
+    "scraped_at": "2026-10-10T17:40:18.239+00:00",
+    "status": "Završeno",
+    "venue": "SRC Valkane (umjetna trava), Pula"
   },
   {
     "attendance": 40,
