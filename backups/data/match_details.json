@@ -533,6 +533,32 @@
     "venue": "Oliva, Fažana"
   },
   {
+    "attendance": 72,
+    "away_score": 8,
+    "away_team": "NK Veli Vrh",
+    "home_score": 2,
+    "home_team": "NK Medulin 1921",
+    "kickoff_at": "2026-10-11T10:30",
+    "match_id": 118942776,
+    "referees": "Suci: Leonid Manojlovski.",
+    "scraped_at": "2026-10-11T17:55:38.353+00:00",
+    "status": "Završeno",
+    "venue": "Šaraja, Ližnjan"
+  },
+  {
+    "attendance": 77,
+    "away_score": 7,
+    "away_team": "NK Buzet",
+    "home_score": 1,
+    "home_team": "NK Veli Vrh",
+    "kickoff_at": "2026-10-11T10:00",
+    "match_id": 118942601,
+    "referees": "Suci: Leonid Manojlovski.",
+    "scraped_at": "2026-10-11T17:55:39.586+00:00",
+    "status": "Završeno",
+    "venue": "Šaraja, Ližnjan"
+  },
+  {
     "attendance": 80,
     "away_score": 3,
     "away_team": "NK Istra-Pula",
@@ -557,6 +583,19 @@
     "scraped_at": "2026-07-31T08:38:34.862+00:00",
     "status": "Završeno",
     "venue": "Kunfin, Rovinjsko Selo"
+  },
+  {
+    "attendance": 86,
+    "away_score": 0,
+    "away_team": "NK Veli Vrh",
+    "home_score": 0,
+    "home_team": "NK Ližnjan",
+    "kickoff_at": "2026-10-11T12:00",
+    "match_id": 118943003,
+    "referees": "Suci: Leonid Manojlovski.",
+    "scraped_at": "2026-10-11T17:55:37.105+00:00",
+    "status": "Završeno",
+    "venue": "Šaraja, Ližnjan"
   },
   {
     "attendance": null,
