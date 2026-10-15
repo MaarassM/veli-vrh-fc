@@ -199,6 +199,19 @@
     "away_score": 0,
     "away_team": "NK Veli Vrh",
     "home_score": 3,
+    "home_team": "NK Rovinj",
+    "kickoff_at": "2026-10-14T18:30",
+    "match_id": 115001298,
+    "referees": "Suci: Ivan Ban.",
+    "scraped_at": "2026-10-14T21:14:27.01+00:00",
+    "status": "Završeno",
+    "venue": "Valbruna umjetna trava, Rovinj"
+  },
+  {
+    "attendance": 30,
+    "away_score": 0,
+    "away_team": "NK Veli Vrh",
+    "home_score": 3,
     "home_team": "NK Smoljanci Sloboda",
     "kickoff_at": "2026-10-07T18:00",
     "match_id": 115007621,
@@ -700,6 +713,19 @@
     "scraped_at": "2026-09-28T22:53:05.727+00:00",
     "status": "Završeno",
     "venue": "Fortin, Štinjan"
+  },
+  {
+    "attendance": null,
+    "away_score": 0,
+    "away_team": "NK Veli Vrh",
+    "home_score": 7,
+    "home_team": "NK Rovinj",
+    "kickoff_at": "2026-10-14T18:00",
+    "match_id": 115007627,
+    "referees": "Suci: Elvis Brečević, Evelino Marić, Marino Faraguna.",
+    "scraped_at": "2026-10-14T21:14:25.292+00:00",
+    "status": "Završeno",
+    "venue": "Valbruna umjetna trava, Rovinj"
   },
   {
     "attendance": null,

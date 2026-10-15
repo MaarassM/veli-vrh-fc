@@ -6699,6 +6699,72 @@
     "type": "goal"
   },
   {
+    "id": 664,
+    "label": "Gol",
+    "match_id": 115007627,
+    "minute": 4,
+    "minute_extra": null,
+    "person_id": 421389,
+    "player_name": "Sebastijan Szucs",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 665,
+    "label": "Gol",
+    "match_id": 115007627,
+    "minute": 49,
+    "minute_extra": null,
+    "person_id": 421389,
+    "player_name": "Sebastijan Szucs",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 666,
+    "label": "Gol",
+    "match_id": 115007627,
+    "minute": 68,
+    "minute_extra": null,
+    "person_id": 421389,
+    "player_name": "Sebastijan Szucs",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 667,
+    "label": "Gol",
+    "match_id": 115007627,
+    "minute": 22,
+    "minute_extra": null,
+    "person_id": 446755,
+    "player_name": "Vito Matošović",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 668,
+    "label": "Gol",
+    "match_id": 115007627,
+    "minute": 81,
+    "minute_extra": null,
+    "person_id": 446755,
+    "player_name": "Vito Matošović",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 669,
+    "label": "Gol",
+    "match_id": 115007627,
+    "minute": 52,
+    "minute_extra": null,
+    "person_id": 455415,
+    "player_name": "Jimmy Tanushi",
+    "team": "home",
+    "type": "goal"
+  },
+  {
     "id": 67,
     "label": "Gol",
     "match_id": 110221678,
@@ -6707,6 +6773,72 @@
     "person_id": 1176732,
     "player_name": "Gabriel Diković",
     "team": "away",
+    "type": "goal"
+  },
+  {
+    "id": 670,
+    "label": "Žuti karton",
+    "match_id": 115007627,
+    "minute": null,
+    "minute_extra": null,
+    "person_id": 423709,
+    "player_name": "Arian Jurić",
+    "team": "home",
+    "type": "yellow"
+  },
+  {
+    "id": 671,
+    "label": "Gol",
+    "match_id": 115007627,
+    "minute": 81,
+    "minute_extra": null,
+    "person_id": 419334,
+    "player_name": "Paolo Kmet",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 672,
+    "label": "Žuti karton",
+    "match_id": 115007627,
+    "minute": 27,
+    "minute_extra": null,
+    "person_id": 1172944,
+    "player_name": "Arman Draginović",
+    "team": "away",
+    "type": "yellow"
+  },
+  {
+    "id": 673,
+    "label": "Gol",
+    "match_id": 115001298,
+    "minute": 60,
+    "minute_extra": null,
+    "person_id": 1222132,
+    "player_name": "Stribor Vuković Popović",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 674,
+    "label": "Gol",
+    "match_id": 115001298,
+    "minute": 47,
+    "minute_extra": null,
+    "person_id": 1176318,
+    "player_name": "Ivano Giorgio Rojnić",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 675,
+    "label": "Gol",
+    "match_id": 115001298,
+    "minute": 55,
+    "minute_extra": null,
+    "person_id": 1176318,
+    "player_name": "Ivano Giorgio Rojnić",
+    "team": "home",
     "type": "goal"
   },
   {
