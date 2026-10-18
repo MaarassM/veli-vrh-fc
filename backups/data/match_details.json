@@ -820,6 +820,19 @@
   },
   {
     "attendance": null,
+    "away_score": 12,
+    "away_team": "NK Veli Vrh",
+    "home_score": 0,
+    "home_team": "NK Vodnjan",
+    "kickoff_at": "2026-10-17T09:30",
+    "match_id": 115010518,
+    "referees": "Suci: Ibrahim Punušković.",
+    "scraped_at": "2026-10-17T16:10:20.354+00:00",
+    "status": "Završeno",
+    "venue": "Stadion Guido Vodopia, Vodnjan"
+  },
+  {
+    "attendance": null,
     "away_score": 15,
     "away_team": "NK Veli Vrh",
     "home_score": 0,

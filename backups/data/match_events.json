@@ -6842,6 +6842,50 @@
     "type": "goal"
   },
   {
+    "id": 676,
+    "label": "Gol",
+    "match_id": 115010518,
+    "minute": 60,
+    "minute_extra": null,
+    "person_id": 1154914,
+    "player_name": "Vigan Ahmeti",
+    "team": "away",
+    "type": "goal"
+  },
+  {
+    "id": 677,
+    "label": "Gol",
+    "match_id": 115010518,
+    "minute": 14,
+    "minute_extra": null,
+    "person_id": 1182589,
+    "player_name": "Nikola Đokić",
+    "team": "away",
+    "type": "goal"
+  },
+  {
+    "id": 678,
+    "label": "Gol",
+    "match_id": 115010518,
+    "minute": 20,
+    "minute_extra": null,
+    "person_id": 1182589,
+    "player_name": "Nikola Đokić",
+    "team": "away",
+    "type": "goal"
+  },
+  {
+    "id": 679,
+    "label": "Gol",
+    "match_id": 115010518,
+    "minute": 55,
+    "minute_extra": null,
+    "person_id": 1220701,
+    "player_name": "Gabrijel Gašić",
+    "team": "away",
+    "type": "goal"
+  },
+  {
     "id": 68,
     "label": "Gol",
     "match_id": 112164469,
@@ -6850,6 +6894,94 @@
     "person_id": 444198,
     "player_name": "Niko Bulić",
     "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 680,
+    "label": "Gol",
+    "match_id": 115010518,
+    "minute": 62,
+    "minute_extra": null,
+    "person_id": 1220701,
+    "player_name": "Gabrijel Gašić",
+    "team": "away",
+    "type": "goal"
+  },
+  {
+    "id": 681,
+    "label": "Gol",
+    "match_id": 115010518,
+    "minute": 13,
+    "minute_extra": null,
+    "person_id": 1239468,
+    "player_name": "Tarik Ahmeti",
+    "team": "away",
+    "type": "goal"
+  },
+  {
+    "id": 682,
+    "label": "Gol",
+    "match_id": 115010518,
+    "minute": 15,
+    "minute_extra": null,
+    "person_id": 1239468,
+    "player_name": "Tarik Ahmeti",
+    "team": "away",
+    "type": "goal"
+  },
+  {
+    "id": 683,
+    "label": "Gol",
+    "match_id": 115010518,
+    "minute": 20,
+    "minute_extra": null,
+    "person_id": 1239468,
+    "player_name": "Tarik Ahmeti",
+    "team": "away",
+    "type": "goal"
+  },
+  {
+    "id": 684,
+    "label": "Gol",
+    "match_id": 115010518,
+    "minute": 25,
+    "minute_extra": null,
+    "person_id": 1115982,
+    "player_name": "Fabian Perhat",
+    "team": "away",
+    "type": "goal"
+  },
+  {
+    "id": 685,
+    "label": "Gol",
+    "match_id": 115010518,
+    "minute": 39,
+    "minute_extra": null,
+    "person_id": 756884,
+    "player_name": "Mauro Blašković",
+    "team": "away",
+    "type": "goal"
+  },
+  {
+    "id": 686,
+    "label": "Gol",
+    "match_id": 115010518,
+    "minute": 49,
+    "minute_extra": null,
+    "person_id": 756884,
+    "player_name": "Mauro Blašković",
+    "team": "away",
+    "type": "goal"
+  },
+  {
+    "id": 687,
+    "label": "Gol",
+    "match_id": 115010518,
+    "minute": 65,
+    "minute_extra": null,
+    "person_id": 756884,
+    "player_name": "Mauro Blašković",
+    "team": "away",
     "type": "goal"
   },
   {
