@@ -378,6 +378,19 @@
   },
   {
     "attendance": 50,
+    "away_score": 0,
+    "away_team": "NK Veli Vrh",
+    "home_score": 1,
+    "home_team": "NK Vrsar",
+    "kickoff_at": "2026-10-18T15:30",
+    "match_id": 114701662,
+    "referees": "Suci: Petar Pejkunović, Darko Gubeljić, Stefano Ristić.",
+    "scraped_at": "2026-10-18T16:23:33.392+00:00",
+    "status": "Završeno",
+    "venue": "NK \"Vrsar\", Vrsar"
+  },
+  {
+    "attendance": 50,
     "away_score": 1,
     "away_team": "NK Potpićan-Učka 72",
     "home_score": 3,
