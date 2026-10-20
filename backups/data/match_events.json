@@ -7337,6 +7337,50 @@
     "type": "substitutionIn"
   },
   {
+    "id": 716,
+    "label": "Gol",
+    "match_id": 115056686,
+    "minute": 9,
+    "minute_extra": null,
+    "person_id": 170649,
+    "player_name": "Robert Tomišić",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 717,
+    "label": "Gol",
+    "match_id": 115056686,
+    "minute": 49,
+    "minute_extra": null,
+    "person_id": 97129,
+    "player_name": "Denis Brgić",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 718,
+    "label": "Žuti karton",
+    "match_id": 115056686,
+    "minute": 58,
+    "minute_extra": null,
+    "person_id": 97978,
+    "player_name": "Danijel Filipović",
+    "team": "home",
+    "type": "yellow"
+  },
+  {
+    "id": 719,
+    "label": "Žuti karton",
+    "match_id": 115056686,
+    "minute": 76,
+    "minute_extra": null,
+    "person_id": 1203192,
+    "player_name": "Sasho Tankoski",
+    "team": "home",
+    "type": "yellow"
+  },
+  {
     "id": 72,
     "label": "Gol",
     "match_id": 100950743,
@@ -7346,6 +7390,39 @@
     "player_name": "Arman Draginović",
     "team": "home",
     "type": "goal"
+  },
+  {
+    "id": 720,
+    "label": "Gol - 11m",
+    "match_id": 115056686,
+    "minute": 29,
+    "minute_extra": null,
+    "person_id": 96931,
+    "player_name": "Manuel Marčeta",
+    "team": "away",
+    "type": "penalty"
+  },
+  {
+    "id": 721,
+    "label": "Žuti karton",
+    "match_id": 115056686,
+    "minute": 26,
+    "minute_extra": null,
+    "person_id": 116180,
+    "player_name": "Boris Škalić",
+    "team": "away",
+    "type": "yellow"
+  },
+  {
+    "id": 722,
+    "label": "Crveni karton",
+    "match_id": 115056686,
+    "minute": 26,
+    "minute_extra": null,
+    "person_id": 116180,
+    "player_name": "Boris Škalić",
+    "team": "away",
+    "type": "red"
   },
   {
     "id": 73,
