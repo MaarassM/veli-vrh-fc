@@ -9,7 +9,7 @@
     "player_url": "https://semafor.hns.family/igraci/429882/dominik-frank/",
     "position": 5,
     "season": "2026/2027",
-    "updated_at": "2026-10-19T21:56:47.225374+00:00"
+    "updated_at": "2026-10-20T21:09:48.082532+00:00"
   },
   {
     "club": "NK Banjole",
@@ -21,7 +21,7 @@
     "player_url": "https://semafor.hns.family/igraci/436651/leon-perisa/",
     "position": 3,
     "season": "2026/2027",
-    "updated_at": "2026-10-19T21:56:47.225374+00:00"
+    "updated_at": "2026-10-20T21:09:48.082532+00:00"
   },
   {
     "club": "NK Buje",
@@ -33,7 +33,7 @@
     "player_url": "https://semafor.hns.family/igraci/1175804/matija-kalizan/",
     "position": 1,
     "season": "2026/2027",
-    "updated_at": "2026-10-19T21:56:59.530763+00:00"
+    "updated_at": "2026-10-20T21:10:15.900683+00:00"
   },
   {
     "club": "NK Dajla",
@@ -57,7 +57,7 @@
     "player_url": "https://semafor.hns.family/igraci/159189/stjepan-babic/",
     "position": 4,
     "season": "2026/2027",
-    "updated_at": "2026-10-19T21:56:56.98925+00:00"
+    "updated_at": "2026-10-20T21:09:58.665622+00:00"
   },
   {
     "club": "NK Dajla",
@@ -69,7 +69,7 @@
     "player_url": "https://semafor.hns.family/igraci/1224872/matija-jovanovic/",
     "position": 2,
     "season": "2026/2027",
-    "updated_at": "2026-10-19T21:56:56.98925+00:00"
+    "updated_at": "2026-10-20T21:09:58.665622+00:00"
   },
   {
     "club": "NK Funtana",
@@ -81,7 +81,7 @@
     "player_url": "https://semafor.hns.family/igraci/435089/david-mrsic/",
     "position": 1,
     "season": "2026/2027",
-    "updated_at": "2026-10-19T21:56:47.225374+00:00"
+    "updated_at": "2026-10-20T21:09:48.082532+00:00"
   },
   {
     "club": "NK Galižana",
@@ -134,26 +134,14 @@
   {
     "club": "NK Iskra",
     "competition_id": 115055236,
-    "goals": 5,
+    "goals": 7,
     "name": "Ervin Čudić",
     "person_id": 85030,
     "photo_url": "https://hns.family/files/images_comet/Person/_resized/85030_217721f8-319a-45f6-acd3-7841d7ea8735_80_100_cut_wg_top.png",
     "player_url": "https://semafor.hns.family/igraci/85030/ervin-cudic/",
-    "position": 3,
+    "position": 1,
     "season": "2026/2027",
-    "updated_at": "2026-10-19T21:57:12.615929+00:00"
-  },
-  {
-    "club": "NK Iskra",
-    "competition_id": 115055236,
-    "goals": 5,
-    "name": "Vedran Biočić",
-    "person_id": 67058,
-    "photo_url": "https://hns.family/files/images_comet/Person/_resized/67058_22082fb8-8745-4ac4-a3a0-038a4c4d4938_80_100_cut_wg_top.jpg",
-    "player_url": "https://semafor.hns.family/igraci/67058/vedran-biocic/",
-    "position": 3,
-    "season": "2026/2027",
-    "updated_at": "2026-10-19T21:57:12.615929+00:00"
+    "updated_at": "2026-10-20T21:10:21.126651+00:00"
   },
   {
     "club": "NK Istra Tar",
@@ -189,7 +177,7 @@
     "player_url": "https://semafor.hns.family/igraci/622583/borna-dekovic/",
     "position": 2,
     "season": "2026/2027",
-    "updated_at": "2026-10-19T21:56:49.735936+00:00"
+    "updated_at": "2026-10-20T21:09:50.59797+00:00"
   },
   {
     "club": "NK Istra-Pula",
@@ -201,7 +189,7 @@
     "player_url": "https://semafor.hns.family/igraci/1157161/eduard-fetahaj/",
     "position": 4,
     "season": "2026/2027",
-    "updated_at": "2026-10-19T21:56:47.225374+00:00"
+    "updated_at": "2026-10-20T21:09:48.082532+00:00"
   },
   {
     "club": "NK Kanfanar",
@@ -213,7 +201,7 @@
     "player_url": "https://semafor.hns.family/igraci/213792/jakov-zgrablic/",
     "position": 4,
     "season": "2026/2027",
-    "updated_at": "2026-10-19T21:56:59.530763+00:00"
+    "updated_at": "2026-10-20T21:10:15.900683+00:00"
   },
   {
     "club": "NK Kanfanar",
@@ -225,7 +213,7 @@
     "player_url": "https://semafor.hns.family/igraci/213792/jakov-zgrablic/",
     "position": 2,
     "season": "2026/2027",
-    "updated_at": "2026-10-19T21:56:56.98925+00:00"
+    "updated_at": "2026-10-20T21:09:58.665622+00:00"
   },
   {
     "club": "NK Ližnjan",
@@ -252,6 +240,18 @@
     "updated_at": "2026-08-06T07:39:51.872723+00:00"
   },
   {
+    "club": "NK Ližnjan",
+    "competition_id": 115055236,
+    "goals": 7,
+    "name": "Ivan Percan",
+    "person_id": 101333,
+    "photo_url": "https://hns.family/files/images_comet/Person/_resized/101333_9f955c1c-25c8-4be7-8282-beee47d2dfbd_80_100_cut_wg_top.jpg",
+    "player_url": "https://semafor.hns.family/igraci/101333/ivan-percan/",
+    "position": 1,
+    "season": "2026/2027",
+    "updated_at": "2026-10-20T21:10:21.126651+00:00"
+  },
+  {
     "club": "NK Mladost Fažana",
     "competition_id": 114697681,
     "goals": 6,
@@ -261,7 +261,7 @@
     "player_url": "https://semafor.hns.family/igraci/151275/filip-lazendic/",
     "position": 1,
     "season": "2026/2027",
-    "updated_at": "2026-10-19T21:56:59.530763+00:00"
+    "updated_at": "2026-10-20T21:10:15.900683+00:00"
   },
   {
     "club": "NK Mladost Fažana",
@@ -273,7 +273,7 @@
     "player_url": "https://semafor.hns.family/igraci/1181007/dominik-cerin/",
     "position": 4,
     "season": "2026/2027",
-    "updated_at": "2026-10-19T21:56:49.735936+00:00"
+    "updated_at": "2026-10-20T21:09:50.59797+00:00"
   },
   {
     "club": "NK Mladost Rovinjsko Selo",
@@ -321,7 +321,7 @@
     "player_url": "https://semafor.hns.family/igraci/462500/tin-juric/",
     "position": 4,
     "season": "2026/2027",
-    "updated_at": "2026-10-19T21:56:53.176152+00:00"
+    "updated_at": "2026-10-20T21:09:53.562805+00:00"
   },
   {
     "club": "NK Novigrad 1947 II",
@@ -333,7 +333,7 @@
     "player_url": "https://semafor.hns.family/igraci/469602/manuel-bubola/",
     "position": 4,
     "season": "2026/2027",
-    "updated_at": "2026-10-19T21:56:53.176152+00:00"
+    "updated_at": "2026-10-20T21:09:53.562805+00:00"
   },
   {
     "club": "NK Novigrad 1947",
@@ -357,7 +357,7 @@
     "player_url": "https://semafor.hns.family/igraci/1211755/tay-husanovic/",
     "position": 4,
     "season": "2026/2027",
-    "updated_at": "2026-10-19T21:56:56.98925+00:00"
+    "updated_at": "2026-10-20T21:09:58.665622+00:00"
   },
   {
     "club": "NK Pazinka-Pazin",
@@ -405,7 +405,19 @@
     "player_url": "https://semafor.hns.family/igraci/1181460/mikelangelo-cvecic/",
     "position": 3,
     "season": "2026/2027",
-    "updated_at": "2026-10-19T21:56:49.735936+00:00"
+    "updated_at": "2026-10-20T21:09:50.59797+00:00"
+  },
+  {
+    "club": "NK Potpićan-Učka 72",
+    "competition_id": 115055236,
+    "goals": 6,
+    "name": "Almir Fejzić",
+    "person_id": 96346,
+    "photo_url": "https://hns.family/files/images_comet/Person/_resized/96346_665b0228-0fe8-49c7-a0ae-4e42ab00af23_80_100_cut_wg_top.png",
+    "player_url": "https://semafor.hns.family/igraci/96346/almir-fejzic/",
+    "position": 3,
+    "season": "2026/2027",
+    "updated_at": "2026-10-20T21:10:21.126651+00:00"
   },
   {
     "club": "NK Pula ici - veterani",
@@ -429,7 +441,7 @@
     "player_url": "https://semafor.hns.family/igraci/1180612/deni-kopic/",
     "position": 4,
     "season": "2026/2027",
-    "updated_at": "2026-10-19T21:56:49.735936+00:00"
+    "updated_at": "2026-10-20T21:09:50.59797+00:00"
   },
   {
     "club": "NK Rovinj",
@@ -465,7 +477,7 @@
     "player_url": "https://semafor.hns.family/igraci/421389/sebastijan-szucs/",
     "position": 2,
     "season": "2026/2027",
-    "updated_at": "2026-10-19T21:56:47.225374+00:00"
+    "updated_at": "2026-10-20T21:09:48.082532+00:00"
   },
   {
     "club": "NK Smoljanci Sloboda",
@@ -477,7 +489,7 @@
     "player_url": "https://semafor.hns.family/igraci/1221259/mike-amachi-ezemonye/",
     "position": 4,
     "season": "2026/2027",
-    "updated_at": "2026-10-19T21:56:59.530763+00:00"
+    "updated_at": "2026-10-20T21:10:15.900683+00:00"
   },
   {
     "club": "NK Smoljanci Sloboda",
@@ -489,7 +501,7 @@
     "player_url": "https://semafor.hns.family/igraci/96767/mauro-misan/",
     "position": 1,
     "season": "2026/2027",
-    "updated_at": "2026-10-19T21:56:59.530763+00:00"
+    "updated_at": "2026-10-20T21:10:15.900683+00:00"
   },
   {
     "club": "NK ŠN Mandalena",
@@ -538,18 +550,6 @@
     "position": 1,
     "season": "2025/2026",
     "updated_at": "2026-08-06T07:39:58.060155+00:00"
-  },
-  {
-    "club": "NK Štinjan",
-    "competition_id": 115055236,
-    "goals": 4,
-    "name": "Sergej Banović",
-    "person_id": 92947,
-    "photo_url": "https://hns.family/files/images_comet/74/3/_resized/74365a6f30506b8c7692b55076f86fb109f51633_80_100_cut_wg_top.png",
-    "player_url": "https://semafor.hns.family/igraci/92947/sergej-banovic/",
-    "position": 5,
-    "season": "2026/2027",
-    "updated_at": "2026-10-19T21:57:12.615929+00:00"
   },
   {
     "club": "NK Umag-CC Umago",
@@ -633,7 +633,7 @@
     "player_url": "https://semafor.hns.family/igraci/215967/irian-beviakva/",
     "position": 1,
     "season": "2026/2027",
-    "updated_at": "2026-10-19T21:56:56.98925+00:00"
+    "updated_at": "2026-10-20T21:09:58.665622+00:00"
   },
   {
     "club": "NK Veli Vrh",
@@ -645,7 +645,7 @@
     "player_url": "https://semafor.hns.family/igraci/757182/antonio-kozul/",
     "position": 3,
     "season": "2026/2027",
-    "updated_at": "2026-10-19T21:56:53.176152+00:00"
+    "updated_at": "2026-10-20T21:09:53.562805+00:00"
   },
   {
     "club": "NK Veli Vrh",
@@ -657,7 +657,7 @@
     "player_url": "https://semafor.hns.family/igraci/756884/mauro-blaskovic/",
     "position": 2,
     "season": "2026/2027",
-    "updated_at": "2026-10-19T21:56:53.176152+00:00"
+    "updated_at": "2026-10-20T21:09:53.562805+00:00"
   },
   {
     "club": "NK Višnjan 1957",
@@ -693,7 +693,7 @@
     "player_url": "https://semafor.hns.family/igraci/1159841/david-cabrajic/",
     "position": 1,
     "season": "2026/2027",
-    "updated_at": "2026-10-19T21:56:49.735936+00:00"
+    "updated_at": "2026-10-20T21:09:50.59797+00:00"
   },
   {
     "club": "NK Vrsar",
@@ -705,7 +705,7 @@
     "player_url": "https://semafor.hns.family/igraci/443728/toni-radetic/",
     "position": 1,
     "season": "2026/2027",
-    "updated_at": "2026-10-19T21:56:53.176152+00:00"
+    "updated_at": "2026-10-20T21:09:53.562805+00:00"
   },
   {
     "club": "NK Žminj",
@@ -763,9 +763,9 @@
     "person_id": 97978,
     "photo_url": "https://hns.family/files/images_comet/db/4/_resized/db41c2d47ca3756d21b75ae6dd5a26cea604546f_80_100_cut_wg_top.png",
     "player_url": "https://semafor.hns.family/igraci/97978/danijel-filipovic/",
-    "position": 1,
+    "position": 3,
     "season": "2026/2027",
-    "updated_at": "2026-10-19T21:57:12.615929+00:00"
+    "updated_at": "2026-10-20T21:10:21.126651+00:00"
   },
   {
     "club": "VNK Omladinac",
@@ -775,8 +775,8 @@
     "person_id": 97130,
     "photo_url": "https://hns.family/files/images_comet/2b/8/_resized/2b847e544d8ad5e752b8bce3ee7c9c5a0eba2718_80_100_cut_wg_top.png",
     "player_url": "https://semafor.hns.family/igraci/97130/matko-bulic/",
-    "position": 1,
+    "position": 3,
     "season": "2026/2027",
-    "updated_at": "2026-10-19T21:57:12.615929+00:00"
+    "updated_at": "2026-10-20T21:10:21.126651+00:00"
   }
 ]
