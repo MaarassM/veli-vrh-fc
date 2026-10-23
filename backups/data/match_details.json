@@ -312,6 +312,19 @@
     "venue": "SRC Valkane (umjetna trava), Pula"
   },
   {
+    "attendance": 35,
+    "away_score": 3,
+    "away_team": "NK Veli Vrh",
+    "home_score": 1,
+    "home_team": "NK Vodnjan",
+    "kickoff_at": "2026-10-21T18:00",
+    "match_id": 115007632,
+    "referees": "Suci: Ajdin Čavkić, Ivan Šistov, Toni Ružić.",
+    "scraped_at": "2026-10-22T07:13:01.083+00:00",
+    "status": "Završeno",
+    "venue": "Stadion Guido Vodopia, Vodnjan"
+  },
+  {
     "attendance": 40,
     "away_score": 0,
     "away_team": "NK Veli Vrh",
@@ -622,6 +635,19 @@
     "scraped_at": "2026-10-11T17:55:37.105+00:00",
     "status": "Završeno",
     "venue": "Šaraja, Ližnjan"
+  },
+  {
+    "attendance": 89,
+    "away_score": 7,
+    "away_team": "NK Veli Vrh",
+    "home_score": 2,
+    "home_team": "NK Peroj",
+    "kickoff_at": "2026-10-21T18:00",
+    "match_id": 115072415,
+    "referees": "Suci: Leonid Manojlovski.",
+    "scraped_at": "2026-10-22T07:12:59.433+00:00",
+    "status": "Završeno",
+    "venue": "Peroj, Peroj"
   },
   {
     "attendance": null,
@@ -1051,6 +1077,19 @@
     "scraped_at": "2026-10-04T17:19:43.752+00:00",
     "status": "Završeno",
     "venue": "Fortin, Štinjan"
+  },
+  {
+    "attendance": null,
+    "away_score": 3,
+    "away_team": "NK Veli Vrh",
+    "home_score": 6,
+    "home_team": "NK Smoljanci Sloboda",
+    "kickoff_at": "2026-10-22T18:00",
+    "match_id": 115001306,
+    "referees": "Suci: Dragan Kukić.",
+    "scraped_at": "2026-10-22T21:08:13.002+00:00",
+    "status": "Završeno",
+    "venue": "Suhača, Svetvinčenat"
   },
   {
     "attendance": null,

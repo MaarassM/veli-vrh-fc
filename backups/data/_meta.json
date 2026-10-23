@@ -1,14 +1,14 @@
 {
-  "createdAt": "2026-10-22T07:05:48.051Z",
+  "createdAt": "2026-10-23T06:57:35.027Z",
   "counts": {
     "competitions": 16,
     "standings": 159,
-    "players": 288,
-    "matches": 1562,
+    "players": 289,
+    "matches": 1598,
     "scorers": 65,
-    "match_details": 92,
-    "match_lineups": 2695,
-    "match_events": 704,
+    "match_details": 95,
+    "match_lineups": 2785,
+    "match_events": 724,
     "sponsors": 3,
     "albums": 5,
     "gallery_items": 44

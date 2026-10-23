@@ -7425,6 +7425,83 @@
     "type": "red"
   },
   {
+    "id": 723,
+    "label": "Žuti karton",
+    "match_id": 115007632,
+    "minute": 74,
+    "minute_extra": null,
+    "person_id": 1166803,
+    "player_name": "Miho Dvoršak",
+    "team": "home",
+    "type": "yellow"
+  },
+  {
+    "id": 724,
+    "label": "Drugi žuti (crveni) karton",
+    "match_id": 115007632,
+    "minute": 76,
+    "minute_extra": null,
+    "person_id": 1166803,
+    "player_name": "Miho Dvoršak",
+    "team": "home",
+    "type": "second_yellow"
+  },
+  {
+    "id": 725,
+    "label": "Gol",
+    "match_id": 115007632,
+    "minute": 61,
+    "minute_extra": null,
+    "person_id": 392535,
+    "player_name": "Marko Šimičević Tolić",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 726,
+    "label": "Neiskorišten jedanaesterac",
+    "match_id": 115007632,
+    "minute": 42,
+    "minute_extra": null,
+    "person_id": 430508,
+    "player_name": "Kristian Opassich",
+    "team": "away",
+    "type": "penalty_failed"
+  },
+  {
+    "id": 727,
+    "label": "Gol",
+    "match_id": 115007632,
+    "minute": 5,
+    "minute_extra": null,
+    "person_id": 400628,
+    "player_name": "Mauro Grahovac",
+    "team": "away",
+    "type": "goal"
+  },
+  {
+    "id": 728,
+    "label": "Gol",
+    "match_id": 115007632,
+    "minute": 42,
+    "minute_extra": null,
+    "person_id": 400628,
+    "player_name": "Mauro Grahovac",
+    "team": "away",
+    "type": "goal"
+  },
+  {
+    "id": 729,
+    "label": "Žuti karton",
+    "match_id": 115007632,
+    "minute": 71,
+    "minute_extra": null,
+    "person_id": 400628,
+    "player_name": "Mauro Grahovac",
+    "team": "away",
+    "type": "yellow"
+  },
+  {
     "id": 73,
     "label": "Gol",
     "match_id": 100950743,
@@ -7436,6 +7513,116 @@
     "type": "goal"
   },
   {
+    "id": 730,
+    "label": "Gol",
+    "match_id": 115007632,
+    "minute": 22,
+    "minute_extra": null,
+    "person_id": 391607,
+    "player_name": "Paolo Belas",
+    "team": "away",
+    "type": "goal"
+  },
+  {
+    "id": 731,
+    "label": "Žuti karton",
+    "match_id": 115007632,
+    "minute": 73,
+    "minute_extra": null,
+    "person_id": 434065,
+    "player_name": "Jakov Gluhačić",
+    "team": "away",
+    "type": "yellow"
+  },
+  {
+    "id": 732,
+    "label": "Žuti karton",
+    "match_id": 115001306,
+    "minute": 58,
+    "minute_extra": null,
+    "person_id": 1210979,
+    "player_name": "Ivano Barbieri",
+    "team": "home",
+    "type": "yellow"
+  },
+  {
+    "id": 733,
+    "label": "Gol",
+    "match_id": 115001306,
+    "minute": 63,
+    "minute_extra": null,
+    "person_id": 1210979,
+    "player_name": "Ivano Barbieri",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 734,
+    "label": "Gol",
+    "match_id": 115001306,
+    "minute": 60,
+    "minute_extra": null,
+    "person_id": 1225501,
+    "player_name": "David Tovilović",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 735,
+    "label": "Gol - 11m",
+    "match_id": 115001306,
+    "minute": 49,
+    "minute_extra": null,
+    "person_id": 1196642,
+    "player_name": "Antonio Bilić",
+    "team": "home",
+    "type": "penalty"
+  },
+  {
+    "id": 736,
+    "label": "Gol",
+    "match_id": 115001306,
+    "minute": 24,
+    "minute_extra": null,
+    "person_id": 1210915,
+    "player_name": "Filip Pekica",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 737,
+    "label": "Gol",
+    "match_id": 115001306,
+    "minute": 35,
+    "minute_extra": null,
+    "person_id": 1210915,
+    "player_name": "Filip Pekica",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 738,
+    "label": "Gol",
+    "match_id": 115001306,
+    "minute": 33,
+    "minute_extra": null,
+    "person_id": 1212619,
+    "player_name": "Leni Macan",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 739,
+    "label": "Gol",
+    "match_id": 115001306,
+    "minute": 9,
+    "minute_extra": null,
+    "person_id": 1187173,
+    "player_name": "Lukas Vujić",
+    "team": "away",
+    "type": "goal"
+  },
+  {
     "id": 74,
     "label": "Gol - 11m",
     "match_id": 100950743,
@@ -7444,6 +7631,39 @@
     "person_id": 430508,
     "player_name": "Kristian Opassich",
     "team": "home",
+    "type": "penalty"
+  },
+  {
+    "id": 740,
+    "label": "Gol",
+    "match_id": 115001306,
+    "minute": 8,
+    "minute_extra": null,
+    "person_id": 1203639,
+    "player_name": "Mirza Balić",
+    "team": "away",
+    "type": "goal"
+  },
+  {
+    "id": 741,
+    "label": "Žuti karton",
+    "match_id": 115001306,
+    "minute": 52,
+    "minute_extra": null,
+    "person_id": 1203639,
+    "player_name": "Mirza Balić",
+    "team": "away",
+    "type": "yellow"
+  },
+  {
+    "id": 742,
+    "label": "Gol - 11m",
+    "match_id": 115001306,
+    "minute": 66,
+    "minute_extra": null,
+    "person_id": 1203639,
+    "player_name": "Mirza Balić",
+    "team": "away",
     "type": "penalty"
   },
   {
