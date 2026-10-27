@@ -8085,6 +8085,28 @@
     "type": "substitutionIn"
   },
   {
+    "id": 778,
+    "label": "Gol",
+    "match_id": 115056696,
+    "minute": 37,
+    "minute_extra": null,
+    "person_id": 92814,
+    "player_name": "Marko Marić",
+    "team": "away",
+    "type": "goal"
+  },
+  {
+    "id": 779,
+    "label": "Gol",
+    "match_id": 115056696,
+    "minute": 64,
+    "minute_extra": null,
+    "person_id": 38469,
+    "player_name": "Ivan Matošević",
+    "team": "away",
+    "type": "goal"
+  },
+  {
     "id": 78,
     "label": "Gol",
     "match_id": 100950743,
@@ -8093,6 +8115,61 @@
     "person_id": 417932,
     "player_name": "Eugen Spasojević",
     "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 780,
+    "label": "Gol",
+    "match_id": 115056696,
+    "minute": 46,
+    "minute_extra": null,
+    "person_id": 5653,
+    "player_name": "Igor Ivanović",
+    "team": "away",
+    "type": "goal"
+  },
+  {
+    "id": 781,
+    "label": "Gol",
+    "match_id": 115056696,
+    "minute": 15,
+    "minute_extra": null,
+    "person_id": 92537,
+    "player_name": "Mišel Tonkić",
+    "team": "away",
+    "type": "goal"
+  },
+  {
+    "id": 782,
+    "label": "Gol",
+    "match_id": 115056696,
+    "minute": 26,
+    "minute_extra": null,
+    "person_id": 76156,
+    "player_name": "Vedran Balentović",
+    "team": "away",
+    "type": "goal"
+  },
+  {
+    "id": 783,
+    "label": "Gol",
+    "match_id": 115056696,
+    "minute": 70,
+    "minute_extra": null,
+    "person_id": 1161322,
+    "player_name": "Miroslav Debeljaković",
+    "team": "away",
+    "type": "goal"
+  },
+  {
+    "id": 784,
+    "label": "Gol",
+    "match_id": 115056696,
+    "minute": 72,
+    "minute_extra": null,
+    "person_id": 1161322,
+    "player_name": "Miroslav Debeljaković",
+    "team": "away",
     "type": "goal"
   },
   {

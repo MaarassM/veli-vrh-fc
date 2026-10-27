@@ -1263,6 +1263,19 @@
   {
     "attendance": null,
     "away_score": 7,
+    "away_team": "NK Rovinj",
+    "home_score": 0,
+    "home_team": "NK Veli Vrh",
+    "kickoff_at": "2026-10-26T17:30",
+    "match_id": 115056696,
+    "referees": "Suci: Silvio Đudarić.",
+    "scraped_at": "2026-10-26T22:13:26.348+00:00",
+    "status": "Završeno",
+    "venue": "Stadion Guido Vodopia, Vodnjan"
+  },
+  {
+    "attendance": null,
+    "away_score": 7,
     "away_team": "NK Veli Vrh",
     "home_score": 0,
     "home_team": "NK Galižana",
