@@ -8173,6 +8173,61 @@
     "type": "goal"
   },
   {
+    "id": 785,
+    "label": "Žuti karton",
+    "match_id": 115007636,
+    "minute": 29,
+    "minute_extra": null,
+    "person_id": 442930,
+    "player_name": "Matias Kopić",
+    "team": "home",
+    "type": "yellow"
+  },
+  {
+    "id": 786,
+    "label": "Gol",
+    "match_id": 115007636,
+    "minute": 47,
+    "minute_extra": null,
+    "person_id": 1173455,
+    "player_name": "Amar Halilović",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 787,
+    "label": "Gol",
+    "match_id": 115007636,
+    "minute": 74,
+    "minute_extra": null,
+    "person_id": 1173455,
+    "player_name": "Amar Halilović",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 788,
+    "label": "Autogol",
+    "match_id": 115007636,
+    "minute": 43,
+    "minute_extra": null,
+    "person_id": 448298,
+    "player_name": "Ilya Gryaznykh",
+    "team": "away",
+    "type": "own_goal"
+  },
+  {
+    "id": 789,
+    "label": "Gol",
+    "match_id": 115007636,
+    "minute": 31,
+    "minute_extra": null,
+    "person_id": 430508,
+    "player_name": "Kristian Opassich",
+    "team": "away",
+    "type": "goal"
+  },
+  {
     "id": 79,
     "label": "Gol",
     "match_id": 100950743,
@@ -8182,6 +8237,17 @@
     "player_name": "Alex Gjumić",
     "team": "away",
     "type": "goal"
+  },
+  {
+    "id": 790,
+    "label": "Žuti karton",
+    "match_id": 115007636,
+    "minute": 30,
+    "minute_extra": null,
+    "person_id": 1172944,
+    "player_name": "Arman Draginović",
+    "team": "away",
+    "type": "yellow"
   },
   {
     "id": 8,
