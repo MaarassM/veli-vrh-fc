@@ -8250,6 +8250,28 @@
     "type": "yellow"
   },
   {
+    "id": 791,
+    "label": "Gol",
+    "match_id": 115001309,
+    "minute": 68,
+    "minute_extra": null,
+    "person_id": 1219175,
+    "player_name": "David Živković",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 792,
+    "label": "Gol",
+    "match_id": 115001309,
+    "minute": 55,
+    "minute_extra": null,
+    "person_id": 1231535,
+    "player_name": "Erik Petrić",
+    "team": "away",
+    "type": "goal"
+  },
+  {
     "id": 8,
     "label": "Izmjena",
     "match_id": 110171961,
