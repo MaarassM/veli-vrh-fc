@@ -286,6 +286,19 @@
     "venue": "Oliva, Fažana"
   },
   {
+    "attendance": 30,
+    "away_score": 8,
+    "away_team": "NK Veli Vrh",
+    "home_score": 4,
+    "home_team": "NK Novigrad 1947 II",
+    "kickoff_at": "2026-10-31T11:00",
+    "match_id": 115010531,
+    "referees": "Suci: Karlo Jelčić.",
+    "scraped_at": "2026-10-31T17:31:31.669+00:00",
+    "status": "Završeno",
+    "venue": "Dajla, Dajla"
+  },
+  {
     "attendance": 33,
     "away_score": 1,
     "away_team": "NK Veli Vrh",

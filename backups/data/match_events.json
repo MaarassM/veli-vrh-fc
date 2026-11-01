@@ -8272,6 +8272,83 @@
     "type": "goal"
   },
   {
+    "id": 793,
+    "label": "Gol",
+    "match_id": 115010531,
+    "minute": 24,
+    "minute_extra": null,
+    "person_id": 1172659,
+    "player_name": "Lucas Bertoša",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 794,
+    "label": "Gol",
+    "match_id": 115010531,
+    "minute": 31,
+    "minute_extra": null,
+    "person_id": 1172659,
+    "player_name": "Lucas Bertoša",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 795,
+    "label": "Gol",
+    "match_id": 115010531,
+    "minute": 18,
+    "minute_extra": null,
+    "person_id": 469602,
+    "player_name": "Manuel Bubola",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 796,
+    "label": "Žuti karton",
+    "match_id": 115010531,
+    "minute": 25,
+    "minute_extra": null,
+    "person_id": 469602,
+    "player_name": "Manuel Bubola",
+    "team": "home",
+    "type": "yellow"
+  },
+  {
+    "id": 797,
+    "label": "Žuti karton",
+    "match_id": 115010531,
+    "minute": 37,
+    "minute_extra": null,
+    "person_id": 1173008,
+    "player_name": "Marco Novacco",
+    "team": "home",
+    "type": "yellow"
+  },
+  {
+    "id": 798,
+    "label": "Gol",
+    "match_id": 115010531,
+    "minute": 39,
+    "minute_extra": null,
+    "person_id": 1173008,
+    "player_name": "Marco Novacco",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 799,
+    "label": "Gol",
+    "match_id": 115010531,
+    "minute": 8,
+    "minute_extra": null,
+    "person_id": 1154914,
+    "player_name": "Vigan Ahmeti",
+    "team": "away",
+    "type": "goal"
+  },
+  {
     "id": 8,
     "label": "Izmjena",
     "match_id": 110171961,
@@ -8291,6 +8368,83 @@
     "person_id": 459787,
     "player_name": "Vasilije Čurčić",
     "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 800,
+    "label": "Gol",
+    "match_id": 115010531,
+    "minute": 33,
+    "minute_extra": null,
+    "person_id": 1154914,
+    "player_name": "Vigan Ahmeti",
+    "team": "away",
+    "type": "goal"
+  },
+  {
+    "id": 801,
+    "label": "Gol",
+    "match_id": 115010531,
+    "minute": 15,
+    "minute_extra": null,
+    "person_id": 1182589,
+    "player_name": "Nikola Đokić",
+    "team": "away",
+    "type": "goal"
+  },
+  {
+    "id": 802,
+    "label": "Gol",
+    "match_id": 115010531,
+    "minute": 21,
+    "minute_extra": null,
+    "person_id": 1182589,
+    "player_name": "Nikola Đokić",
+    "team": "away",
+    "type": "goal"
+  },
+  {
+    "id": 803,
+    "label": "Gol",
+    "match_id": 115010531,
+    "minute": 20,
+    "minute_extra": null,
+    "person_id": 756884,
+    "player_name": "Mauro Blašković",
+    "team": "away",
+    "type": "goal"
+  },
+  {
+    "id": 804,
+    "label": "Gol",
+    "match_id": 115010531,
+    "minute": 14,
+    "minute_extra": null,
+    "person_id": 1115984,
+    "player_name": "Erik Stojšić",
+    "team": "away",
+    "type": "goal"
+  },
+  {
+    "id": 805,
+    "label": "Gol",
+    "match_id": 115010531,
+    "minute": 37,
+    "minute_extra": null,
+    "person_id": 757182,
+    "player_name": "Antonio Kožul",
+    "team": "away",
+    "type": "goal"
+  },
+  {
+    "id": 806,
+    "label": "Gol",
+    "match_id": 115010531,
+    "minute": 21,
+    "minute_extra": null,
+    "person_id": 1207267,
+    "player_name": "Niko Tomašić",
+    "team": "away",
     "type": "goal"
   },
   {
