@@ -559,6 +559,19 @@
     "venue": "Oliva, Fažana"
   },
   {
+    "attendance": 68,
+    "away_score": 2,
+    "away_team": "NK Veli Vrh",
+    "home_score": 1,
+    "home_team": "NK Iskra",
+    "kickoff_at": "2026-11-01T14:30",
+    "match_id": 114701673,
+    "referees": "Suci: Josip Budimir, Perica Nikolić, Florian Belavić.",
+    "scraped_at": "2026-11-01T18:17:32.969+00:00",
+    "status": "Završeno",
+    "venue": "Vinež, Vinež"
+  },
+  {
     "attendance": 70,
     "away_score": 0,
     "away_team": "NK Veli Vrh",
