@@ -8800,6 +8800,39 @@
     "type": "substitutionIn"
   },
   {
+    "id": 836,
+    "label": "Žuti karton",
+    "match_id": 115007643,
+    "minute": 70,
+    "minute_extra": null,
+    "person_id": 444306,
+    "player_name": "Leni Bratović",
+    "team": "home",
+    "type": "yellow"
+  },
+  {
+    "id": 837,
+    "label": "Žuti karton",
+    "match_id": 115007643,
+    "minute": 88,
+    "minute_extra": null,
+    "person_id": 454108,
+    "player_name": "Lean Isić",
+    "team": "home",
+    "type": "yellow"
+  },
+  {
+    "id": 838,
+    "label": "Gol",
+    "match_id": 115007643,
+    "minute": 8,
+    "minute_extra": null,
+    "person_id": 391607,
+    "player_name": "Paolo Belas",
+    "team": "away",
+    "type": "goal"
+  },
+  {
     "id": 84,
     "label": "Gol",
     "match_id": 112164467,
