@@ -8833,6 +8833,17 @@
     "type": "goal"
   },
   {
+    "id": 839,
+    "label": "Gol",
+    "match_id": 115001319,
+    "minute": 4,
+    "minute_extra": null,
+    "person_id": 1159841,
+    "player_name": "David Čabrajić",
+    "team": "home",
+    "type": "goal"
+  },
+  {
     "id": 84,
     "label": "Gol",
     "match_id": 112164467,
@@ -8841,6 +8852,50 @@
     "person_id": 431807,
     "player_name": "Mario Pavičić",
     "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 840,
+    "label": "Gol",
+    "match_id": 115001319,
+    "minute": 50,
+    "minute_extra": null,
+    "person_id": 1159841,
+    "player_name": "David Čabrajić",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 841,
+    "label": "Gol",
+    "match_id": 115001319,
+    "minute": 55,
+    "minute_extra": null,
+    "person_id": 1159841,
+    "player_name": "David Čabrajić",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 842,
+    "label": "Gol",
+    "match_id": 115001319,
+    "minute": 59,
+    "minute_extra": null,
+    "person_id": 1159841,
+    "player_name": "David Čabrajić",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 843,
+    "label": "Gol",
+    "match_id": 115001319,
+    "minute": 28,
+    "minute_extra": null,
+    "person_id": 1215329,
+    "player_name": "Erik Pokorn",
+    "team": "away",
     "type": "goal"
   },
   {
