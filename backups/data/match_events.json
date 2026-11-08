@@ -8899,6 +8899,72 @@
     "type": "goal"
   },
   {
+    "id": 844,
+    "label": "Žuti karton",
+    "match_id": 115010536,
+    "minute": 70,
+    "minute_extra": null,
+    "person_id": 461873,
+    "player_name": "Noel Beletić",
+    "team": "home",
+    "type": "yellow"
+  },
+  {
+    "id": 845,
+    "label": "Gol",
+    "match_id": 115010536,
+    "minute": 46,
+    "minute_extra": null,
+    "person_id": 1164680,
+    "player_name": "Petar Smolica",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 846,
+    "label": "Žuti karton",
+    "match_id": 115010536,
+    "minute": 47,
+    "minute_extra": null,
+    "person_id": 1164680,
+    "player_name": "Petar Smolica",
+    "team": "home",
+    "type": "yellow"
+  },
+  {
+    "id": 847,
+    "label": "Gol",
+    "match_id": 115010536,
+    "minute": 18,
+    "minute_extra": null,
+    "person_id": 756884,
+    "player_name": "Mauro Blašković",
+    "team": "away",
+    "type": "goal"
+  },
+  {
+    "id": 848,
+    "label": "Gol",
+    "match_id": 115010536,
+    "minute": 54,
+    "minute_extra": null,
+    "person_id": 756884,
+    "player_name": "Mauro Blašković",
+    "team": "away",
+    "type": "goal"
+  },
+  {
+    "id": 849,
+    "label": "Gol",
+    "match_id": 115010536,
+    "minute": 41,
+    "minute_extra": null,
+    "person_id": 757182,
+    "player_name": "Antonio Kožul",
+    "team": "away",
+    "type": "goal"
+  },
+  {
     "id": 85,
     "label": "Gol",
     "match_id": 112164467,
