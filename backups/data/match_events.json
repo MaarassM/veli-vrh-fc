@@ -8976,6 +8976,116 @@
     "type": "goal"
   },
   {
+    "id": 850,
+    "label": "Žuti karton",
+    "match_id": 114701676,
+    "minute": 38,
+    "minute_extra": null,
+    "person_id": 171966,
+    "player_name": "Daniel Jeromela",
+    "team": "home",
+    "type": "yellow"
+  },
+  {
+    "id": 851,
+    "label": "Izmjena",
+    "match_id": 114701676,
+    "minute": 64,
+    "minute_extra": null,
+    "person_id": 1153609,
+    "player_name": "Filip Radolović",
+    "team": "home",
+    "type": "substitutionOut"
+  },
+  {
+    "id": 852,
+    "label": "Izmjena",
+    "match_id": 114701676,
+    "minute": 77,
+    "minute_extra": null,
+    "person_id": 173301,
+    "player_name": "Tony Kraljević",
+    "team": "home",
+    "type": "substitutionOut"
+  },
+  {
+    "id": 853,
+    "label": "Gol",
+    "match_id": 114701676,
+    "minute": 90,
+    "minute_extra": 6,
+    "person_id": 198704,
+    "player_name": "Nikola Vučetić",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 854,
+    "label": "Žuti karton",
+    "match_id": 114701676,
+    "minute": 90,
+    "minute_extra": 6,
+    "person_id": 198704,
+    "player_name": "Nikola Vučetić",
+    "team": "home",
+    "type": "yellow"
+  },
+  {
+    "id": 855,
+    "label": "Izmjena",
+    "match_id": 114701676,
+    "minute": 77,
+    "minute_extra": null,
+    "person_id": 234854,
+    "player_name": "Karlo Nikšić",
+    "team": "home",
+    "type": "substitutionOut"
+  },
+  {
+    "id": 856,
+    "label": "Gol",
+    "match_id": 114701676,
+    "minute": 34,
+    "minute_extra": null,
+    "person_id": 165031,
+    "player_name": "Mate Nikolas Škare",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 857,
+    "label": "Gol",
+    "match_id": 114701676,
+    "minute": 80,
+    "minute_extra": null,
+    "person_id": 165031,
+    "player_name": "Mate Nikolas Škare",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 858,
+    "label": "Izmjena",
+    "match_id": 114701676,
+    "minute": 82,
+    "minute_extra": null,
+    "person_id": 165031,
+    "player_name": "Mate Nikolas Škare",
+    "team": "home",
+    "type": "substitutionOut"
+  },
+  {
+    "id": 859,
+    "label": "Izmjena",
+    "match_id": 114701676,
+    "minute": 77,
+    "minute_extra": null,
+    "person_id": 230094,
+    "player_name": "Adam Štefanac",
+    "team": "home",
+    "type": "substitutionIn"
+  },
+  {
     "id": 86,
     "label": "Gol",
     "match_id": 112164467,
@@ -8984,6 +9094,116 @@
     "person_id": 431807,
     "player_name": "Mario Pavičić",
     "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 860,
+    "label": "Izmjena",
+    "match_id": 114701676,
+    "minute": 82,
+    "minute_extra": null,
+    "person_id": 86567,
+    "player_name": "Frane Jelenić",
+    "team": "home",
+    "type": "substitutionIn"
+  },
+  {
+    "id": 861,
+    "label": "Gol",
+    "match_id": 114701676,
+    "minute": 90,
+    "minute_extra": 2,
+    "person_id": 86567,
+    "player_name": "Frane Jelenić",
+    "team": "home",
+    "type": "goal"
+  },
+  {
+    "id": 862,
+    "label": "Izmjena",
+    "match_id": 114701676,
+    "minute": 64,
+    "minute_extra": null,
+    "person_id": 230097,
+    "player_name": "Juraj Regović",
+    "team": "home",
+    "type": "substitutionIn"
+  },
+  {
+    "id": 863,
+    "label": "Izmjena",
+    "match_id": 114701676,
+    "minute": 82,
+    "minute_extra": null,
+    "person_id": 88113,
+    "player_name": "Jure Bonaca",
+    "team": "home",
+    "type": "substitutionIn"
+  },
+  {
+    "id": 864,
+    "label": "Izmjena",
+    "match_id": 114701676,
+    "minute": 77,
+    "minute_extra": null,
+    "person_id": 95885,
+    "player_name": "David Draković",
+    "team": "home",
+    "type": "substitutionIn"
+  },
+  {
+    "id": 865,
+    "label": "Izmjena",
+    "match_id": 114701676,
+    "minute": 82,
+    "minute_extra": null,
+    "person_id": 95885,
+    "player_name": "David Draković",
+    "team": "home",
+    "type": "substitutionOut"
+  },
+  {
+    "id": 866,
+    "label": "Žuti karton",
+    "match_id": 114701676,
+    "minute": 76,
+    "minute_extra": null,
+    "person_id": 215815,
+    "player_name": "Noa Paris",
+    "team": "away",
+    "type": "yellow"
+  },
+  {
+    "id": 867,
+    "label": "Izmjena",
+    "match_id": 114701676,
+    "minute": 89,
+    "minute_extra": null,
+    "person_id": 173585,
+    "player_name": "Karlo Mardešić",
+    "team": "away",
+    "type": "substitutionOut"
+  },
+  {
+    "id": 868,
+    "label": "Žuti karton",
+    "match_id": 114701676,
+    "minute": 45,
+    "minute_extra": 2,
+    "person_id": 202335,
+    "player_name": "Andi Sinčić",
+    "team": "away",
+    "type": "yellow"
+  },
+  {
+    "id": 869,
+    "label": "Gol",
+    "match_id": 114701676,
+    "minute": 61,
+    "minute_extra": null,
+    "person_id": 202335,
+    "player_name": "Andi Sinčić",
+    "team": "away",
     "type": "goal"
   },
   {
@@ -8996,6 +9216,83 @@
     "player_name": "Mario Pavičić",
     "team": "home",
     "type": "goal"
+  },
+  {
+    "id": 870,
+    "label": "Izmjena",
+    "match_id": 114701676,
+    "minute": 62,
+    "minute_extra": null,
+    "person_id": 202335,
+    "player_name": "Andi Sinčić",
+    "team": "away",
+    "type": "substitutionOut"
+  },
+  {
+    "id": 871,
+    "label": "Izmjena",
+    "match_id": 114701676,
+    "minute": 31,
+    "minute_extra": null,
+    "person_id": 391607,
+    "player_name": "Paolo Belas",
+    "team": "away",
+    "type": "substitutionOut"
+  },
+  {
+    "id": 872,
+    "label": "Izmjena",
+    "match_id": 114701676,
+    "minute": 62,
+    "minute_extra": null,
+    "person_id": 453658,
+    "player_name": "Emrah Ćosić",
+    "team": "away",
+    "type": "substitutionIn"
+  },
+  {
+    "id": 873,
+    "label": "Izmjena",
+    "match_id": 114701676,
+    "minute": 31,
+    "minute_extra": null,
+    "person_id": 330099,
+    "player_name": "Ian Halilović",
+    "team": "away",
+    "type": "substitutionIn"
+  },
+  {
+    "id": 874,
+    "label": "Izmjena",
+    "match_id": 114701676,
+    "minute": 62,
+    "minute_extra": null,
+    "person_id": 330099,
+    "player_name": "Ian Halilović",
+    "team": "away",
+    "type": "substitutionOut"
+  },
+  {
+    "id": 875,
+    "label": "Izmjena",
+    "match_id": 114701676,
+    "minute": 62,
+    "minute_extra": null,
+    "person_id": 200020,
+    "player_name": "Adrian Žagrić",
+    "team": "away",
+    "type": "substitutionIn"
+  },
+  {
+    "id": 876,
+    "label": "Izmjena",
+    "match_id": 114701676,
+    "minute": 89,
+    "minute_extra": null,
+    "person_id": 400628,
+    "player_name": "Mauro Grahovac",
+    "team": "away",
+    "type": "substitutionIn"
   },
   {
     "id": 88,

@@ -496,6 +496,19 @@
   {
     "attendance": 50,
     "away_score": 1,
+    "away_team": "NK Veli Vrh",
+    "home_score": 4,
+    "home_team": "NK Peroj",
+    "kickoff_at": "2026-11-08T14:30",
+    "match_id": 114701676,
+    "referees": "Suci: Edin Šehić, Alen Dokuš, Antun Taranić.",
+    "scraped_at": "2026-11-08T18:14:03.816+00:00",
+    "status": "Završeno",
+    "venue": "Peroj, Peroj"
+  },
+  {
+    "attendance": 50,
+    "away_score": 1,
     "away_team": "NK Vodnjan",
     "home_score": 2,
     "home_team": "NK Veli Vrh",
@@ -947,6 +960,19 @@
     "scraped_at": "2026-08-01T14:27:11.669+00:00",
     "status": "Završeno",
     "venue": "Aldo Drosina - umjetna trava 1, Pula"
+  },
+  {
+    "attendance": null,
+    "away_score": 1,
+    "away_team": "NK Veli Vrh",
+    "home_score": 2,
+    "home_team": "Uljanik II",
+    "kickoff_at": "2026-11-08T12:30",
+    "match_id": 115072431,
+    "referees": "Suci: Arnel Bešić.",
+    "scraped_at": "2026-11-08T18:14:04.797+00:00",
+    "status": "Završeno",
+    "venue": "SRC Valkane (umjetna trava), Pula"
   },
   {
     "attendance": null,
