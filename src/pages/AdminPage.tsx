@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import type { Session } from '@supabase/supabase-js'
 import { LogOut, Loader2 } from 'lucide-react'
 import { supabase } from '@/lib/supabase'
-import SponsorsAdmin from '@/components/admin/SponsorsAdmin'
+import PlayersAdmin from '@/components/admin/PlayersAdmin'
 import GalleryAdmin from '@/components/admin/GalleryAdmin'
 import StaffAdmin from '@/components/admin/StaffAdmin'
 import TimelineAdmin from '@/components/admin/TimelineAdmin'
@@ -11,7 +11,7 @@ import PageHeader from '@/components/ui/PageHeader'
 import SEO from '@/components/seo/SEO'
 
 const tabs = {
-  sponzori: { label: 'Sponzori', Component: SponsorsAdmin },
+  momcad: { label: 'Momčad', Component: PlayersAdmin },
   galerija: { label: 'Galerija', Component: GalleryAdmin },
   stozer: { label: 'Stožer', Component: StaffAdmin },
   povijest: { label: 'Povijest', Component: TimelineAdmin },
@@ -85,7 +85,7 @@ function LoginForm() {
 export default function AdminPage() {
   const [session, setSession] = useState<Session | null>(null)
   const [checked, setChecked] = useState(false)
-  const [tab, setTab] = useState<TabKey>('sponzori')
+  const [tab, setTab] = useState<TabKey>('momcad')
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => {

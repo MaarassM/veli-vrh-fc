@@ -1,68 +1,30 @@
-import { motion } from 'motion/react'
 import type { Player } from '@/types'
-import Badge from '@/components/ui/Badge'
-import { Crown } from 'lucide-react'
 
-interface PlayerCardProps {
-  player: Player
-  index: number
-}
-
-const positionLabels: Record<string, string> = {
-  Goalkeeper: 'Vratar',
-  Defender: 'Branič',
-  Midfielder: 'Vezni',
-  Forward: 'Napadač',
-}
-
-export default function PlayerCard({ player, index }: PlayerCardProps) {
+export default function PlayerCard({ player }: { player: Player }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.5, delay: index * 0.05 }}
-      whileHover={{ y: -8 }}
-      className="group relative bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all"
-    >
-      {/* Image container */}
-      <div className="relative aspect-square bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
-        <img
-          src={player.image}
-          alt={`${player.firstName} ${player.lastName}`}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-        />
-
-        {/* Number overlay */}
-        <div className="absolute top-4 right-4 w-12 h-12 bg-orange-500 text-white font-display font-bold text-2xl rounded-lg flex items-center justify-center shadow-lg">
-          {player.number}
-        </div>
-
-        {/* Captain badge */}
-        {player.isCaptain && (
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ type: 'spring', delay: 0.3 }}
-            className="absolute top-4 left-4 bg-yellow-500 text-white p-2 rounded-full shadow-lg"
+    <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-md transition-shadow">
+      <div className="aspect-[3/2] flex items-center justify-center bg-gray-900">
+        {player.number !== null ? (
+          <span
+            className="heading-club text-6xl text-white/90 tabular-nums leading-none"
+            aria-label={`Broj dresa ${player.number}`}
           >
-            <Crown className="w-5 h-5" fill="currentColor" />
-          </motion.div>
+            {player.number}
+          </span>
+        ) : (
+          <span className="heading-club text-4xl text-white/40 leading-none" aria-hidden="true">
+            {player.firstName[0]}
+            {player.lastName[0]}
+          </span>
         )}
-
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
       </div>
 
-      {/* Player info */}
-      <div className="p-5">
-        <h3 className="font-display font-bold text-lg text-gray-900 mb-1">
+      <div className="p-3">
+        <h3 className="font-bold text-gray-900 leading-tight truncate" style={{ fontFamily: 'var(--font-display)' }}>
           {player.firstName} {player.lastName}
         </h3>
-        <Badge variant="default">
-          {positionLabels[player.position]}
-        </Badge>
+        {player.position && <p className="text-xs text-gray-400 mt-0.5">{player.position}</p>}
       </div>
-    </motion.div>
+    </div>
   )
 }

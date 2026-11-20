@@ -1,33 +1,39 @@
 {
   "outputDirectory": "dist",
-  "functions": {
-    "api/**/*.ts": {
-      "memory": 1024,
-      "maxDuration": 60
-    }
-  },
-  "crons": [
+  "redirects": [
     {
-      "path": "/api/cron/sync",
-      "schedule": "0 7 * * *"
+      "source": "/utakmice/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/kategorije/:path*",
+      "destination": "/momcad",
+      "permanent": true
+    },
+    {
+      "source": "/statistika",
+      "destination": "/momcad",
+      "permanent": true
+    },
+    {
+      "source": "/strucni-stozer",
+      "destination": "/momcad",
+      "permanent": true
+    },
+    {
+      "source": "/postani-clan",
+      "destination": "/kontakt",
+      "permanent": true
     }
   ],
   "rewrites": [
     {
-      "source": "/((?!api|@|node_modules).*)",
+      "source": "/((?!@|node_modules).*)",
       "destination": "/index.html"
     }
   ],
   "headers": [
-    {
-      "source": "/api/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "s-maxage=300, stale-while-revalidate=3600"
-        }
-      ]
-    },
     {
       "source": "/(.*)",
       "headers": [

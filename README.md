@@ -1,17 +1,18 @@
 # NK Veli Vrh — službena web stranica
 
-Web stranica nogometnog kluba Veli Vrh iz Pule (osnovan 1975., Stadion Tivoli).
-Rezultati, ljestvice, statistike i sastavi povlače se automatski s
-[HNS Semafora](https://semafor.hns.family/klubovi/1546/nk-veli-vrh/), a novosti s
-klupske Facebook stranice.
+Web stranica nogometnog kluba Veli Vrh iz Pule (osnovan 1975., Stadion Tivoli):
+o klubu, momčad, galerija i kontakt. Sav sadržaj uređuje se kroz `/admin`.
+
+Do studenog 2026. rezultati i ljestvice povlačili su se s HNS Semafora. HNS je
+zabranio automatsko preuzimanje podataka, pa je taj dio uklonjen; stare HNS
+tablice ostaju u bazi, ali ih ništa više ne čita ni ne puni.
 
 ## Stack
 
 - **Frontend:** Vite + React 19 + TypeScript + Tailwind CSS 4 + Motion
-- **Hosting:** Vercel (SPA + serverless funkcije u `api/`)
-- **Baza:** Supabase (Postgres, besplatni plan)
-- **Scraping:** Cheerio nad HNS Semaforom (server-rendered HTML)
-- **Testovi:** Vitest (parseri se testiraju na stvarnim HTML fixture-ima)
+- **Hosting:** Vercel (statična SPA, bez serverless funkcija)
+- **Baza:** Supabase (Postgres + Storage, besplatni plan)
+- **Testovi:** Vitest
 
 ## Pokretanje
 
@@ -21,35 +22,15 @@ cp .env.example .env   # upiši Supabase ključeve
 npm run dev
 ```
 
-Bez `.env`-a frontend radi sa statičkim fallback podacima.
+## Sadržaj i admin
 
-## Arhitektura podataka
+Prijava na `/admin` (samo korisnici iz tablice `admins`). Kartice:
 
-1. **Discovery** (`lib/hns/discovery.ts`): javni Semafor JSON handleri vraćaju
-   kategorije kluba i ID-eve natjecanja za tekuću sezonu — nova sezona radi bez
-   ručnog ažuriranja.
-2. **Scrape** (`lib/hns/sync-core.ts` + `lib/hns/parsers.ts`): za svako natjecanje
-   povlači se stranica natjecanja (ljestvica s formom, sva kola, top strijelci),
-   klupska stranica (roster sa statistikama) i do 5 detalja odigranih utakmica
-   po pokretanju (sastavi, golovi, kartoni, gledatelji).
-3. **Spremanje:** Supabase tablice `competitions`, `standings`, `matches`,
-   `players`, `scorers`, `match_details`, `match_lineups`, `match_events`.
-   Pisanje je "guarded" — postojeći podaci se brišu tek kad novi postoje.
-4. **Serviranje:** `api/standings`, `api/matches`, `api/players`, `api/scorers`,
-   `api/match?id=`, `api/news` (CDN cache 5 min).
-
-### Raspored synca
-
-- Vercel cron: 1×/dan (`vercel.json`) — limit Hobby plana
-- GitHub Actions (`.github/workflows/hns-sync.yml`): radnim danom 2×/dan,
-  vikendom svaki sat poslijepodne. Traži `CRON_SECRET` repo secret
-  (isti kao u Vercel env) i opcionalno `SYNC_URL` repo varijablu.
-
-### Ručni sync
-
-```bash
-npm run sync:local
-```
+- **Momčad** — igrači seniora (tablica `team_players`)
+- **Galerija** — albumi i fotografije (`albums`, `gallery_items`, bucket `media`)
+- **Stožer** — stručni stožer i uprava (`staff`)
+- **Povijest** — vremenska crta na stranici O klubu (`timeline_events`)
+- **Tekstovi** — uvod, vrijednosti, opis kluba i stadiona (`site_content`)
 
 ## Testovi
 
@@ -57,20 +38,10 @@ npm run sync:local
 npm test
 ```
 
-Fixture-i u `tests/fixtures/hns/` su stvarne Semafor stranice (srpanj 2026.).
-Ako se struktura Semafora promijeni, skini nove fixture-e i prilagodi parsere.
-
 ## Deploy
 
 Push na `main` → Vercel automatski deploya. Migracije baze se pokreću ručno
 u Supabase SQL Editoru (`supabase/migrations/`).
-
-## Dokumentacija
-
-- Veliki plan unaprjeđenja: `docs/superpowers/specs/2026-07-30-website-max-upgrade-plan.md`
-- Implementacijski planovi: `docs/superpowers/plans/`
-
-<!-- deploy: pickup VAPID env vars -->
 
 ## Sigurnost podataka
 
@@ -81,9 +52,7 @@ tablice u JSON i sprema ih u granu `backups`. Git povijest te grane je vremenska
 mašina — svaki dan je jedan commit, pa se može vidjeti što se i kad promijenilo.
 Ručno pokretanje: `gh workflow run backup.yml`.
 
-Ne spremamo `sync_log` (samo dijagnostika) ni `push_subscriptions` (osobni podaci).
-Slike u Supabase Storageu (galerija, logotipi sponzora) **nisu** u kopiji — one
-postoje samo na Supabaseu.
+Slike u Supabase Storageu (galerija) **nisu** u kopiji — one postoje samo na Supabaseu.
 
 **Vraćanje podataka.** Dohvati kopiju i pokreni restore:
 

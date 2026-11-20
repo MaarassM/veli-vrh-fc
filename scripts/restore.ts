@@ -6,15 +6,10 @@ import { join } from 'node:path'
 import { createInterface } from 'node:readline/promises'
 
 const TABLES = [
-  'competitions',
-  'standings',
-  'players',
-  'matches',
-  'scorers',
-  'match_details',
-  'match_lineups',
-  'match_events',
-  'sponsors',
+  'team_players',
+  'staff',
+  'timeline_events',
+  'site_content',
   'albums',
   'gallery_items',
 ] as const

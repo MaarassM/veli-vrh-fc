@@ -6,7 +6,7 @@ import { contactInfo } from '@/data/contact'
 // TODO-korisnik: prije objave neka netko iz uprave potvrdi podatke udruge
 // (OIB, adresa, osoba za kontakt) i praksu oko fotografiranja mlađih uzrasta.
 const CLUB_OIB = '93093916559'
-const UPDATED = '1. listopada 2026.'
+const UPDATED = '20. studenoga 2026.'
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
@@ -43,9 +43,9 @@ export default function PrivatnostPage() {
 
           <Section title="Koje podatke prikupljamo">
             <p>
-              <strong>Rezultati i podaci o igračima</strong> preuzimaju se automatski s HNS
-              Semafora, službenog sustava Hrvatskog nogometnog saveza. To su javno objavljeni
-              natjecateljski podaci: ime i prezime, broj dresa, nastupi, golovi i kartoni.
+              <strong>Popis igrača i stručnog stožera</strong> (ime, prezime, broj dresa i
+              pozicija) objavljujemo kako bismo predstavili klupske momčadi. Ako ne želite biti
+              na popisu, javite nam se e-poštom.
             </p>
             <p>
               <strong>Fotografije</strong> s utakmica, treninga i klupskih događanja objavljujemo
@@ -79,14 +79,6 @@ export default function PrivatnostPage() {
             <p>
               Pritužbu možete uputiti i Agenciji za zaštitu osobnih podataka (AZOP), Selska cesta
               136, 10000 Zagreb.
-            </p>
-          </Section>
-
-          <Section title="Točnost rezultata">
-            <p>
-              Rezultati, ljestvice i statistike dolaze s HNS Semafora i osvježavaju se više puta
-              dnevno. Službeni su podaci oni koje objavljuje Hrvatski nogometni savez — ako
-              uočite nesklad, mjerodavan je Semafor.
             </p>
           </Section>
         </div>

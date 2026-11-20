@@ -5,21 +5,16 @@ import { mkdirSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 
 const TABLES = [
-  'competitions',
-  'standings',
-  'players',
-  'matches',
-  'scorers',
-  'match_details',
-  'match_lineups',
-  'match_events',
-  'sponsors',
+  'team_players',
+  'staff',
+  'timeline_events',
+  'site_content',
   'albums',
   'gallery_items',
 ] as const
 
-// sync_log i push_subscriptions namjerno preskačemo: log je samo dijagnostika,
-// a pretplate su osobni podaci koji ne trebaju završiti u gitu.
+// Stare HNS tablice (matches, standings, ...) više se ne pune pa ih ne spremamo;
+// zadnja kopija s njima ostaje u povijesti grane "backups".
 
 const PAGE_SIZE = 1000
 
@@ -34,7 +29,7 @@ async function fetchTable(baseUrl: string, key: string, table: string): Promise<
       },
     })
     if (!res.ok) {
-      // tablice bez stupca "id" (npr. match_lineups) sortiramo bez order klauzule
+      // tablice bez stupca "id" (npr. site_content) sortiramo bez order klauzule
       const retry = await fetch(`${baseUrl}/rest/v1/${table}?select=*`, {
         headers: {
           apikey: key,

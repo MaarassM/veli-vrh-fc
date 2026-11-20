@@ -1,15 +1,11 @@
-export type PlayerPosition = 'Goalkeeper' | 'Defender' | 'Midfielder' | 'Forward';
+export const PLAYER_POSITIONS = ['Vratar', 'Obrana', 'Vezni red', 'Napad'] as const;
+
+export type PlayerPosition = (typeof PLAYER_POSITIONS)[number];
 
 export interface Player {
   id: string;
   firstName: string;
   lastName: string;
-  number: number;
-  position: PlayerPosition;
-  image: string;
-  isCaptain: boolean;
-  goals?: number;
-  assists?: number;
-  appearances?: number;
-  minutesPlayed?: number;
+  number: number | null;
+  position: PlayerPosition | null;
 }

@@ -57,8 +57,8 @@ export default function HeroSection() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.35 }}
         >
-          <Button href="/utakmice" variant="primary" size="md">
-            Utakmice
+          <Button href="/o-klubu" variant="primary" size="md">
+            O klubu
           </Button>
           <Button href="/momcad" variant="outline-white" size="md">
             Momčad
